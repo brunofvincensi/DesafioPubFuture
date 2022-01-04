@@ -1,7 +1,10 @@
 package com.publica.desafio_pub.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_despesa")
@@ -19,6 +22,7 @@ public class Despesa {
     @Column(name = "tipo_despesa")
     private String tipoDespesa;
 
+
     @JoinColumn(name = "conta_id")
     @ManyToOne
     private Conta conta;
@@ -34,6 +38,19 @@ public class Despesa {
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
         this.tipoDespesa = tipoDespesa;
         this.conta = conta;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Despesa despesa = (Despesa) o;
+        return Objects.equals(id, despesa.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public Long getId() {

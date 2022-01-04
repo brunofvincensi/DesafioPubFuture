@@ -1,12 +1,17 @@
 package com.publica.desafio_pub.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_conta")
@@ -22,15 +27,36 @@ public class Conta {
     @Column(name = "instituicao")
     private String instituicao;
 
+    @OneToMany(mappedBy = "conta")
+    private List<Receita> receitas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "conta")
+    private List<Despesa> despesas = new ArrayList<>();
+
 
     public Conta() {
     }
 
-    public Conta(Long id, Double saldo, String tipoConta, String instituicao) {
+    public Conta(Long id, Double saldo, String tipoConta, String instituicao, List<Receita> receitas, List<Despesa> despesas) {
         this.id = id;
         this.saldo = saldo;
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
+        this.receitas = receitas;
+        this.despesas = despesas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Conta conta = (Conta) o;
+        return Objects.equals(id, conta.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public Long getId() {
@@ -65,5 +91,19 @@ public class Conta {
         this.instituicao = instituicao;
     }
 
+    public List<Receita> getReceitas() {
+        return receitas;
+    }
 
+    public void setReceitas(List<Receita> receitas) {
+        this.receitas = receitas;
+    }
+
+    public List<Despesa> getDespesas() {
+        return despesas;
+    }
+
+    public void setDespesas(List<Despesa> despesas) {
+        this.despesas = despesas;
+    }
 }

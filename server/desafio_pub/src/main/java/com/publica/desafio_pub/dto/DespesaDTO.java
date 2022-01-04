@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.dto;
 
 import com.publica.desafio_pub.models.Conta;
+import com.publica.desafio_pub.models.Despesa;
 
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
@@ -24,6 +25,14 @@ public class DespesaDTO {
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
         this.tipoDespesa = tipoDespesa;
+    }
+
+    public DespesaDTO(Despesa despesa){
+        this.id = despesa.getId();
+        this.valor = despesa.getValor();
+        this.dataRecebimento = despesa.getDataRecebimento();
+        this.dataRecebimentoEsperado = despesa.getDataRecebimentoEsperado();
+        this.tipoDespesa = despesa.getTipoDespesa();
     }
 
     public Long getId() {
