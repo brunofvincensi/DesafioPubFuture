@@ -1,6 +1,6 @@
 package com.publica.desafio_pub.services;
 
-import com.publica.desafio_pub.dto.DespesaDTO;
+import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.repositories.DespesaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

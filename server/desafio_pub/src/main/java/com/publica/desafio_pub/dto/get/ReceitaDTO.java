@@ -1,38 +1,43 @@
-package com.publica.desafio_pub.dto;
+package com.publica.desafio_pub.dto.get;
 
 import com.publica.desafio_pub.models.Conta;
-import com.publica.desafio_pub.models.Despesa;
+import com.publica.desafio_pub.models.Receita;
 
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 
-public class DespesaDTO {
+public class ReceitaDTO {
 
     private Long id;
     private Double valor;
     private Date dataRecebimento;
     private Date dataRecebimentoEsperado;
-    private String tipoDespesa;
+    private String descricao;
+    private String tipoReceita;
 
-    public DespesaDTO() {
+    public ReceitaDTO() {
     }
 
-    public DespesaDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String tipoDespesa) {
+    public ReceitaDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao, String tipoReceita) {
         this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
-        this.tipoDespesa = tipoDespesa;
+        this.descricao = descricao;
+        this.tipoReceita = tipoReceita;
     }
 
-    public DespesaDTO(Despesa despesa){
-        this.id = despesa.getId();
-        this.valor = despesa.getValor();
-        this.dataRecebimento = despesa.getDataRecebimento();
-        this.dataRecebimentoEsperado = despesa.getDataRecebimentoEsperado();
-        this.tipoDespesa = despesa.getTipoDespesa();
+    public ReceitaDTO(Receita receita){
+        this.id = receita.getId();
+        this.valor = receita.getValor();
+        this.dataRecebimento = receita.getDataRecebimento();
+        this.dataRecebimentoEsperado = receita.getDataRecebimentoEsperado();
+        this.descricao = receita.getDescricao();
+        this.tipoReceita = receita.getTipoReceita();
+
+
     }
 
     public Long getId() {
@@ -67,11 +72,19 @@ public class DespesaDTO {
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
     }
 
-    public String getTipoDespesa() {
-        return tipoDespesa;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTipoDespesa(String tipoDespesa) {
-        this.tipoDespesa = tipoDespesa;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getTipoReceita() {
+        return tipoReceita;
+    }
+
+    public void setTipoReceita(String tipoReceita) {
+        this.tipoReceita = tipoReceita;
     }
 }

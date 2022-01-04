@@ -1,4 +1,6 @@
-package com.publica.desafio_pub.dto;
+package com.publica.desafio_pub.dto.get;
+
+import com.publica.desafio_pub.models.Conta;
 
 import javax.persistence.Column;
 
@@ -17,6 +19,13 @@ public class ContaDTO {
         this.saldo = saldo;
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
+    }
+
+    public ContaDTO(Conta conta){
+        this.id = conta.getId();
+        this.saldo = conta.getSaldo();
+        this.tipoConta = conta.getTipoConta();
+        this.instituicao = conta.getInstituicao();
     }
 
     public Long getId() {

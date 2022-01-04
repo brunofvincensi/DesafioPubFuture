@@ -1,7 +1,6 @@
 package com.publica.desafio_pub.controllers;
 
-import com.publica.desafio_pub.dto.DespesaDTO;
-import com.publica.desafio_pub.models.Despesa;
+import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.services.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

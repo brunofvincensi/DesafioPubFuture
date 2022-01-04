@@ -1,29 +1,46 @@
-package com.publica.desafio_pub.dto;
+package com.publica.desafio_pub.dto.get;
 
 import com.publica.desafio_pub.models.Conta;
+import com.publica.desafio_pub.models.Despesa;
 
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 
-public class ReceitaDTO {
+public class DespesaDTO {
 
+    private Long id;
     private Double valor;
     private Date dataRecebimento;
     private Date dataRecebimentoEsperado;
-    private String descricao;
-    private String tipoReceita;
+    private String tipoDespesa;
 
-    public ReceitaDTO() {
+    public DespesaDTO() {
     }
 
-    public ReceitaDTO(Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao, String tipoReceita) {
+    public DespesaDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String tipoDespesa) {
+        this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
-        this.descricao = descricao;
-        this.tipoReceita = tipoReceita;
+        this.tipoDespesa = tipoDespesa;
+    }
+
+    public DespesaDTO(Despesa despesa){
+        this.id = despesa.getId();
+        this.valor = despesa.getValor();
+        this.dataRecebimento = despesa.getDataRecebimento();
+        this.dataRecebimentoEsperado = despesa.getDataRecebimentoEsperado();
+        this.tipoDespesa = despesa.getTipoDespesa();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Double getValor() {
@@ -50,19 +67,11 @@ public class ReceitaDTO {
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTipoDespesa() {
+        return tipoDespesa;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getTipoReceita() {
-        return tipoReceita;
-    }
-
-    public void setTipoReceita(String tipoReceita) {
-        this.tipoReceita = tipoReceita;
+    public void setTipoDespesa(String tipoDespesa) {
+        this.tipoDespesa = tipoDespesa;
     }
 }
