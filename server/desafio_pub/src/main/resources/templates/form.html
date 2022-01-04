@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>Financas Pessoais</title>
+
+</head>
+<body>
+
+
+<div class="container my-2">
+    <h2>Editar Pessoa</h2>
+    <form action="#" th:action="@{/contas/salvar}" th:object="${conta}" method="POST">
+
+
+
+        <input type="text" th:field="*{saldo}" placeholder="Saldo" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{tipoConta}" placeholder="Tipo da conta" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{instituicao}" placeholder="Instituicao" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2">Salvar</button>
+    </form>
+    <hr>
+    <a th:href="@{/contas}">Retornar para a lista de contas</a>
+</div>
+</body>
+</html>
