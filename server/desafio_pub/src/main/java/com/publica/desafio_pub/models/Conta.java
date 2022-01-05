@@ -25,7 +25,6 @@ public class Conta {
     @OneToMany(cascade =  CascadeType.ALL,  mappedBy = "conta")
     private List<Despesa> despesas = new ArrayList<>();
 
-
     public Conta() {
     }
 

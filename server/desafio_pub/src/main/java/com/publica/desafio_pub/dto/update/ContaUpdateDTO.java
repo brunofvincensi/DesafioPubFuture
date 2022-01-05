@@ -20,7 +20,7 @@ public class ContaUpdateDTO {
 
     public Conta update(Long id, ContaService contaService) {
 
-        Conta conta = contaService.getById(id);
+        Conta conta = contaService.findById(id).get();
 
         conta.setSaldo(this.saldo);
         conta.setTipoConta(this.tipoConta);

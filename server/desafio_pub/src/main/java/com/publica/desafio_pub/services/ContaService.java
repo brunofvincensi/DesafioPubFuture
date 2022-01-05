@@ -41,9 +41,6 @@ public class ContaService {
         return contaRepository.findById(id);
     }
 
-    public Conta getById(Long id) {
-        return contaRepository.findById(id).get();
-    }
 
     public void delete(Conta conta) {
 

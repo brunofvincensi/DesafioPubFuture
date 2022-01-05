@@ -1,22 +1,20 @@
-package com.publica.desafio_pub.dto.get;
+package com.publica.desafio_pub.dto.update;
 
 import com.publica.desafio_pub.models.Receita;
+import com.publica.desafio_pub.services.ReceitaService;
+
 import java.util.Date;
 
-public class ReceitaDTO {
-
-    private Long id;
-    private Double valor;
+public class ReceitaUpdateDTO {private Double valor;
     private Date dataRecebimento;
     private Date dataRecebimentoEsperado;
     private String descricao;
     private String tipoReceita;
 
-    public ReceitaDTO() {
+    public ReceitaUpdateDTO() {
     }
 
-    public ReceitaDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao, String tipoReceita) {
-        this.id = id;
+    public ReceitaUpdateDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao, String tipoReceita) {
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
@@ -24,24 +22,19 @@ public class ReceitaDTO {
         this.tipoReceita = tipoReceita;
     }
 
-    public ReceitaDTO(Receita receita){
-        this.id = receita.getId();
-        this.valor = receita.getValor();
-        this.dataRecebimento = receita.getDataRecebimento();
-        this.dataRecebimentoEsperado = receita.getDataRecebimentoEsperado();
-        this.descricao = receita.getDescricao();
-        this.tipoReceita = receita.getTipoReceita();
+    public Receita update(Long id, ReceitaService receitaService) {
 
+        Receita receita = receitaService.findById(id).get();
 
+        receita.setValor(this.valor);
+        receita.setDataRecebimento(this.dataRecebimento);
+        receita.setDataRecebimentoEsperado(this.dataRecebimentoEsperado);
+        receita.setDescricao(this.descricao);
+        receita.setTipoReceita(this.tipoReceita);
+
+        return receita;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Double getValor() {
         return valor;
@@ -82,4 +75,7 @@ public class ReceitaDTO {
     public void setTipoReceita(String tipoReceita) {
         this.tipoReceita = tipoReceita;
     }
+
+
+
 }

@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/curso")
+@RequestMapping("/conta")
 public class ContaController {
 
     @Autowired
@@ -32,19 +32,18 @@ public class ContaController {
     }
 
     @PostMapping
-    public ResponseEntity<Conta> inserir(@RequestBody Conta conta, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<ContaDTO> inserir(@RequestBody Conta conta, UriComponentsBuilder uriBuilder){
 
         try {
             Conta obj = contaService.save(conta);
 
             URI uri = uriBuilder.path("/contas/{id}").buildAndExpand(obj.getId()).toUri();
-            return ResponseEntity.created(uri).body(obj);
+            return ResponseEntity.created(uri).body(new ContaDTO(obj));
 
         }catch (ServiceException e){
 
             return ResponseEntity.unprocessableEntity().build();
         }
-
 
     }
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,5 +20,13 @@ public class ReceitaService {
 
         List<Receita> receitaList = receitaRepository.findAll();
         return receitaList.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
+    }
+
+    public Optional<Receita> findById(Long id) {
+        return receitaRepository.findById(id);
+    }
+
+    public void delete(Receita receita) {
+        receitaRepository.delete(receita);
     }
 }
