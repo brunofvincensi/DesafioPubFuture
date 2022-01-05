@@ -1,9 +1,11 @@
 package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.ContaDTO;
+import com.publica.desafio_pub.dto.insert.DespesaInsertDTO;
 import com.publica.desafio_pub.dto.update.ContaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
+import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +84,5 @@ public class ContaController {
         response.put("deletado", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
-
-
 
 }

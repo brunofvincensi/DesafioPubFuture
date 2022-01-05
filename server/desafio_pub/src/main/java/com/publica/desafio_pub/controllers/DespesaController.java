@@ -39,20 +39,28 @@ public class DespesaController {
 
     }
 
-    @PostMapping
-    public ResponseEntity<DespesaDTO> inserir(@RequestBody Despesa despesa, Long id, UriComponentsBuilder uriBuilder){
+    @PostMapping("/{id}")
+    public ResponseEntity<DespesaDTO> inserir(@RequestBody Despesa despesa, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
 
 
         Conta conta = contaService.findById(id).get();
 
-
         try {
-            Despesa obj = despesaService.save(despesa);
 
-            URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(obj.getId()).toUri();
-            return ResponseEntity.created(uri).body(new DespesaDTO(obj));
+            despesa.setConta(conta);
+            boolean isValid = despesaService.save(despesa, conta, uriBuilder);
 
-        }catch (ServiceException e){
+            if (isValid) {
+
+                URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(despesa.getId()).toUri();
+                return ResponseEntity.created(uri).body(new DespesaDTO(despesa));
+            }
+
+            else {
+                return ResponseEntity.badRequest().body(new DespesaDTO(despesa));
+            }
+
+        } catch (ServiceException e) {
 
             return ResponseEntity.unprocessableEntity().build();
         }
@@ -80,7 +88,7 @@ public class DespesaController {
     @Transactional
     public ResponseEntity<Map<String, Boolean>> deletar(@PathVariable Long id){
         Despesa despesa = despesaService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Conta não existe com o id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Despesa não existe com o id :" + id));
         despesaService.delete(despesa);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deletado", Boolean.TRUE);
