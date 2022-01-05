@@ -1,15 +1,7 @@
 package com.publica.desafio_pub.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,10 +19,10 @@ public class Conta {
     @Column(name = "instituicao")
     private String instituicao;
 
-    @OneToMany(mappedBy = "conta")
+    @OneToMany(cascade =  CascadeType.ALL, mappedBy = "conta")
     private List<Receita> receitas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "conta")
+    @OneToMany(cascade =  CascadeType.ALL,  mappedBy = "conta")
     private List<Despesa> despesas = new ArrayList<>();
 
 
