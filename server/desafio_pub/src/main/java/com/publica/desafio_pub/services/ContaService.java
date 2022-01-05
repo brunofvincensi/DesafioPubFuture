@@ -54,4 +54,41 @@ public class ContaService {
         contaRepository.delete(conta);
 
     }
+
+    public void transferirSaldo(Long id1, Long id2, Double valor) {
+
+        Conta conta1 = contaRepository.findById(id1).get();
+
+        Conta conta2 = contaRepository.findById(id2).get();
+
+        Double saldo1 = conta1.getSaldo();
+
+        Double saldo2 = conta2.getSaldo();
+
+        if(saldo1 > valor){
+
+            saldo1 -= valor;
+            conta1.setSaldo(saldo1);
+
+            saldo2 += valor;
+            conta2.setSaldo(saldo2);
+
+
+            contaRepository.findById(id1)
+                    .map(conta -> {
+                        conta.setSaldo(conta1.getSaldo());
+                        contaRepository.save(conta);
+                        return true;
+                    });
+
+            contaRepository.findById(id2)
+                    .map(conta -> {
+                        conta.setSaldo(conta2.getSaldo());
+                        contaRepository.save(conta);
+                        return true;
+                    });
+
+        }
+
+    }
 }

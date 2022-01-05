@@ -67,9 +67,7 @@ public class ContaController {
         if(contaOpt.isPresent()){
 
             Conta conta = updateDTO.update(id, contaService);
-
-            ContaDTO contaDTO = new ContaDTO(conta);
-            return ResponseEntity.ok(contaDTO);
+            return ResponseEntity.ok(new ContaDTO(conta));
 
         }
         return ResponseEntity.notFound().build();
@@ -97,6 +95,18 @@ public class ContaController {
             return ResponseEntity.ok(contaOptional.get()) ;
         }
         return ResponseEntity. notFound () .build () ;
+    }
+
+    @PutMapping("/transferir_saldo")
+    public void transferirSaldo(Long id1, Long id2, Double valor){
+
+        try {
+            contaService.transferirSaldo(id1, id2, valor);
+        }
+       catch (ServiceException e){
+           System.out.println(e);
+       }
+
     }
 
 }

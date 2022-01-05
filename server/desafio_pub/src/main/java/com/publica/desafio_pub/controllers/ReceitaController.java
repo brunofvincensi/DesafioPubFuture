@@ -51,11 +51,8 @@ public class ReceitaController {
             receita.setConta(conta);
             receitaService.save(receita, conta, uriBuilder);
 
-
-                URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(receita.getId()).toUri();
-                return ResponseEntity.created(uri).body(new ReceitaDTO(receita));
-
-
+            URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(receita.getId()).toUri();
+            return ResponseEntity.created(uri).body(new ReceitaDTO(receita));
 
         } catch (ServiceException e) {
 
