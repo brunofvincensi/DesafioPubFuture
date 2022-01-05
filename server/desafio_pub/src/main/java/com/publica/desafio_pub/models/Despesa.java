@@ -1,13 +1,15 @@
 package com.publica.desafio_pub.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_despesa")
+@Table(name = "tb_despesas")
 public class Despesa {
 
     @Id
@@ -15,10 +17,13 @@ public class Despesa {
     private Long id;
     @Column(name = "valor")
     private Double valor;
-    @Column(name = "data_recebimento")
-    private Date dataRecebimento;
-    @Column(name = "data_recebimento_esperado")
-    private Date dataRecebimentoEsperado;
+
+    @Column(name = "data_pagamento")
+    private LocalDate dataPagamento;
+ //   @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "data_pagamento_esperado")
+    private LocalDate dataPagamentoEsperado;
+
     @Column(name = "tipo_despesa")
     private String tipoDespesa;
 
@@ -30,12 +35,12 @@ public class Despesa {
     public Despesa() {
     }
 
-    public Despesa(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String tipoDespesa,
+    public Despesa(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa,
                    Conta conta) {
         this.id = id;
         this.valor = valor;
-        this.dataRecebimento = dataRecebimento;
-        this.dataRecebimentoEsperado = dataRecebimentoEsperado;
+        this.dataPagamento = dataPagamento;
+        this.dataPagamentoEsperado = dataPagamentoEsperado;
         this.tipoDespesa = tipoDespesa;
         this.conta = conta;
     }
@@ -69,20 +74,20 @@ public class Despesa {
         this.valor = valor;
     }
 
-    public Date getDataRecebimento() {
-        return dataRecebimento;
+    public LocalDate getDataPagamento() {
+        return dataPagamento;
     }
 
-    public void setDataRecebimento(Date dataRecebimento) {
-        this.dataRecebimento = dataRecebimento;
+    public void setDataPagamento(LocalDate dataPagamento) {
+        this.dataPagamento = dataPagamento;
     }
 
-    public Date getDataRecebimentoEsperado() {
-        return dataRecebimentoEsperado;
+    public LocalDate getDataPagamentoEsperado() {
+        return dataPagamentoEsperado;
     }
 
-    public void setDataRecebimentoEsperado(Date dataRecebimentoEsperado) {
-        this.dataRecebimentoEsperado = dataRecebimentoEsperado;
+    public void setDataPagamentoEsperado(LocalDate dataPagamentoEsperado) {
+        this.dataPagamentoEsperado = dataPagamentoEsperado;
     }
 
     public String getTipoDespesa() {

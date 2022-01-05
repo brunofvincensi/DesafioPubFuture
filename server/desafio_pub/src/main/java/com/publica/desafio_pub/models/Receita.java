@@ -3,11 +3,12 @@ package com.publica.desafio_pub.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_receita")
+@Table(name = "tb_receitas")
 public class Receita {
 
     @Id
@@ -16,9 +17,9 @@ public class Receita {
     @Column(name = "valor")
     private Double valor;
     @Column(name = "data_recebimento")
-    private Date dataRecebimento;
+    private LocalDate dataRecebimento;
     @Column(name = "data_recebimento_esperado")
-    private Date dataRecebimentoEsperado;
+    private LocalDate dataRecebimentoEsperado;
     @Column(name = "descricao")
     private String descricao;
     @Column(name = "tipo_receita")
@@ -32,7 +33,7 @@ public class Receita {
     public Receita() {
     }
 
-    public Receita(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao,
+    public Receita(Long id, Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao,
                    String tipoReceita, Conta conta) {
         this.id = id;
         this.valor = valor;
@@ -72,19 +73,19 @@ public class Receita {
         this.valor = valor;
     }
 
-    public Date getDataRecebimento() {
+    public LocalDate getDataRecebimento() {
         return dataRecebimento;
     }
 
-    public void setDataRecebimento(Date dataRecebimento) {
+    public void setDataRecebimento(LocalDate dataRecebimento) {
         this.dataRecebimento = dataRecebimento;
     }
 
-    public Date getDataRecebimentoEsperado() {
+    public LocalDate getDataRecebimentoEsperado() {
         return dataRecebimentoEsperado;
     }
 
-    public void setDataRecebimentoEsperado(Date dataRecebimentoEsperado) {
+    public void setDataRecebimentoEsperado(LocalDate dataRecebimentoEsperado) {
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
     }
 

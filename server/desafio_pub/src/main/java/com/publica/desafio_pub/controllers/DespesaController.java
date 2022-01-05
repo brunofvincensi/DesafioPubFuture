@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.transaction.Transactional;
 import javax.xml.crypto.Data;
 import java.net.URI;
+import java.text.ParseException;
 import java.util.*;
 
 @RestController
@@ -94,11 +95,13 @@ public class DespesaController {
     }
 
     @GetMapping("/filtro/data")
-    public ResponseEntity<List<DespesaDTO>> filtroPorData(Date min, Date max){
+    public ResponseEntity<List<DespesaDTO>> filtroPorData(String min, String max) {
 
         List<DespesaDTO> list = despesaService.findByDataPagamentoBetween(min, max);
         return ResponseEntity.ok().body(list);
 
     }
+
+
 
 }

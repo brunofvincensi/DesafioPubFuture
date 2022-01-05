@@ -1,21 +1,23 @@
 package com.publica.desafio_pub.dto.get;
 
 import com.publica.desafio_pub.models.Receita;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ReceitaDTO {
 
     private Long id;
     private Double valor;
-    private Date dataRecebimento;
-    private Date dataRecebimentoEsperado;
+    private LocalDate dataRecebimento;
+    private LocalDate dataRecebimentoEsperado;
     private String descricao;
     private String tipoReceita;
 
     public ReceitaDTO() {
     }
 
-    public ReceitaDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String descricao, String tipoReceita) {
+    public ReceitaDTO(Long id, Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao, String tipoReceita) {
         this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
@@ -51,19 +53,19 @@ public class ReceitaDTO {
         this.valor = valor;
     }
 
-    public Date getDataRecebimento() {
+    public LocalDate getDataRecebimento() {
         return dataRecebimento;
     }
 
-    public void setDataRecebimento(Date dataRecebimento) {
+    public void setDataRecebimento(LocalDate dataRecebimento) {
         this.dataRecebimento = dataRecebimento;
     }
 
-    public Date getDataRecebimentoEsperado() {
+    public LocalDate getDataRecebimentoEsperado() {
         return dataRecebimentoEsperado;
     }
 
-    public void setDataRecebimentoEsperado(Date dataRecebimentoEsperado) {
+    public void setDataRecebimentoEsperado(LocalDate dataRecebimentoEsperado) {
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
     }
 

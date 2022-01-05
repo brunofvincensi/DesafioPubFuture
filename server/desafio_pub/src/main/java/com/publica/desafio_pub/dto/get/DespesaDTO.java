@@ -1,37 +1,34 @@
 package com.publica.desafio_pub.dto.get;
 
-import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class DespesaDTO {
 
     private Long id;
     private Double valor;
-    private Date dataRecebimento;
-    private Date dataRecebimentoEsperado;
+    private LocalDate dataPagamento;
+    private LocalDate dataPagamentoEsperado;
     private String tipoDespesa;
 
     public DespesaDTO() {
     }
 
-    public DespesaDTO(Long id, Double valor, Date dataRecebimento, Date dataRecebimentoEsperado, String tipoDespesa) {
+    public DespesaDTO(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa) {
         this.id = id;
         this.valor = valor;
-        this.dataRecebimento = dataRecebimento;
-        this.dataRecebimentoEsperado = dataRecebimentoEsperado;
+        this.dataPagamento = dataPagamento;
+        this.dataPagamentoEsperado = dataPagamentoEsperado;
         this.tipoDespesa = tipoDespesa;
     }
 
     public DespesaDTO(Despesa despesa){
         this.id = despesa.getId();
         this.valor = despesa.getValor();
-        this.dataRecebimento = despesa.getDataRecebimento();
-        this.dataRecebimentoEsperado = despesa.getDataRecebimentoEsperado();
+        this.dataPagamento = despesa.getDataPagamento();
+        this.dataPagamentoEsperado = despesa.getDataPagamentoEsperado();
         this.tipoDespesa = despesa.getTipoDespesa();
     }
 
@@ -51,20 +48,20 @@ public class DespesaDTO {
         this.valor = valor;
     }
 
-    public Date getDataRecebimento() {
-        return dataRecebimento;
+    public LocalDate getDataPagamento() {
+        return dataPagamento;
     }
 
-    public void setDataRecebimento(Date dataRecebimento) {
-        this.dataRecebimento = dataRecebimento;
+    public void setDataPagamento(LocalDate dataPagamento) {
+        this.dataPagamento = dataPagamento;
     }
 
-    public Date getDataRecebimentoEsperado() {
-        return dataRecebimentoEsperado;
+    public LocalDate getDataPagamentoEsperado() {
+        return dataPagamentoEsperado;
     }
 
-    public void setDataRecebimentoEsperado(Date dataRecebimentoEsperado) {
-        this.dataRecebimentoEsperado = dataRecebimentoEsperado;
+    public void setDataPagamentoEsperado(LocalDate dataPagamentoEsperado) {
+        this.dataPagamentoEsperado = dataPagamentoEsperado;
     }
 
     public String getTipoDespesa() {

@@ -93,4 +93,12 @@ public class ReceitaController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/filtro/data")
+    public ResponseEntity<List<ReceitaDTO>> filtroPorData(String min, String max) {
+
+        List<ReceitaDTO> list = receitaService.findByDataRecebimentoBetween(min, max);
+        return ResponseEntity.ok().body(list);
+
+    }
+
 }

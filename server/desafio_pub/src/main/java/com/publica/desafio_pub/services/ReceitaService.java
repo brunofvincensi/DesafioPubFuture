@@ -1,7 +1,9 @@
 package com.publica.desafio_pub.services;
 
+import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.models.Conta;
+import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.ReceitaRepository;
@@ -9,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,5 +51,15 @@ public class ReceitaService {
         conta.setSaldo(saldo);
         contaRepository.save(conta);
 
+    }
+
+    public List<ReceitaDTO> findByDataRecebimentoBetween(String min, String max) {
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(min, format);
+        LocalDate localDate2 = LocalDate.parse(max, format);
+
+        List<Receita> list = receitaRepository.findByDataRecebimentoBetween(localDate, localDate2);
+        return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
     }
 }

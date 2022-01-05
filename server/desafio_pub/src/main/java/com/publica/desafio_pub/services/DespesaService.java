@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +35,8 @@ public class DespesaService {
     public boolean save(Despesa despesa, Conta conta, UriComponentsBuilder uriBuilder) {
 
         Double saldo = conta.getSaldo();
+
+
 
         if(saldo > despesa.getValor()){
 
@@ -62,11 +68,17 @@ public class DespesaService {
         despesaRepository.delete(despesa);
     }
 
-    public List<DespesaDTO> findByDataPagamentoBetween(Date min, Date max) {
 
 
+   public List<DespesaDTO> findByDataPagamentoBetween(String min, String max) {
 
-       List<Despesa> list = despesaRepository.findByDataPagamentoBetween(min, max);
+       DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+       LocalDate localDate = LocalDate.parse(min, format);
+       LocalDate localDate2 = LocalDate.parse(max, format);
+
+       List<Despesa> list = despesaRepository.findByDataPagamentoBetween(localDate, localDate2);
         return list.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
+
+
 }
