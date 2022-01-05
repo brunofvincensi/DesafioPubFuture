@@ -96,7 +96,15 @@ public class ReceitaController {
     @GetMapping("/filtro/data")
     public ResponseEntity<List<ReceitaDTO>> filtroPorData(String min, String max) {
 
-        List<ReceitaDTO> list = receitaService.findByDataRecebimentoBetween(min, max);
+        List<ReceitaDTO> list = receitaService.filtroPorData(min, max);
+        return ResponseEntity.ok().body(list);
+
+    }
+
+    @GetMapping("/filtro/tipo")
+    public ResponseEntity<List<ReceitaDTO>> filtroPorTipo(String tipoReceita) {
+
+        List<ReceitaDTO> list = receitaService.filtroPorTipo(tipoReceita);
         return ResponseEntity.ok().body(list);
 
     }

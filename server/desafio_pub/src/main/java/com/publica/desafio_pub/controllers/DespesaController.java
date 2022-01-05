@@ -2,6 +2,7 @@ package com.publica.desafio_pub.controllers;
 
 
 import com.publica.desafio_pub.dto.get.DespesaDTO;
+import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.update.DespesaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
-import javax.xml.crypto.Data;
 import java.net.URI;
-import java.text.ParseException;
 import java.util.*;
 
 @RestController
@@ -97,7 +96,15 @@ public class DespesaController {
     @GetMapping("/filtro/data")
     public ResponseEntity<List<DespesaDTO>> filtroPorData(String min, String max) {
 
-        List<DespesaDTO> list = despesaService.findByDataPagamentoBetween(min, max);
+        List<DespesaDTO> list = despesaService.filtroPorData(min, max);
+        return ResponseEntity.ok().body(list);
+
+    }
+
+    @GetMapping("/filtro/tipo")
+    public ResponseEntity<List<DespesaDTO>> filtroPorTipo(String tipoDespesa) {
+
+        List<DespesaDTO> list = despesaService.filtroPorTipo(tipoDespesa);
         return ResponseEntity.ok().body(list);
 
     }

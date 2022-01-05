@@ -12,5 +12,9 @@ import java.util.List;
 public interface ReceitaRepository extends JpaRepository<Receita, Long> {
 
     @Query(value = "select * from tb_receitas where data_recebimento > ?1 and data_recebimento < ?2", nativeQuery = true)
-    List<Receita> findByDataRecebimentoBetween(LocalDate localDate, LocalDate localDate2);
+    List<Receita> filtroPorData(LocalDate localDate, LocalDate localDate2);
+
+
+    @Query(value = "select * from tb_receitas where tipo_receita = ?1", nativeQuery = true)
+    List<Receita> filtroPorTipo(String tipoReceita);
 }

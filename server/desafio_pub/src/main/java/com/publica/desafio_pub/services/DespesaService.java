@@ -70,15 +70,21 @@ public class DespesaService {
 
 
 
-   public List<DespesaDTO> findByDataPagamentoBetween(String min, String max) {
+   public List<DespesaDTO> filtroPorData(String min, String max) {
 
        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
        LocalDate localDate = LocalDate.parse(min, format);
        LocalDate localDate2 = LocalDate.parse(max, format);
 
-       List<Despesa> list = despesaRepository.findByDataPagamentoBetween(localDate, localDate2);
+       List<Despesa> list = despesaRepository.filtroPorData(localDate, localDate2);
         return list.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
 
 
+    public List<DespesaDTO> filtroPorTipo(String tipoDespesa) {
+
+        List<Despesa> list = despesaRepository.filtroPorTipo(tipoDespesa);
+
+        return list.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
+    }
 }

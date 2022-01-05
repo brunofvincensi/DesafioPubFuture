@@ -14,6 +14,9 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
 
 
     @Query(value = "select * from tb_despesas where data_pagamento > ?1 and data_pagamento < ?2", nativeQuery = true)
-    List<Despesa> findByDataPagamentoBetween(LocalDate min, LocalDate max);
+    List<Despesa> filtroPorData(LocalDate localDate, LocalDate localDate2);
 
+
+    @Query(value = "select * from tb_despesas where tipo_despesa = ?1", nativeQuery = true)
+    List<Despesa> filtroPorTipo(String tipoDespesa);
 }
