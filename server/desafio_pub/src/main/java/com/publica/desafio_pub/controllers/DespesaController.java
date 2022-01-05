@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
+import javax.xml.crypto.Data;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/despesa")
@@ -93,6 +91,14 @@ public class DespesaController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deletado", Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/filtro/data")
+    public ResponseEntity<List<DespesaDTO>> filtroPorData(Date min, Date max){
+
+        List<DespesaDTO> list = despesaService.findByDataPagamentoBetween(min, max);
+        return ResponseEntity.ok().body(list);
+
     }
 
 }

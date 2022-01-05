@@ -1,11 +1,13 @@
 package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.ContaDTO;
+import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.insert.DespesaInsertDTO;
 import com.publica.desafio_pub.dto.update.ContaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
+import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +85,18 @@ public class ContaController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deletado", Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+
+    @GetMapping ("/{id}")
+    public ResponseEntity <Conta> redirecionamento (@PathVariable Long id) {
+        Optional <Conta> contaOptional = contaService.findById(id) ;
+        if (contaOptional.isPresent ()) {
+
+            System.out.println(contaOptional.get().getDespesas().get(1).getId());
+            return ResponseEntity.ok(contaOptional.get()) ;
+        }
+        return ResponseEntity. notFound () .build () ;
     }
 
 }

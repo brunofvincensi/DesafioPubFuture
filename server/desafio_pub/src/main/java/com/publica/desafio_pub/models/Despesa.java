@@ -22,7 +22,7 @@ public class Despesa {
     @Column(name = "tipo_despesa")
     private String tipoDespesa;
 
-
+    @JsonIgnore
     @JoinColumn(name = "conta_id")
     @ManyToOne
     private Conta conta;

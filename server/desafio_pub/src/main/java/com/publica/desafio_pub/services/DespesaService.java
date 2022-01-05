@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -59,5 +60,13 @@ public class DespesaService {
     public void delete(Despesa despesa) {
 
         despesaRepository.delete(despesa);
+    }
+
+    public List<DespesaDTO> findByDataPagamentoBetween(Date min, Date max) {
+
+
+
+       List<Despesa> list = despesaRepository.findByDataPagamentoBetween(min, max);
+        return list.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
 }
