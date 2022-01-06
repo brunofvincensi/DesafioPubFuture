@@ -1,5 +1,9 @@
-#teste{
-    width: 400px;
-    height: 400px;
-background-color: aquamarine;
+
+
+th{
+    text-align: center;
+}
+
+td{
+    text-align: center;
 }

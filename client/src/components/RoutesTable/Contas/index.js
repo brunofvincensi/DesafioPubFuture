@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import ContaService from '../../../services/ContaService';
-
+import "./style.css"
 
 export function Contas()  {
 
@@ -25,8 +25,10 @@ export function Contas()  {
 
     return (
         <div className = "container">
-            <h2 className = "text-center"> List Contas </h2>
+            
+            <br/>
             <Link to = "/add-conta" className = "btn btn-primary mb-2" > Add Conta </Link>
+            <br/><br/>
             <table className="table table-bordered table-striped">
                 <thead>
                     <th> conta Id </th>
@@ -43,9 +45,7 @@ export function Contas()  {
                                 <td> {conta.id} </td>
                                 <td>{conta.saldo}</td>
                                 <td>{conta.tipoConta}</td>
-                                <td>{conta.instituicao}</td>
-                                
-                                
+                                <td>{conta.instituicao}</td>                               
                             </tr>
                         )
                     }

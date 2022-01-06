@@ -15,7 +15,7 @@ export function Header() {
             </div>
 
             <ul>
-            <li id="contas" onClick={handleContasBold}><Link to={"/contas"}>Contas</Link></li>
+            <li id="contas"><Link to={"/contas"}>Contas</Link></li>
             
 
             </ul>
@@ -27,14 +27,3 @@ export function Header() {
 
 }
 
-function handleContasBold() {
-    handleFontWeight();
-    document.getElementById("contas").style.fontWeight = "bold";
-}
-
-
-
-function handleFontWeight() {
-    document.getElementById("contas").style.fontWeight = "normal";
-    
-}
