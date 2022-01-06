@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/despesa")
 public class DespesaController {

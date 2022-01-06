@@ -1,5 +1,5 @@
 import "./style.css";
-import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 
@@ -10,21 +10,31 @@ export function Header() {
 
         <div className="header">
 
-            <div id="logo">
-                financas pessoais
+            <div><Link to={"/"} id="logo">
+                financas pessoais</Link>
             </div>
 
             <ul>
-            <li id="receitas" ><Link to={"/receitas"}>Receitas</Link></li>
-            <li id="despesas" ><Link to={"/despesas"}>Despesas</Link></li>
-            <li id="contas" ><Link to={"/contas"}>Contas</Link></li>
-            </ul>
+            <li id="contas" onClick={handleContasBold}><Link to={"/contas"}>Contas</Link></li>
+            
 
-        
+            </ul>
             
         </div >
         
     );
 
 
+}
+
+function handleContasBold() {
+    handleFontWeight();
+    document.getElementById("contas").style.fontWeight = "bold";
+}
+
+
+
+function handleFontWeight() {
+    document.getElementById("contas").style.fontWeight = "normal";
+    
 }
