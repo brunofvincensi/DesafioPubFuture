@@ -1,0 +1,21 @@
+#tableDespesa{
+    background-color: aliceblue;
+   
+    
+
+}
+
+#despesaUpdate{
+   
+    position:static;
+    
+    transform: translateY(-30%);
+    
+    background-color: blue;
+
+}
+
+#btn_despesa_delete{
+    
+    background-color: red;
+}

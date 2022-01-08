@@ -21,7 +21,7 @@ import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/despesa")
+@RequestMapping("/despesas")
 public class DespesaController {
 
     @Autowired
@@ -35,6 +35,14 @@ public class DespesaController {
 
         List<DespesaDTO> despesaList = despesaService.findAll();
         return ResponseEntity.ok().body(despesaList);
+
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DespesaDTO> listarPorId(@PathVariable Long id){
+
+        Despesa despesa = despesaService.findById(id).get();
+        return ResponseEntity.ok().body(new DespesaDTO(despesa));
 
     }
 

@@ -15,7 +15,8 @@ export function Header() {
             </div>
 
             <ul>
-            <li id="contas"><Link to={"/contas"}>Contas</Link></li>
+            <li><Link to={"/recitas"}>Receitas</Link></li>
+            <li><Link to={"/despesas"}>Despesas</Link></li>
             
 
             </ul>

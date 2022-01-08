@@ -12,6 +12,7 @@ function App() {
          
                 <Outlet id="outlet" />
             </div>
+      
         </Body>
     );
 }

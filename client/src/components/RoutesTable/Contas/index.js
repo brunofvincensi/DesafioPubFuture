@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ContaService from '../../../services/ContaService';
 import "./style.css"
+import { MdModeEditOutline } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 
-export function Contas()  {
+export function Contas() {
 
     const [contas, setContas] = useState([])
 
@@ -16,42 +18,65 @@ export function Contas()  {
         ContaService.getAllContas().then((response) => {
             setContas(response.data)
             console.log(response.data);
-        }).catch(error =>{
+        }).catch(error => {
             console.log(error);
         })
     }
 
-    
+    const deleteConta = (contaId) => {
+        ContaService.deleteConta(contaId).then((response) => {
+            getAllContas();
+
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
+
 
     return (
-        <div className = "container">
-            
-            <br/>
-            <Link to = "/add-conta" className = "btn btn-primary mb-2" > Add Conta </Link>
-            <br/><br/>
-            <table className="table table-bordered table-striped">
-                <thead>
-                    <th> conta Id </th>
-                    <th> Saldo </th>
-                    <th> Tipo da Conta </th>
-                    <th> Instituição </th>
-          
-                </thead>
-                <tbody>
-                    {
-                        contas.map(
-                            conta =>
-                            <tr key = {conta.id}> 
-                                <td> {conta.id} </td>
-                                <td>{conta.saldo}</td>
-                                <td>{conta.tipoConta}</td>
-                                <td>{conta.instituicao}</td>                               
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+        <div className="container">
+
+            <br />
+            <Link to="/add-conta" className="btn btn-primary mb-2" id='addConta' > Adicionar Conta </Link>
+            <br /><br />
+
+
+
+
+
+            {
+                contas.map(
+                    conta =>
+                        <div key={conta.id} id="conta-box">
+
+                            <Link to="/conta" className='conta'>
+                                <p id="tipoConta">Conta {conta.tipoConta}</p>
+                                <p id="instituicao">{conta.instituicao}</p>
+                                <p id="saldo"> R$ {conta.saldo}</p>
+                            </Link>
+                           
+                                <Link  to={`/contaUp/${conta.id}`} className='botao' id='update' ><MdModeEditOutline /></Link>
+                                
+                                <button className='botao' id='delete' onClick={() => deleteConta(conta.id)}
+                                    style={{ marginLeft: "10px" }}><AiFillDelete/> </button>
+                            
+
+                        </div>
+
+
+
+                )
+            }
+
+
+
+
+
         </div>
+
+
     )
 }
 

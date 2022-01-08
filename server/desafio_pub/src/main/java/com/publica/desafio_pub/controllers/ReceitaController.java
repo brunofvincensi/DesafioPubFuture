@@ -1,11 +1,9 @@
 package com.publica.desafio_pub.controllers;
 
-import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.update.ReceitaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
-import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.ReceitaService;
@@ -24,7 +22,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/receita")
+@RequestMapping("/receitas")
 public class ReceitaController {
 
     @Autowired

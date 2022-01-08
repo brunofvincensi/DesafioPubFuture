@@ -5,7 +5,7 @@
     background-color: blue;
     align-items: center;
     justify-content: space-between;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 9px;
+    
 }
 
 #logo{
@@ -29,6 +29,7 @@ li{
     padding: 50px;
 
     text-decoration: none;
+top: 50%;
     
 }
 

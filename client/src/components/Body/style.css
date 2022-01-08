@@ -2,8 +2,21 @@
     margin: 0;
     padding: 0;
     font-family: Quicksand;
+
+    
+}
+
+html{
+    background-image: url("../../../../imagens/ales-nesetril-ex_p4AaBxbs-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
 }
 
 body {
     height: 100%;
+    background-image: url("../../../../imagens/ales-nesetril-ex_p4AaBxbs-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
 }

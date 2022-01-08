@@ -17,7 +17,6 @@ public class Despesa {
     private Long id;
     @Column(name = "valor")
     private Double valor;
-
     @Column(name = "data_pagamento")
     private LocalDate dataPagamento;
  //   @DateTimeFormat(pattern = "dd-MM-yyyy")
