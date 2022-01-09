@@ -9,6 +9,7 @@ import { AiFillDelete } from "react-icons/ai";
  export function Receitas () {
 
     const [receitas, setReceitas] = useState([])
+    const [tipoReceita, setTipoReceita] = useState("")
 
     useEffect(() => {
 
@@ -24,6 +25,17 @@ import { AiFillDelete } from "react-icons/ai";
         })
     }
 
+    const getFiltroPorTipo = () => {
+
+        console.log(tipoReceita)
+        ReceitaService.getFiltroPorTipo(tipoReceita).then((response) => {
+            setReceitas(response.data)
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     const deleteReceitas = (receitaId) => {
        ReceitaService.deleteReceita(receitaId).then((response) =>{
         getAllReceitas();
@@ -35,16 +47,21 @@ import { AiFillDelete } from "react-icons/ai";
     }
 
     return (
-        <div className='container'>
+        <div className='container' id='container-receita'>
             <h2 className = "text-center"> Lista de Receitas </h2>
+
+            <input type="text " id='filtroTipo' placeholder='tipo de receita' onChange={(e) => setTipoReceita(e.target.value)}/>
+               <input type="button" value="filtrar" onClick={() => getFiltroPorTipo()}/>
+               <br/><br/>
+               
             <table className="table table-bordered table-striped" id='tableReceita'>
                 <thead>
-                    <th> Receita Id </th>
+                    
                     <th> valor </th>
                     <th> data recebimento </th>
                     <th> data recebimento esperado </th>
                     <th> descricao</th>
-                    <th> tipo </th>
+                    <th id='tipoReceita'> tipo </th>
                     <th> Ações </th>
                 </thead>
                 <tbody>
@@ -52,12 +69,13 @@ import { AiFillDelete } from "react-icons/ai";
                         receitas.map(
                             receita =>
                             <tr key = {receita.id}> 
-                                <td> {receita.id} </td>
+                                
                                 <td> {receita.valor} </td>
                                 <td>{receita.dataRecebimento}</td>
                                 <td>{receita.dataRecebimentoEsperado}</td>
                                 <td>{receita.descricao}</td>
-                                <td>{receita.tipoRceita}</td>
+                                <td>{receita.tipoReceita}</td>
+
                                 <td>
                                 <Link  className="btn btn-info" to={`/receitaUp/${receita.id}`} id='receitaUpdate' ><MdModeEditOutline /></Link>
                                 <button className = "btn btn-danger" id='btn_receita_delete' onClick={() => deleteReceitas(receita.id)}

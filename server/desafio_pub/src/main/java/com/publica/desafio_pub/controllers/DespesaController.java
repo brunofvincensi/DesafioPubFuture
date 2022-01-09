@@ -115,7 +115,6 @@ public class DespesaController {
 
         List<DespesaDTO> list = despesaService.filtroPorTipo(tipoDespesa);
         return ResponseEntity.ok().body(list);
-
     }
 
 

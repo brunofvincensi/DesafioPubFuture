@@ -65,13 +65,13 @@ export function Contas() {
                     conta =>
                         <div key={conta.id} id="conta-box">
 
-                            <Link to="/conta" className='conta'>
+                            <Link to={`/contaUp/${conta.id}`}>
                                 <p id="tipoConta">Conta {conta.tipoConta}</p>
                                 <p id="instituicao">{conta.instituicao}</p>
                                 <p id="saldo"> R$ {conta.saldo}</p>
                             </Link>
                            
-                                <Link  to={`/contaUp/${conta.id}`} className='botao' id='update' ><MdModeEditOutline /></Link>
+                               <br/><br/>
                                 
                                 <button className='botao' id='delete' onClick={() => deleteConta(conta.id)}
                                     style={{ marginLeft: "10px" }}><AiFillDelete/> </button>

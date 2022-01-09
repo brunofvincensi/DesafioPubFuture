@@ -1,4 +1,93 @@
+#infConta{
+    font-size: 30px;
+    color: aliceblue;
+}
+
+.contaForm{
+    margin-left: 50px;
+    float: left;
+}
+
+label{padding-right: 10px;
+color: aliceblue;
+font-size: 20px;}
+
+#label-instituicao{
+    padding-left: 20px;
+    
+}
+
+.contaForm input[type = "text"]{
+    font-size: 20px;
+    
+}
+
+.linha-vertical {
+    height: 600px;/*Altura da linha*/
+    border-left: 2px solid white;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+    position: absolute;
+    bottom:  5%;
+    left: 50%;
+  }
+
+  #transferir-saldo{
+
+    position: absolute;
+    left: 55%;
+    top:  28%;
+  }
+
+  #transferir-saldo input{
+      margin-left: 10px;
+  }
+
+  #despesa-box{
+position: absolute;
+left: 36%;
+bottom: 20%;
+
+    
+  }
 
 
+  #despesa-box div{
+      font-size: 50px;
+    color: red;
+    
+    
+} 
 
+#despesa-box input[type="button"]{
 
+    width: 150px;
+    height: 40px;
+
+    font-size: 20px;
+  
+  
+} 
+  
+#receita-box{
+
+    position: absolute;
+left: 55%;
+bottom: 20%;
+
+}
+
+#receita-box div{
+    font-size: 50px;
+  color: green;
+
+  
+} 
+
+#receita-box input[type="button"]{
+
+    width: 150px;
+    height: 40px;
+
+    font-size: 20px;
+  
+  
+} 

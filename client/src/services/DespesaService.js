@@ -16,6 +16,11 @@ class DespesaService{
         return axios.get(DESPESA_REST_API_URL + '/' + despesaId)
     }
 
+    getFiltroPorTipo(tipoDespesa){
+        return axios.get(DESPESA_REST_API_URL + '/filtro/tipo?tipoDespesa=' + tipoDespesa )
+    }
+
+
 
     updateDespesa(despesaId, despesa){
         return axios.put(DESPESA_REST_API_URL + '/' +despesaId, despesa);

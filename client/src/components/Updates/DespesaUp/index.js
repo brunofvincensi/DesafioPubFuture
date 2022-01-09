@@ -42,6 +42,17 @@ const DespesaUp = () => {
     
         }
 
+        function rota(){
+            if(id){
+
+                return "/despesas"
+
+            }
+            else{
+                
+            }
+        }
+
         
 
 
@@ -55,7 +66,7 @@ const DespesaUp = () => {
 
                 <form id="form">
 
-                <Link id="voltar" to={"/despesas"}><button>voltar</button></Link>
+                <Link id="voltar" to={ "/despesas"}><button>voltar</button></Link>
                    <p id="title" >Alterar Despesa</p>
                    
                

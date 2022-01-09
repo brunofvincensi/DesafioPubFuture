@@ -28,6 +28,12 @@ class ContaService{
         return axios.post(CONTAS_REST_API_URL, conta)
     }
 
+    transefirSaldo(id1, id2, valor){
+
+    return axios.patch(CONTAS_REST_API_URL + '/transferir_saldo?id1=' + id1 + '&id2=' + id2 + '&valor=' + valor);
+
+    }
+
     
 }
 

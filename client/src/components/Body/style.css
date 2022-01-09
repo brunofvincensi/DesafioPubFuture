@@ -7,7 +7,7 @@
 }
 
 html{
-    background-image: url("../../../../imagens/ales-nesetril-ex_p4AaBxbs-unsplash.jpg");
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -15,7 +15,7 @@ html{
 
 body {
     height: 100%;
-    background-image: url("../../../../imagens/ales-nesetril-ex_p4AaBxbs-unsplash.jpg");
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;

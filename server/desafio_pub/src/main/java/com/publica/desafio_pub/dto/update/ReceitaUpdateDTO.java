@@ -6,7 +6,8 @@ import com.publica.desafio_pub.services.ReceitaService;
 import java.time.LocalDate;
 
 
-public class ReceitaUpdateDTO {private Double valor;
+public class ReceitaUpdateDTO {
+    private Double valor;
     private LocalDate dataRecebimento;
     private LocalDate dataRecebimentoEsperado;
     private String descricao;

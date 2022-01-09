@@ -71,16 +71,11 @@ float: right;
 
 }
 
-#update{
-
-    position: relative;
-    top: 6%;
-    left: 30px;
-}
+ 
 #delete{
     position: relative;
-    bottom: 41px;
-    left: 60px;
+    bottom: 50px;
+    left: 40px;
 }
 
 #delete:hover{
@@ -103,9 +98,9 @@ a:hover{
     
     display: inline-block;
     position: fixed;
-    left: 80%;
+    left: 70%;
     bottom: 50%;
-    font-size: 40px;
+    font-size: 60px;
   
     color: green;
 }

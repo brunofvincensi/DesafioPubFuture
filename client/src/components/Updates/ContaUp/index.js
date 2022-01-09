@@ -1,7 +1,6 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import ContaService from "../../../services/ContaService";
 
 const ContUp = () => {
@@ -10,8 +9,15 @@ const ContUp = () => {
     const [instituicao, setInstituicao] = useState("");
     const { id } = useParams();
 
+    const [id2, setId2] = useState("");
+    const [valor, setValor] = useState("");
+
 
     const history = useNavigate();
+
+    
+
+
 
     useEffect(() => {
 
@@ -27,33 +33,40 @@ const ContUp = () => {
 
 
 
-    const UpdateOrAddConta = (e) => {
+    const UpdateConta = (e) => {
         e.preventDefault();
 
         const conta = { saldo, tipoConta, instituicao }
 
-
-        if(id){
         ContaService.updateConta(id, conta).then((response) => {
             history.push("/contas")
         }).catch(error => {
             console.log(error)
-        })}
-        else{ContaService.createConta(conta).then((response) =>{
+        })
+        
+        
+    }
 
-            console.log(response.data)
+   const TransferirSaldo = (e) => {
+        e.preventDefault();
 
-            history.push('/');
+        console.log(parseInt(id))
+        console.log(parseInt(id2))
+        console.log(parseFloat( valor))
 
+        ContaService.transefirSaldo(id, parseInt(id2) , parseFloat(valor) ).then((response) => {
+            history.push("/contas")
+            
         }).catch(error => {
             console.log(error)
         })
-
-
-        }
-
+        
         
     }
+    
+
+
+
 
    function title(){
 
@@ -67,6 +80,8 @@ const ContUp = () => {
 
    }
 
+   let i = "R$ " + saldo;
+
 
     
 
@@ -77,23 +92,31 @@ const ContUp = () => {
            
             
 
-                <form id="form">
+                <form id="form"> 
 
-                <Link id="voltar" to={"/"}><button>voltar</button></Link>
-                   <p id="title" >{title()}</p>
-                   
+              
+                <br/><br/><br/>
+                   <p id="infConta" >Informações da conta</p>
+                   <br/>
+
+                   <label id='label-saldo'>
+                       saldo
+                   </label>
                
                     <input
-                        type="number"
+                        type="text"
                         name="saldoConta"
                         id="saldoConta"
-                        value={saldo}
+                        value = {i}
+                        readOnly
                         onChange={(e) => setSaldo(e.target.value)}
                         
                         
                     /> 
 
-                  <br/><br/>
+                    <label id="label-instituicao">
+                       instituicao
+                   </label>
 
                    
                     <input
@@ -104,7 +127,10 @@ const ContUp = () => {
                         
                         onChange={(e) => setInstituicao(e.target.value)}
                     />
-                    <br/><br/>
+                    <br/>
+                    <br/>
+
+                    <label id="label-tipoConta">tipo da conta</label>
 
                     <input
                         type="text"
@@ -114,20 +140,53 @@ const ContUp = () => {
                         onChange={(e) => setTipoConta(e.target.value)}
                     />
 
-                     <br/><br/>
-
-                    
-                       
+                     <br/><br/>                      
                    
                             <input
                             type="button"
                             id="buttonConfirmConta"
                             title="Update Conta"
-                            value="Confirm"
-                            onClick={(e) => UpdateOrAddConta(e)}
+                            value={title()}
+                            onClick={(e) => UpdateConta(e)}
                         >
                              
                         </input>
+
+                        <div class="linha-vertical"></div>
+
+
+                        <div id="transferir-saldo">
+
+                          <form>
+
+                            <input type="text" id="id2" placeholder="nº da conta"  onChange={(e) => setId2(e.target.value)} />
+
+                            <input type="text" id="saldoTransferido" placeholder="valor" onChange={(e) => setValor(e.target.value)} />                           
+
+                            <input type="button" value="tranferir" onClick={(e) => TransferirSaldo(e)} >
+
+                            </input>
+                            </form>
+
+
+
+                        </div>
+
+                        <div id="despesa-box">
+
+                            <input type="button" value="adicionar despesa"/>
+                            <br/><br/>
+                            <div> <b>R$500</b></div>
+
+                        </div>
+
+                        <div id="receita-box">
+
+                            <input type="button" value="adicionar receita"/>
+                            <br/><br/>
+                            <div> <b>R$500</b></div>
+
+                        </div>
                       
                         
 

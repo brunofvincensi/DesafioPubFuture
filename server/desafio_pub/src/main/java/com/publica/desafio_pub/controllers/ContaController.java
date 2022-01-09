@@ -103,8 +103,8 @@ public class ContaController {
         return ResponseEntity. notFound () .build () ;
     }
 
-    @PutMapping("/transferir_saldo")
-    public void transferirSaldo(Long id1, Long id2, Double valor){
+    @PatchMapping ("/transferir_saldo")
+    public void transferirSaldo( Long id1, Long id2, Double valor){
 
         try {
             contaService.transferirSaldo(id1, id2, valor);
@@ -112,6 +112,8 @@ public class ContaController {
        catch (ServiceException e){
            System.out.println(e);
        }
+
+
 
     }
 

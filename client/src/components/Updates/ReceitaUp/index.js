@@ -22,7 +22,7 @@ const ReceitaUp = () => {
             setDataRecebiento(response.data.dataRecebimento)
             setDataRecebimentoEsperado(response.data.dataRecebimentoEsperado)
             setDescricao(response.data.descricao)
-            setTipoReceita(response.data.tipoDespesa)
+            setTipoReceita(response.data.tipoReceita)
         }).catch(error => {
             console.log(error)
         })
