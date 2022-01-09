@@ -1,9 +1,11 @@
 package com.publica.desafio_pub.controllers;
 
+import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.update.ReceitaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
+import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.ReceitaService;
@@ -36,6 +38,14 @@ public class ReceitaController {
 
         List<ReceitaDTO> receitaList = receitaService.findAll();
         return ResponseEntity.ok().body(receitaList);
+
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ReceitaDTO> listarPorId(@PathVariable Long id){
+
+        Receita receita = receitaService.findById(id).get();
+        return ResponseEntity.ok().body(new ReceitaDTO(receita));
 
     }
 

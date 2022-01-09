@@ -1,0 +1,21 @@
+#tableReceita{
+    background-color: aliceblue;
+   
+    
+
+}
+
+#receitaUpdate{
+   
+    position:static;
+    
+    transform: translateY(-30%);
+    
+    background-color: blue;
+
+}
+
+#btn_receita_delete{
+    
+    background-color: red;
+}

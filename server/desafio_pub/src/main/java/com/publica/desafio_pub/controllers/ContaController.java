@@ -32,6 +32,16 @@ public class ContaController {
         return ResponseEntity.ok().body(contaList);
     }
 
+    @GetMapping("/saldo_total")
+    public Double getSaldoTotal(){
+
+        List<ContaDTO> contaList = contaService.findAll();
+
+        Double saldoTotal = contaService.getSaldoTotal(contaList);
+
+       return saldoTotal;
+    }
+
     @PostMapping
     public ResponseEntity<ContaDTO> inserir(@RequestBody Conta conta, UriComponentsBuilder uriBuilder){
 

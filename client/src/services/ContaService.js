@@ -8,6 +8,10 @@ class ContaService{
         return axios.get(CONTAS_REST_API_URL)
     }
 
+    getSaldoTotal(){
+        return axios.get(CONTAS_REST_API_URL + '/saldo_total')
+    }
+
     deleteConta(contaId){
         return axios.delete(CONTAS_REST_API_URL + '/' + contaId)
     }

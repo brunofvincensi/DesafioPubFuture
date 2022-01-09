@@ -15,10 +15,8 @@ export function Header() {
             </div>
 
             <ul>
-            <li><Link to={"/recitas"}>Receitas</Link></li>
+            <li><Link to={"/receitas"}>Receitas</Link></li>
             <li><Link to={"/despesas"}>Despesas</Link></li>
-            
-
             </ul>
             
         </div >

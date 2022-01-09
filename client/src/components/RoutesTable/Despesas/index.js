@@ -36,7 +36,7 @@ import { AiFillDelete } from "react-icons/ai";
 
     return (
         <div className='container'>
-            <h2 className = "text-center"> List Despesas </h2>
+            <h2 className = "text-center"> Lista de Despesas </h2>
             <table className="table table-bordered table-striped" id='tableDespesa'>
                 <thead>
                     <th> Despesa Id </th>

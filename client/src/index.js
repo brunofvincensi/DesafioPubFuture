@@ -8,6 +8,7 @@ import { Receitas } from "./components/RoutesTable/Receitas";
 import { Despesas } from "./components/RoutesTable/Despesas";
 import ContUp from "./components/Updates/ContaUp";
 import DespesaUp from "./components/Updates/DespesaUp";
+import ReceitaUp from "./components/Updates/ReceitaUp";
 
 
 ReactDOM.render(
@@ -22,6 +23,7 @@ ReactDOM.render(
 					<Route path="receitas" element={<Receitas />}></Route>
 					<Route path="despesas" element={<Despesas />}></Route>
 					<Route path="despesaUp/:id" element={<DespesaUp />}></Route>
+					<Route path="receitaUp/:id" element={<ReceitaUp />}></Route>
 				
 				</Route>
 			</Routes>

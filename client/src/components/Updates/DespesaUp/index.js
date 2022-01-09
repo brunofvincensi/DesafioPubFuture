@@ -47,8 +47,8 @@ const DespesaUp = () => {
 
 
   return (
-        <div className="contaUp" id="screenContaUp" onClick={e => e.stopPropagation()}>
-            <div className="contaForm">
+        <div className="despesaUp" onClick={e => e.stopPropagation()}>
+            <div>
                
            
             
@@ -76,7 +76,7 @@ const DespesaUp = () => {
                         type="date"
                         name="dataPagamento"
                         id="dataPagamento"
-                        value={  dataPagamento}
+                        value={dataPagamento}
                         
                         onChange={(e) => setDataPagamento(e.target.value)}
                     />
@@ -112,10 +112,7 @@ const DespesaUp = () => {
                         >
                              
                         </input>
-                      
-                        
-
-                         
+                                           
                   
                         <br/><br/>
 

@@ -9,9 +9,21 @@ export function Contas() {
 
     const [contas, setContas] = useState([])
 
+    const [saldoTotal, setSaldoTotal] = useState("")
+
     useEffect(() => {
 
         getAllContas();
+    }, [])
+
+    useEffect(() => {
+
+        ContaService.getSaldoTotal().then((response) =>{
+            setSaldoTotal(response.data)
+
+        }).catch(error => {
+            console.log(error)
+        })
     }, [])
 
     const getAllContas = () => {
@@ -41,6 +53,8 @@ export function Contas() {
             <br />
             <Link to="/add-conta" className="btn btn-primary mb-2" id='addConta' > Adicionar Conta </Link>
             <br /><br />
+
+             <div id='saldoTotal'>R$ {saldoTotal}</div>
 
 
 

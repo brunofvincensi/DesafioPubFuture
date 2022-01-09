@@ -12,15 +12,15 @@ class ReceitaService{
         return axios.post(RECEITA_REST_API_URL, receita)
     }
 
-    getEmployeeById(receitaId){
+    getReceita(receitaId){
         return axios.get(RECEITA_REST_API_URL + '/' + receitaId);
     }
 
-    updateEmployee(receitaId, receita){
+    updateReceita(receitaId, receita){
         return axios.put(RECEITA_REST_API_URL + '/' +receitaId, receita);
     }
 
-    deleteEmployee(receitaId){
+    deleteReceita(receitaId){
         return axios.delete(RECEITA_REST_API_URL + '/' + receitaId);
     }
 }

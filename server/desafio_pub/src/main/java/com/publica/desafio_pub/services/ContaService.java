@@ -91,4 +91,16 @@ public class ContaService {
         }
 
     }
+
+    public Double getSaldoTotal(List<ContaDTO> contaList) {
+
+        Double saldoTotal = 0.0;
+        for (ContaDTO conta: contaList
+        ) {
+            saldoTotal += conta.getSaldo();
+
+        }
+
+        return saldoTotal;
+    }
 }

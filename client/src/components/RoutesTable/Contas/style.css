@@ -97,3 +97,15 @@ a:hover{
     text-decoration: none;
     
 }
+
+#saldoTotal{
+ 
+    
+    display: inline-block;
+    position: fixed;
+    left: 80%;
+    bottom: 50%;
+    font-size: 40px;
+  
+    color: green;
+}
