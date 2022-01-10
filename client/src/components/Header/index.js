@@ -11,7 +11,7 @@ export function Header() {
         <div className="header">
 
             <div><Link to={"/"} id="logo">
-                financas pessoais</Link>
+                finanças pessoais</Link>
             </div>
 
             <ul>

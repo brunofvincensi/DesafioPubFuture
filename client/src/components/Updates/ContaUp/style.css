@@ -91,3 +91,10 @@ bottom: 20%;
   
   
 } 
+
+#titulo_transferencia{
+    color: aliceblue;
+    font-size: 40px;
+    position: absolute;
+    bottom: 150%;
+}

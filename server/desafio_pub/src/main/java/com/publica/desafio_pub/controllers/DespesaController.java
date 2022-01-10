@@ -103,9 +103,9 @@ public class DespesaController {
     }
 
     @GetMapping("/filtro/data")
-    public ResponseEntity<List<DespesaDTO>> filtroPorData(String min, String max) {
+    public ResponseEntity<List<DespesaDTO>> filtroPorData(String dataInicial, String dataFinal) {
 
-        List<DespesaDTO> list = despesaService.filtroPorData(min, max);
+        List<DespesaDTO> list = despesaService.filtroPorData(dataInicial, dataFinal);
         return ResponseEntity.ok().body(list);
 
     }

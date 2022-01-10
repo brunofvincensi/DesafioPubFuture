@@ -19,3 +19,30 @@
     
     background-color: red;
 }
+
+
+#filtroTipo{
+    float: left;
+}
+
+#filtroTipo input[type="button"]{
+
+    margin-left: 10px;
+
+}
+
+#filtroData{
+    float: right;
+    margin-right: 200px;
+}
+
+#filtroData input[type="date"]{
+     
+    width: 150px;
+    
+}
+
+#filtroData input[type="button"]{
+    position: absolute;
+    margin-left: 100px;
+}

@@ -115,7 +115,7 @@ const ContUp = () => {
                     /> 
 
                     <label id="label-instituicao">
-                       instituicao
+                       instituição
                    </label>
 
                    
@@ -156,6 +156,8 @@ const ContUp = () => {
 
 
                         <div id="transferir-saldo">
+
+                            <div id='titulo_transferencia'>Transferência de saldo</div>
 
                           <form>
 

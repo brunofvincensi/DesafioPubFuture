@@ -100,9 +100,9 @@ public class ReceitaController {
     }
 
     @GetMapping("/filtro/data")
-    public ResponseEntity<List<ReceitaDTO>> filtroPorData(String min, String max) {
+    public ResponseEntity<List<ReceitaDTO>> filtroPorData(String dataInicial, String dataFinal) {
 
-        List<ReceitaDTO> list = receitaService.filtroPorData(min, max);
+        List<ReceitaDTO> list = receitaService.filtroPorData(dataInicial, dataFinal);
         return ResponseEntity.ok().body(list);
 
     }

@@ -67,13 +67,13 @@ public class DespesaService {
 
 
 
-   public List<DespesaDTO> filtroPorData(String min, String max) {
+   public List<DespesaDTO> filtroPorData(String dataInicial, String dataFinal) {
 
        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-       LocalDate localDate = LocalDate.parse(min, format);
-       LocalDate localDate2 = LocalDate.parse(max, format);
+       LocalDate localDate1 = LocalDate.parse(dataInicial, format);
+       LocalDate localDate2 = LocalDate.parse(dataFinal, format);
 
-       List<Despesa> list = despesaRepository.filtroPorData(localDate, localDate2);
+       List<Despesa> list = despesaRepository.filtroPorData(localDate1, localDate2);
         return list.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
 

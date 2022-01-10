@@ -9,7 +9,7 @@ import { Despesas } from "./components/RoutesTable/Despesas";
 import ContUp from "./components/Updates/ContaUp";
 import DespesaUp from "./components/Updates/DespesaUp";
 import ReceitaUp from "./components/Updates/ReceitaUp";
-
+import ContaInsert from "./components/Updates/ContaInsert";
 
 ReactDOM.render(
 	<BrowserRouter>
@@ -19,12 +19,11 @@ ReactDOM.render(
 					<Route exact path="/" element={<Contas />} />
 
 					<Route path="contaUp/:id" element={<ContUp />}></Route>
-					<Route path="add-conta" element={<ContUp />}></Route>
 					<Route path="receitas" element={<Receitas />}></Route>
 					<Route path="despesas" element={<Despesas />}></Route>
 					<Route path="despesaUp/:id" element={<DespesaUp />}></Route>
 					<Route path="receitaUp/:id" element={<ReceitaUp />}></Route>
-				
+					<Route path="add-conta" element={<ContaInsert />}></Route>
 				</Route>
 			</Routes>
 		</React.StrictMode>

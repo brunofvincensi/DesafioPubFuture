@@ -53,13 +53,13 @@ public class ReceitaService {
 
     }
 
-    public List<ReceitaDTO> filtroPorData(String min, String max) {
+    public List<ReceitaDTO> filtroPorData(String dataInicial, String dataFinal) {
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(min, format);
-        LocalDate localDate2 = LocalDate.parse(max, format);
+        LocalDate localDate1 = LocalDate.parse(dataInicial, format);
+        LocalDate localDate2 = LocalDate.parse(dataFinal, format);
 
-        List<Receita> list = receitaRepository.filtroPorData(localDate, localDate2);
+        List<Receita> list = receitaRepository.filtroPorData(localDate1, localDate2);
         return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
     }
 

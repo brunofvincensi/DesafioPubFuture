@@ -9,6 +9,9 @@ import { AiFillDelete } from "react-icons/ai";
  export function Receitas () {
 
     const [receitas, setReceitas] = useState([])
+
+    const [dataInicial, setDataInicial] = useState("")
+    const [dataFinal, setDataFinal] = useState("")
     const [tipoReceita, setTipoReceita] = useState("")
 
     useEffect(() => {
@@ -36,6 +39,18 @@ import { AiFillDelete } from "react-icons/ai";
         })
     }
 
+    const getFiltroPorData = () => {
+
+        console.log(dataInicial)
+        console.log(dataFinal)
+        ReceitaService.getFiltroPorData(dataInicial, dataFinal).then((response) => {
+            setReceitas(response.data)
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     const deleteReceitas = (receitaId) => {
        ReceitaService.deleteReceita(receitaId).then((response) =>{
         getAllReceitas();
@@ -50,8 +65,18 @@ import { AiFillDelete } from "react-icons/ai";
         <div className='container' id='container-receita'>
             <h2 className = "text-center"> Lista de Receitas </h2>
 
-            <input type="text " id='filtroTipo' placeholder='tipo de receita' onChange={(e) => setTipoReceita(e.target.value)}/>
-               <input type="button" value="filtrar" onClick={() => getFiltroPorTipo()}/>
+            <form id='filtroTipo'>
+            <input type="text " id='tipoFiltro' placeholder='tipo de receita' onChange={(e) => setTipoReceita(e.target.value)} />
+            <input type="button" value="filtrar" onClick={() => getFiltroPorTipo()} />
+            </form>
+
+            <form id='filtroData'>
+
+            <input type="date" id='dataInicial' placeholder='data incicial' onChange={(e) => setDataInicial(e.target.value)} />
+            <input type="date" id='dataFinal' placeholder='data final' onChange={(e) => setDataFinal(e.target.value)} />
+            <input type="button" value="filtrar" onClick={() => getFiltroPorData()} />
+
+            </form>
                <br/><br/>
                
             <table className="table table-bordered table-striped" id='tableReceita'>
@@ -60,7 +85,7 @@ import { AiFillDelete } from "react-icons/ai";
                     <th> valor </th>
                     <th> data recebimento </th>
                     <th> data recebimento esperado </th>
-                    <th> descricao</th>
+                    <th> descrição</th>
                     <th id='tipoReceita'> tipo </th>
                     <th> Ações </th>
                 </thead>

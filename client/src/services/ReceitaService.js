@@ -20,6 +20,10 @@ class ReceitaService{
         return axios.get(RECEITA_REST_API_URL + '/filtro/tipo?tipoReceita=' + tipoReceita )
     }
 
+    getFiltroPorData(dataInicial, dataFinal){
+        return axios.get(RECEITA_REST_API_URL + '/filtro/data?dataInicial=' + dataInicial + '&dataFinal=' + dataFinal)
+    }
+
     updateReceita(receitaId, receita){
         return axios.put(RECEITA_REST_API_URL + '/' +receitaId, receita);
     }

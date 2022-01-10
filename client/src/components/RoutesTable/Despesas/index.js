@@ -9,12 +9,18 @@ import { AiFillDelete } from "react-icons/ai";
 export function Despesas() {
 
     const [tipoDespesa, setTipoDespesa] = useState("")
+    const [dataInicial, setDataInicial] = useState("")
+    const [dataFinal, setDataFinal] = useState("")
     const [despesas, setDespesas] = useState([])
 
     useEffect(() => {
         if (tipoDespesa) {
             getFiltroPorTipo();
-        } else {
+        } if(dataInicial){
+            getFiltroPorData();
+
+        }
+        else {
             getAllDespesas();
         }
 
@@ -40,6 +46,18 @@ export function Despesas() {
         })
     }
 
+    const getFiltroPorData = () => {
+
+        console.log(dataInicial)
+        console.log(dataFinal)
+        DespesaService.getFiltroPorData(dataInicial, dataFinal).then((response) => {
+            setDespesas(response.data)
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     const deleteDespesa = (despesaId) => {
         DespesaService.deleteDespesa(despesaId).then((response) => {
             getAllDespesas();
@@ -55,8 +73,18 @@ export function Despesas() {
             <h2 className="text-center"> Lista de Despesas </h2>
 
 
-            <input type="text " id='filtroTipo' placeholder='tipo de despesa' onChange={(e) => setTipoDespesa(e.target.value)} />
+<form id='filtroTipo'>
+            <input type="text " id='tipoFiltro' placeholder='tipo de despesa' onChange={(e) => setTipoDespesa(e.target.value)} />
             <input type="button" value="filtrar" onClick={() => getFiltroPorTipo()} />
+            </form>
+
+            <form id='filtroData'>
+
+            <input type="date" id='dataInicial' placeholder='data incicial' onChange={(e) => setDataInicial(e.target.value)} />
+            <input type="date" id='dataFinal' placeholder='data final' onChange={(e) => setDataFinal(e.target.value)} />
+            <input type="button" value="filtrar" onClick={() => getFiltroPorData()} />
+
+            </form>
             <br /><br />
 
             <table className="table table-bordered table-striped" id='tableDespesa'>
