@@ -8,12 +8,16 @@ class DespesaService{
         return axios.get(DESPESA_REST_API_URL)
     }
 
-    createDespesa(despesa){
-        return axios.post(DESPESA_REST_API_URL, despesa)
+    createDespesa(despesa, contaId){
+        return axios.post(DESPESA_REST_API_URL + '/' + contaId, despesa)
     }
 
     getDespesa(despesaId){
         return axios.get(DESPESA_REST_API_URL + '/' + despesaId)
+    }
+
+    getDespesaTotalPorConta(contaId){
+        return axios.get(DESPESA_REST_API_URL + '/despesa_total/' + contaId)
     }
 
     getFiltroPorTipo(tipoDespesa){

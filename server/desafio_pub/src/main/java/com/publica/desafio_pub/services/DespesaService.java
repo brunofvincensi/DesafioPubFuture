@@ -84,4 +84,16 @@ public class DespesaService {
 
         return list.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
+
+    public Double getDespesaTotal(Conta conta) {
+
+        Double cont = 0.0;
+       List<Despesa> despesas = conta.getDespesas();
+        for (Despesa despesa: despesas
+             ) {
+            cont += despesa.getValor();
+        }
+
+        return cont;
+    }
 }

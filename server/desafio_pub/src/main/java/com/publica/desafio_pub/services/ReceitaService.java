@@ -68,4 +68,15 @@ public class ReceitaService {
         return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
 
     }
+
+    public Double getReceitaTotal(Conta conta) {
+        Double cont = 0.0;
+        List<Receita> receitas = conta.getReceitas();
+        for (Receita receita: receitas
+        ) {
+            cont += receita.getValor();
+        }
+        return cont;
+    }
+
 }

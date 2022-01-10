@@ -46,6 +46,16 @@ public class DespesaController {
 
     }
 
+    @GetMapping("/despesa_total/{id}")
+    public Double despesaTotalPorConta(@PathVariable Long id){
+
+        Conta conta = contaService.findById(id).get();
+        Double despesaTotal = despesaService.getDespesaTotal(conta);
+
+        return despesaTotal;
+    }
+
+
     @PostMapping("/{id}")
     public ResponseEntity<DespesaDTO> inserir(@RequestBody Despesa despesa, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
 

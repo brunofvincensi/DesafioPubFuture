@@ -100,7 +100,8 @@ public class ReceitaController {
     }
 
     @GetMapping("/filtro/data")
-    public ResponseEntity<List<ReceitaDTO>> filtroPorData(String dataInicial, String dataFinal) {
+    public ResponseEntity<List<ReceitaDTO>> filtroPorData(@RequestParam(defaultValue = "1900-01-01") String dataInicial,
+                                                          @RequestParam(defaultValue = "2100-01-01") String dataFinal) {
 
         List<ReceitaDTO> list = receitaService.filtroPorData(dataInicial, dataFinal);
         return ResponseEntity.ok().body(list);
@@ -113,6 +114,15 @@ public class ReceitaController {
         List<ReceitaDTO> list = receitaService.filtroPorTipo(tipoReceita);
         return ResponseEntity.ok().body(list);
 
+    }
+
+    @GetMapping("/receita_total/{id}")
+    public Double receitaTotalPorConta(@PathVariable Long id){
+
+        Conta conta = contaService.findById(id).get();
+        Double receitaTotal = receitaService.getReceitaTotal(conta);
+
+        return receitaTotal;
     }
 
 }

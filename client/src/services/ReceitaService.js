@@ -8,8 +8,8 @@ class ReceitaService{
         return axios.get(RECEITA_REST_API_URL)
     }
 
-    createReceita(receita){
-        return axios.post(RECEITA_REST_API_URL, receita)
+    createReceita(receita, contaId){
+        return axios.post(RECEITA_REST_API_URL + '/' + contaId, receita)
     }
 
     getReceita(receitaId){
@@ -23,6 +23,11 @@ class ReceitaService{
     getFiltroPorData(dataInicial, dataFinal){
         return axios.get(RECEITA_REST_API_URL + '/filtro/data?dataInicial=' + dataInicial + '&dataFinal=' + dataFinal)
     }
+
+    getReceitaTotalPorConta(contaId){
+        return axios.get(RECEITA_REST_API_URL + '/receita_total/' + contaId)
+    }
+
 
     updateReceita(receitaId, receita){
         return axios.put(RECEITA_REST_API_URL + '/' +receitaId, receita);

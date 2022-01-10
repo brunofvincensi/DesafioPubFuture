@@ -1,7 +1,11 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ContaService from "../../../services/ContaService";
+import ReceitaUp from "../ReceitaUp"
+import DespesaUp from "../DespesaUp"
+import DespesaService from "../../../services/DespesaService";
+import ReceitaService from "../../../services/ReceitaService";
 
 const ContUp = () => {
     const [saldo, setSaldo] = useState("");
@@ -12,26 +16,53 @@ const ContUp = () => {
     const [id2, setId2] = useState("");
     const [valor, setValor] = useState("");
 
+    const [despesaTotal, setDespesaTotal] = useState()
+    const [receitaTotal, setReceitaTotal] = useState()
+
+
+
+
+
 
     const history = useNavigate();
 
-    
+
 
 
 
     useEffect(() => {
 
-        ContaService.getConta(id).then((response) =>{
+        ContaService.getConta(id).then((response) => {
             setSaldo(response.data.saldo)
             setTipoConta(response.data.tipoConta)
             setInstituicao(response.data.instituicao)
         }).catch(error => {
             console.log(error)
         })
+
+
+
     }, [])
 
+    useEffect(() => {
 
+        DespesaService.getDespesaTotalPorConta(id).then((response) => {
+            setDespesaTotal(response.data)
+        }).catch(error => {
+            console.log(error)
+        })
 
+    }, [])
+
+    useEffect(() => {
+
+        ReceitaService.getReceitaTotalPorConta(id).then((response) => {
+            setReceitaTotal(response.data)
+        }).catch(error => {
+            console.log(error)
+        })
+
+    }, [])
 
     const UpdateConta = (e) => {
         e.preventDefault();
@@ -43,92 +74,91 @@ const ContUp = () => {
         }).catch(error => {
             console.log(error)
         })
-        
-        
+
+
     }
 
-   const TransferirSaldo = (e) => {
+    const TransferirSaldo = (e) => {
         e.preventDefault();
 
         console.log(parseInt(id))
         console.log(parseInt(id2))
-        console.log(parseFloat( valor))
+        console.log(parseFloat(valor))
 
-        ContaService.transefirSaldo(id, parseInt(id2) , parseFloat(valor) ).then((response) => {
+        ContaService.transefirSaldo(id, parseInt(id2), parseFloat(valor)).then((response) => {
             history.push("/contas")
-            
+
         }).catch(error => {
             console.log(error)
         })
-        
-        
+
+
     }
-    
 
 
 
+    function title() {
 
-   function title(){
+        if (id) {
+            return "Alterar Conta"
+        }
 
- if(id){
-       return "Alterar Conta"}
-
-       else{
-           return "Adicionar Conta"
-       }
-    
-
-   }
-
-   let i = "R$ " + saldo;
+        else {
+            return "Adicionar Conta"
+        }
 
 
-    
+    }
+
+    let i = "R$ " + saldo;
+
+
+
 
     return (
         <div className="contaUp" id="screenContaUp" onClick={e => e.stopPropagation()}>
             <div className="contaForm">
-               
-           
-            
 
-                <form id="form"> 
 
-              
-                <br/><br/><br/>
-                   <p id="infConta" >Informações da conta</p>
-                   <br/>
 
-                   <label id='label-saldo'>
-                       saldo
-                   </label>
-               
+
+                <form id="form">
+
+
+                    <br /><br /><br />
+                    <p id="infConta" >Informações da conta</p>
+                    <br />
+
+                    <label id='label-saldo'>
+                        saldo
+                    </label>
+
                     <input
                         type="text"
                         name="saldoConta"
                         id="saldoConta"
-                        value = {i}
+                        value={i}
                         readOnly
                         onChange={(e) => setSaldo(e.target.value)}
-                        
-                        
-                    /> 
+
+
+                    />
 
                     <label id="label-instituicao">
-                       instituição
-                   </label>
+                        instituição
+                    </label>
 
-                   
+
                     <input
                         type="text"
                         name="instituicaoConta"
                         id="instituicaoConta"
                         value={instituicao}
-                        
+
                         onChange={(e) => setInstituicao(e.target.value)}
                     />
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
 
                     <label id="label-tipoConta">tipo da conta</label>
 
@@ -140,68 +170,85 @@ const ContUp = () => {
                         onChange={(e) => setTipoConta(e.target.value)}
                     />
 
-                     <br/><br/>                      
-                   
-                            <input
-                            type="button"
-                            id="buttonConfirmConta"
-                            title="Update Conta"
-                            value={title()}
-                            onClick={(e) => UpdateConta(e)}
-                        >
-                             
-                        </input>
+                    <br /><br />
 
-                        <div class="linha-vertical"></div>
+                    <input
+                        type="button"
+                        id="buttonConfirmConta"
+                        title="Update Conta"
+                        value={title()}
+                        onClick={(e) => UpdateConta(e)}
+                    >
+
+                    </input>
+
+                    <div class="linha-vertical"></div>
 
 
-                        <div id="transferir-saldo">
+                    <div id="transferir-saldo">
 
-                            <div id='titulo_transferencia'>Transferência de saldo</div>
+                        <div id='titulo_transferencia'>Transferência de saldo</div>
 
-                          <form>
+                        <form>
 
-                            <input type="text" id="id2" placeholder="nº da conta"  onChange={(e) => setId2(e.target.value)} />
+                            <input type="text" id="id2" placeholder="nº da conta" onChange={(e) => setId2(e.target.value)} />
 
-                            <input type="text" id="saldoTransferido" placeholder="valor" onChange={(e) => setValor(e.target.value)} />                           
+                            <input type="text" id="saldoTransferido" placeholder="valor" onChange={(e) => setValor(e.target.value)} />
 
                             <input type="button" value="tranferir" onClick={(e) => TransferirSaldo(e)} >
 
                             </input>
-                            </form>
+                        </form>
 
 
 
-                        </div>
+                    </div>
 
-                        <div id="despesa-box">
+                    <div id="despesa-box">
 
-                            <input type="button" value="adicionar despesa"/>
-                            <br/><br/>
-                            <div> <b>R$500</b></div>
+                        <Link to={`/contaUp/${id}/add-despesa`} >
+                            <input type="button"
 
-                        </div>
+                                id="adicionarDespesa"
+                                value="adicionar despesa"
+                                title="Adicionar uma Despesa"
+                            />
+                        </Link>
 
-                        <div id="receita-box">
+                        <br /><br />
+                        <div> <b>R${despesaTotal}</b></div>
 
-                            <input type="button" value="adicionar receita"/>
-                            <br/><br/>
-                            <div> <b>R$500</b></div>
+                    </div>
 
-                        </div>
-                      
-                        
+                    <div id="receita-box">
 
-                         
-                  
-                        <br/><br/>
+                        <Link to={`/contaUp/${id}/add-receita`}>
+                            <input type="button"
+                                id="adicionarReceita"
+                                value="adicionar receita"
+                                title="Adicionar uma Receita"
 
-                       
-           
+                            />
+                        </Link>
+                        <br /><br />
+                        <div> <b>R${receitaTotal}</b></div>
+
+                    </div>
+
+
+
+
+
+                    <br /><br />
+
+
+
                 </form>
-           
+
             </div>
-           
+
+
+
         </div>
     );
 }

@@ -10,6 +10,8 @@ import ContUp from "./components/Updates/ContaUp";
 import DespesaUp from "./components/Updates/DespesaUp";
 import ReceitaUp from "./components/Updates/ReceitaUp";
 import ContaInsert from "./components/Updates/ContaInsert";
+import DespesaInsert from "./components/Updates/DespesaInsert";
+import ReceitaInsert from "./components/Updates/ReceitaInsert";
 
 ReactDOM.render(
 	<BrowserRouter>
@@ -24,6 +26,8 @@ ReactDOM.render(
 					<Route path="despesaUp/:id" element={<DespesaUp />}></Route>
 					<Route path="receitaUp/:id" element={<ReceitaUp />}></Route>
 					<Route path="add-conta" element={<ContaInsert />}></Route>
+					<Route path="contaUp/:id/add-despesa" element={<DespesaInsert />}></Route>
+					<Route path="contaUp/:id/add-receita" element={<ReceitaInsert />}></Route>
 				</Route>
 			</Routes>
 		</React.StrictMode>
