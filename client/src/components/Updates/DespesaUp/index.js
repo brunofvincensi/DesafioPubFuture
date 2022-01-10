@@ -42,16 +42,6 @@ const DespesaUp = () => {
     
         }
 
-        function rota(){
-            if(id){
-
-                return "/despesas"
-
-            }
-            else{
-                
-            }
-        }
 
         
 

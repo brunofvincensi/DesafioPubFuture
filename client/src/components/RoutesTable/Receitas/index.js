@@ -100,7 +100,6 @@ import { AiFillDelete } from "react-icons/ai";
                                 <td>{receita.dataRecebimentoEsperado}</td>
                                 <td>{receita.descricao}</td>
                                 <td>{receita.tipoReceita}</td>
-
                                 <td>
                                 <Link  className="btn btn-info" to={`/receitaUp/${receita.id}`} id='receitaUpdate' ><MdModeEditOutline /></Link>
                                 <button className = "btn btn-danger" id='btn_receita_delete' onClick={() => deleteReceitas(receita.id)}
@@ -111,7 +110,9 @@ import { AiFillDelete } from "react-icons/ai";
                         )
                     }
                 </tbody>
+
             </table>
+            
         </div>
     )
 }

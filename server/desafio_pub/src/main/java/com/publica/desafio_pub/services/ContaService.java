@@ -6,9 +6,7 @@ import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.DespesaRepository;
 import com.publica.desafio_pub.repositories.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,7 +28,6 @@ public class ContaService {
         return contaList.stream().map(x -> new ContaDTO(x)).collect(Collectors.toList());
     }
 
-
     public Conta save(Conta conta) {
         contaRepository.save(conta);
         return conta;
@@ -40,7 +37,6 @@ public class ContaService {
 
         return contaRepository.findById(id);
     }
-
 
     public void delete(Conta conta) {
 
@@ -73,7 +69,6 @@ public class ContaService {
             saldo2 += valor;
             conta2.setSaldo(saldo2);
 
-
             contaRepository.findById(id1)
                     .map(conta -> {
                         conta.setSaldo(conta1.getSaldo());
@@ -95,8 +90,9 @@ public class ContaService {
     public Double getSaldoTotal(List<ContaDTO> contaList) {
 
         Double saldoTotal = 0.0;
-        for (ContaDTO conta: contaList
-        ) {
+
+        for (ContaDTO conta: contaList) {
+
             saldoTotal += conta.getSaldo();
 
         }

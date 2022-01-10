@@ -14,7 +14,6 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     @Query(value = "select * from tb_receitas where data_recebimento > ?1 and data_recebimento < ?2", nativeQuery = true)
     List<Receita> filtroPorData(LocalDate localDate1, LocalDate localDate2);
 
-
     @Query(value = "select * from tb_receitas where tipo_receita = ?1", nativeQuery = true)
     List<Receita> filtroPorTipo(String tipoReceita);
 }

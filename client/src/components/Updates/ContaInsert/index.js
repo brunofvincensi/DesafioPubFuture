@@ -31,13 +31,10 @@ const ContaInsert = () => {
   return (
         <div className="despesaUp" onClick={e => e.stopPropagation()}>
             <div>
-               
-           
-            
 
                 <form id="form">
 
-                <Link id="voltar" to={ "/despesas"}><button>voltar</button></Link>
+                <Link id="voltar" to={ "/"}><button>voltar</button></Link>
                    <p id="title" >Adicionar Conta</p>
                    
                
@@ -53,7 +50,6 @@ const ContaInsert = () => {
                     /> 
 
                   <br/><br/>
-
                    
                     <input
                         type="text"
@@ -73,9 +69,7 @@ const ContaInsert = () => {
                         placeholder='instituição'
                 
                         onChange={(e) => setInstituicao(e.target.value)}
-                    />
-
-                     
+                    />                    
 
                      <br/><br/>
 
@@ -89,12 +83,9 @@ const ContaInsert = () => {
                         >
                              
                         </input>
-                                           
-                  
+                                                           
                         <br/><br/>
 
-                       
-           
                 </form>
            
             </div>

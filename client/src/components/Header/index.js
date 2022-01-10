@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 
 
 export function Header() {
-    return (
-
-       
+    return ( 
 
         <div className="header">
 

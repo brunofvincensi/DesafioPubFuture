@@ -88,12 +88,12 @@ public class DespesaService {
     public Double getDespesaTotal(Conta conta) {
 
         Double cont = 0.0;
-       List<Despesa> despesas = conta.getDespesas();
-        for (Despesa despesa: despesas
-             ) {
+        List<Despesa> despesas = conta.getDespesas();
+
+        for (Despesa despesa: despesas) {
+
             cont += despesa.getValor();
         }
-
         return cont;
     }
 }

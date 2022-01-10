@@ -70,10 +70,12 @@ public class ReceitaService {
     }
 
     public Double getReceitaTotal(Conta conta) {
+
         Double cont = 0.0;
         List<Receita> receitas = conta.getReceitas();
-        for (Receita receita: receitas
-        ) {
+
+        for (Receita receita: receitas) {
+
             cont += receita.getValor();
         }
         return cont;

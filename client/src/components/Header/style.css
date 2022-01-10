@@ -15,6 +15,7 @@ float: left;
 font-size: 40px;
 margin-left: 100px;
 color: aliceblue;
+text-decoration: none;
 
 }
 
@@ -25,14 +26,13 @@ color: aliceblue;
 li{
 
     list-style-type: none;
-
     float: right;
     padding: 50px;
-
     text-decoration: none;
-top: 50%;
+    top: 50%;
     
 }
+
 
 li, a {
     color: #242424;
@@ -46,4 +46,9 @@ li, a:hover{
 
     
    color: #242424;
+   text-decoration: none;
+}
+
+li:hover{
+    text-decoration: underline;
 }

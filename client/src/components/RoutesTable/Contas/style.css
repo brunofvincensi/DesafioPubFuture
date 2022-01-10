@@ -9,6 +9,12 @@ th{
 td{
     text-align: center;
 }
+#addConta{
+    width: 150px;
+    height: 40px;
+    font-size: large;
+    
+}
 
 #conta-box{
 
@@ -49,9 +55,15 @@ opacity: 0.7;
 #instituicao{
 margin: 7px;
 font-size: 15px;
-
-
 float: right;
+}
+
+#idConta{
+
+ float: right;
+ margin-top: 20px;
+ margin-right: 10px;
+ font-size: 25px;
 }
 
 
@@ -101,6 +113,16 @@ a:hover{
     left: 70%;
     bottom: 50%;
     font-size: 60px;
+    
   
     color: green;
+}
+
+#saldoTotal hr{
+    color: green;
+}
+
+#saldoTotal p{
+    font-size: 25px;
+    text-align: center;
 }

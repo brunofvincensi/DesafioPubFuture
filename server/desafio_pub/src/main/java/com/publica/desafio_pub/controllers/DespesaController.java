@@ -1,8 +1,6 @@
 package com.publica.desafio_pub.controllers;
 
-
 import com.publica.desafio_pub.dto.get.DespesaDTO;
-import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.update.DespesaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.*;

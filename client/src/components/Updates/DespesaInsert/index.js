@@ -37,7 +37,7 @@ const DespesaInsert = () =>{
     
                     <form id="form">
     
-                    <Link id="voltar" to={ `/contaUp/${id}`}><button>voltar</button></Link>
+                    <Link id="voltar" to={ `/conta/${id}`}><button>voltar</button></Link>
                        <p id="title" >Adicionar Despesa</p>
                                          
                         <input

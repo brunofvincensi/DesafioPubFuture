@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ContaService from '../../../services/ContaService';
 import "./style.css"
-import { MdModeEditOutline } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 
 export function Contas() {
@@ -18,7 +17,7 @@ export function Contas() {
 
     useEffect(() => {
 
-        ContaService.getSaldoTotal().then((response) =>{
+        ContaService.getSaldoTotal().then((response) => {
             setSaldoTotal(response.data)
 
         }).catch(error => {
@@ -45,8 +44,6 @@ export function Contas() {
 
     }
 
-
-
     return (
         <div className="container">
 
@@ -54,8 +51,11 @@ export function Contas() {
             <Link to="/add-conta" className="btn btn-primary mb-2" id='addConta' > Adicionar Conta </Link>
             <br /><br />
 
-             <div id='saldoTotal'>R$ {saldoTotal}</div>
+            <div id='saldoTotal'>R$ {saldoTotal}
+                <hr />
+                <p>saldo total</p>
 
+            </div>
 
 
 
@@ -65,28 +65,21 @@ export function Contas() {
                     conta =>
                         <div key={conta.id} id="conta-box">
 
-                            <Link to={`/contaUp/${conta.id}`}>
+                            <Link to={`/conta/${conta.id}`}>
                                 <p id="tipoConta">Conta {conta.tipoConta}</p>
                                 <p id="instituicao">{conta.instituicao}</p>
                                 <p id="saldo"> R$ {conta.saldo}</p>
+                                <p id='idConta'>nº {conta.id}</p>
                             </Link>
-                           
-                               <br/><br/>
-                                
-                                <button className='botao' id='delete' onClick={() => deleteConta(conta.id)}
-                                    style={{ marginLeft: "10px" }}><AiFillDelete/> </button>
-                            
+
+                            <br/><br/>
+
+                            <button className='botao' id='delete' onClick={() => deleteConta(conta.id)}
+                                style={{ marginLeft: "10px" }}><AiFillDelete /> </button>
 
                         </div>
-
-
-
                 )
             }
-
-
-
-
 
         </div>
 

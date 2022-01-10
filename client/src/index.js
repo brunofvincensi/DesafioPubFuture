@@ -20,14 +20,14 @@ ReactDOM.render(
 				<Route path="/" element={<App />}>
 					<Route exact path="/" element={<Contas />} />
 
-					<Route path="contaUp/:id" element={<ContUp />}></Route>
+					<Route path="conta/:id" element={<ContUp />}></Route>
 					<Route path="receitas" element={<Receitas />}></Route>
 					<Route path="despesas" element={<Despesas />}></Route>
 					<Route path="despesaUp/:id" element={<DespesaUp />}></Route>
 					<Route path="receitaUp/:id" element={<ReceitaUp />}></Route>
 					<Route path="add-conta" element={<ContaInsert />}></Route>
-					<Route path="contaUp/:id/add-despesa" element={<DespesaInsert />}></Route>
-					<Route path="contaUp/:id/add-receita" element={<ReceitaInsert />}></Route>
+					<Route path="conta/:id/add-despesa" element={<DespesaInsert />}></Route>
+					<Route path="conta/:id/add-receita" element={<ReceitaInsert />}></Route>
 				</Route>
 			</Routes>
 		</React.StrictMode>

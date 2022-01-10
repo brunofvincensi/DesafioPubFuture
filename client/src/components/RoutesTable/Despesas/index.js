@@ -16,7 +16,7 @@ export function Despesas() {
     useEffect(() => {
         if (tipoDespesa) {
             getFiltroPorTipo();
-        } if(dataInicial){
+        } if (dataInicial) {
             getFiltroPorData();
 
         }
@@ -73,16 +73,16 @@ export function Despesas() {
             <h2 className="text-center"> Lista de Despesas </h2>
 
 
-<form id='filtroTipo'>
-            <input type="text " id='tipoFiltro' placeholder='tipo de despesa' onChange={(e) => setTipoDespesa(e.target.value)} />
-            <input type="button" value="filtrar" onClick={() => getFiltroPorTipo()} />
+            <form id='filtroTipo'>
+                <input type="text " id='tipoFiltro' placeholder='tipo de despesa' onChange={(e) => setTipoDespesa(e.target.value)} />
+                <input type="button" value="filtrar" onClick={() => getFiltroPorTipo()} />
             </form>
 
             <form id='filtroData'>
 
-            <input type="date" id='dataInicial' placeholder='data incicial' onChange={(e) => setDataInicial(e.target.value)} />
-            <input type="date" id='dataFinal' placeholder='data final' onChange={(e) => setDataFinal(e.target.value)} />
-            <input type="button" value="filtrar" onClick={() => getFiltroPorData()} />
+                <input type="date" id='dataInicial' placeholder='data incicial' onChange={(e) => setDataInicial(e.target.value)} />
+                <input type="date" id='dataFinal' placeholder='data final' onChange={(e) => setDataFinal(e.target.value)} />
+                <input type="button" value="filtrar" onClick={() => getFiltroPorData()} />
 
             </form>
             <br /><br />
@@ -116,7 +116,9 @@ export function Despesas() {
                         )
                     }
                 </tbody>
+                
             </table>
+
         </div>
     )
 }
