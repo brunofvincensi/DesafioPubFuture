@@ -12,8 +12,6 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "saldo")
-    private Double saldo;
     @Column(name = "tipo_conta")
     private String tipoConta;
     @Column(name = "instituicao")
@@ -28,17 +26,15 @@ public class Conta {
     public Conta() {
     }
 
-    public Conta(Long id, Double saldo, String tipoConta, String instituicao, List<Receita> receitas, List<Despesa> despesas) {
+    public Conta(Long id, String tipoConta, String instituicao, List<Receita> receitas, List<Despesa> despesas) {
         this.id = id;
-        this.saldo = saldo;
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
         this.receitas = receitas;
         this.despesas = despesas;
     }
 
-    public Conta(Double saldo, String tipoConta, String instituicao) {
-        this.saldo = saldo;
+    public Conta(String tipoConta, String instituicao) {
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
     }
@@ -62,14 +58,6 @@ public class Conta {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
     }
 
     public String getTipoConta() {
@@ -103,5 +91,24 @@ public class Conta {
     public void setDespesas(List<Despesa> despesas) {
         this.despesas = despesas;
     }
-    
+
+    public Double getSaldoo(){
+        Double valorReceitas = 0.0;
+        Double valorDespesass = 0.0;
+        Double saldo;
+        for (Receita receita : this.receitas) {
+
+            valorReceitas += receita.getValor();
+
+        }
+        for (Despesa despesa : this.despesas) {
+
+            valorDespesass += despesa.getValor();
+
+        }
+        saldo = valorReceitas - valorDespesass;
+
+        return saldo;
+    }
+
 }

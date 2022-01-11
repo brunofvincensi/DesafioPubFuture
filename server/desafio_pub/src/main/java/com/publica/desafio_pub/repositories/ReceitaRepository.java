@@ -16,4 +16,7 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
 
     @Query(value = "select * from tb_receitas where tipo_receita = ?1", nativeQuery = true)
     List<Receita> filtroPorTipo(String tipoReceita);
+
+    @Query(value = "select * from tb_receitas order by conta_id", nativeQuery = true)
+    List<Receita> findAllOrderByContaId();
 }

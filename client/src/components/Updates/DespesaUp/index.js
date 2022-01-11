@@ -36,12 +36,17 @@ const DespesaUp = () => {
 
             const despesa = { valor, dataPagamento, dataPagamentoEsperado, tipoDespesa }
 
+            if(valor != null && valor !== '' && dataPagamento != null && dataPagamento !== '' && tipoDespesa != null && tipoDespesa !== ''){
+
             DespesaService.updateDespesa(id, despesa).then((response) => {
                 history.push("/despesas")
             }).catch(error => {
                 console.log(error)
             })
-            alert("despesa alterada")
+            alert("despesa alterada")}
+            else{
+                alert("preencha os campos requeridos")
+            }
         }
 
 
@@ -65,6 +70,7 @@ const DespesaUp = () => {
                         type="number"
                         name="valorDespesa"
                         id="valorDespesa"
+                        placeholder="valor"
                         value={parseFloat(valor)}
                         onChange={(e) => setValor(e.target.value)}
 
@@ -78,6 +84,7 @@ const DespesaUp = () => {
                         type="date"
                         name="dataPagamento"
                         id="dataPagamento"
+                        placeholder="data do pagamento"
                         value={dataPagamento}
 
                         onChange={(e) => setDataPagamento(e.target.value)}
@@ -88,6 +95,7 @@ const DespesaUp = () => {
                         type="date"
                         name="dataPagamentoEsperado"
                         id="dataPagamentoEsperado"
+                        placeholder="data do pagamento esperada"
                         value={dataPagamentoEsperado}
                         onChange={(e) => setDataPagamentoEsperado(e.target.value)}
                     />
@@ -98,6 +106,7 @@ const DespesaUp = () => {
                         type="text"
                         name="tipoDespesa"
                         id="tipoDespesa"
+                        placeholder="tipo da despesa"
                         value={tipoDespesa}
                         onChange={(e) => setTipoDespesa(e.target.value)}
                     />

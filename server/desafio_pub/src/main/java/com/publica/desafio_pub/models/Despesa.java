@@ -44,6 +44,22 @@ public class Despesa {
         this.conta = conta;
     }
 
+    public Despesa( Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa,
+                   Conta conta) {
+        this.valor = valor;
+        this.dataPagamento = dataPagamento;
+        this.dataPagamentoEsperado = dataPagamentoEsperado;
+        this.tipoDespesa = tipoDespesa;
+        this.conta = conta;
+    }
+
+    public Despesa(Double valor, LocalDate dataPagamento, String tipoDespesa, Conta conta) {
+        this.valor = valor;
+        this.dataPagamento = dataPagamento;
+        this.tipoDespesa = tipoDespesa;
+        this.conta = conta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

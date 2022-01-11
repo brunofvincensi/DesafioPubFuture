@@ -3,7 +3,7 @@ import {Link, useNavigate } from 'react-router-dom';
 import ContaService from '../../../services/ContaService';
 
 const ContaInsert = () => {
-    const [saldo, setSaldo] = useState('')
+
     const [tipoConta, setTipoConta] = useState('')
     const [instituicao, setInstituicao] = useState('')
     const history = useNavigate();
@@ -12,7 +12,10 @@ const ContaInsert = () => {
     const saveConta = (e) => {
         e.preventDefault();
 
-        const conta = {saldo, tipoConta, instituicao}
+        const conta = {tipoConta, instituicao}
+
+    
+        if(tipoConta != null && tipoConta != '' && instituicao != null && instituicao != ''){
 
             ContaService.createConta(conta).then((response) =>{
 
@@ -24,6 +27,11 @@ const ContaInsert = () => {
                 console.log(error)
             })
             alert("conta inserida")
+        }
+        else{
+            alert("preencha os campos requeridos")
+
+        }
         }
         
     
@@ -39,24 +47,14 @@ const ContaInsert = () => {
                    <p id="title" >Adicionar Conta</p>
                    
                
-                    <input
-                        type="number"
-                        name="valorDespesa"
-                        id="valorDespesa"
-                        placeholder='saldo'
-              
-                        onChange={(e) => setSaldo(e.target.value)}
-                        
-                        
-                    /> 
-
+                  
                   <br/><br/>
                    
                     <input
                         type="text"
                         name="dataPagamento"
                         id="dataPagamento"
-                        placeholder='tipo da conta'
+                        placeholder='tipo da conta*'
                         
                         
                         onChange={(e) => setTipoConta(e.target.value)}
@@ -67,7 +65,7 @@ const ContaInsert = () => {
                         type="text"
                         name="dataPagamentoEsperado"
                         id="dataPagamentoEsperado"
-                        placeholder='instituição'
+                        placeholder='instituição*'
                 
                         onChange={(e) => setInstituicao(e.target.value)}
                     />                    

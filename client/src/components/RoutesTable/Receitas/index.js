@@ -41,8 +41,6 @@ import { AiFillDelete } from "react-icons/ai";
 
     const getFiltroPorData = () => {
 
-        console.log(dataInicial)
-        console.log(dataFinal)
         ReceitaService.getFiltroPorData(dataInicial, dataFinal).then((response) => {
             setReceitas(response.data)
             console.log(response.data);
@@ -109,8 +107,8 @@ import { AiFillDelete } from "react-icons/ai";
                                 <td>{receita.descricao}</td>
                                 <td>{receita.tipoReceita}</td>
                                 <td>
-                                <Link  className="btn btn-info" to={`/receitaUp/${receita.id}`} id='receitaUpdate' ><MdModeEditOutline /></Link>
-                                <button className = "btn btn-danger" id='btn_receita_delete' onClick={() => deleteReceitas(receita.id)}
+                                <Link  className="btn btn-info" to={`/receitaUp/${receita.id}`} id='btn-receita-update' ><MdModeEditOutline /></Link>
+                                <button className = "btn btn-danger" id='btn-receita-delete' onClick={() => deleteReceitas(receita.id)}
                                     style={{ marginLeft: "10px" }}
                                     ><AiFillDelete/> </button>
                                     </td>

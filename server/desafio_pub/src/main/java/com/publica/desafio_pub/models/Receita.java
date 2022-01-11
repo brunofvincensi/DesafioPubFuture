@@ -44,6 +44,24 @@ public class Receita {
         this.conta = conta;
     }
 
+    public Receita(Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao,
+                   String tipoReceita, Conta conta) {
+        this.valor = valor;
+        this.dataRecebimento = dataRecebimento;
+        this.dataRecebimentoEsperado = dataRecebimentoEsperado;
+        this.descricao = descricao;
+        this.tipoReceita = tipoReceita;
+        this.conta = conta;
+    }
+
+    public Receita(Double valor, LocalDate dataRecebimento, String descricao, String tipoReceita, Conta conta) {
+        this.valor = valor;
+        this.dataRecebimento = dataRecebimento;
+        this.descricao = descricao;
+        this.tipoReceita = tipoReceita;
+        this.conta = conta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

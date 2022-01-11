@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Link, useNavigate, useParams } from 'react-router-dom';
-import ContaService from '../../../services/ContaService';
 import ReceitaService from '../../../services/ReceitaService';
 
 const DespesaInsert = () =>{
@@ -18,6 +17,8 @@ const DespesaInsert = () =>{
 
         const receita = {valor, dataRecebimento, dataRecebimentoEsperado, descricao, tipoReceita}
 
+        if(valor != null && valor !== '' && dataRecebimento != null && dataRecebimento !== '' && tipoReceita != null && tipoReceita !== ''){
+
             ReceitaService.createReceita(receita, id).then((response) =>{
 
                 console.log(response.data)
@@ -27,15 +28,16 @@ const DespesaInsert = () =>{
             }).catch(error => {
                 console.log(error)
             })
-            alert("receita inserida")
+            alert("receita inserida")}
+            else{
+                alert("preencha os campos requeridos")
+            }
         }
 
         return (
             <div className="despesaUp" onClick={e => e.stopPropagation()}>
                 <div>
-                   
-               
-                
+                                   
     
                     <form id="form">
     
@@ -57,7 +59,7 @@ const DespesaInsert = () =>{
                             type="date"
                             name="dataRecebimento"
                             id="dataRecebimento"
-                            placeholder='data recebimento'
+                            placeholder='data do recebimento'
                             onChange={(e) => setDataRecebimento(e.target.value)}
                         />
                         <br/><br/>
@@ -66,7 +68,7 @@ const DespesaInsert = () =>{
                             type="date"
                             name="dataRecebimentoEsperado"
                             id="dataRecebimentoEsperado"
-                            placeholder='data recebimento esperado'
+                            placeholder='data do recebimento esperado'
                             onChange={(e) => setDataRecebimentoEsperado(e.target.value)}
                         />
     
@@ -76,7 +78,7 @@ const DespesaInsert = () =>{
                             type="text"
                             name="descricao"
                             id="descricao"
-                            placeholder='descricao da receita'
+                            placeholder='descrição da receita'
                             onChange={(e) => setDescricao(e.target.value)}
                         />
     

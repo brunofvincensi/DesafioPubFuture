@@ -23,7 +23,7 @@ public class ContaDTO {
 
     public ContaDTO(Conta conta){
         this.id = conta.getId();
-        this.saldo = conta.getSaldo();
+        this.saldo = conta.getSaldoo();
         this.tipoConta = conta.getTipoConta();
         this.instituicao = conta.getInstituicao();
     }

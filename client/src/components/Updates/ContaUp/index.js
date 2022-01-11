@@ -85,11 +85,12 @@ const ContUp = () => {
             console.log(error)
         })
 
+
         if(foiTranferido){
         
         alert("saldo tranferido")
         window.location.reload()
-    }else{
+         }else{
         alert("valor ou número da conta inválido")
     }
 

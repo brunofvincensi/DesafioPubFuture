@@ -36,6 +36,8 @@ const ReceitaUp = () => {
 
         if(window.confirm("a receita será alterada")){
 
+            if(valor != null && valor !== '' && dataRecebimento != null && dataRecebimento !== '' && tipoReceita != null && tipoReceita !== ''){
+
         const receita = { valor, dataRecebimento, dataRecebimentoEsperado, descricao, tipoReceita }
 
             ReceitaService.updateReceita(id, receita).then((response) => {
@@ -43,14 +45,14 @@ const ReceitaUp = () => {
         }).catch(error => {
             console.log(error)
         })
-        alert("receita alterada")
+        alert("receita alterada")}
+        else{
+            alert("preencha os campos requeridos")
+        }
     }
 
     
         }
-
-        
-
 
 
   return (
@@ -67,10 +69,10 @@ const ReceitaUp = () => {
                         type="number"
                         name="valorReceita"
                         id="valorReceita"
+                        placeholder="valor"
                         value={parseFloat(valor)}
                         onChange={(e) => setValor(e.target.value)}
-                        
-                        
+                                               
                     /> 
 
                   <br/><br/>
@@ -80,8 +82,8 @@ const ReceitaUp = () => {
                         type="date"
                         name="dataRecebimento"
                         id="dataRecebimento"
-                        value={dataRecebimento}
-                        
+                        placeholder="data do recebimento"
+                        value={dataRecebimento}                      
                         onChange={(e) => setDataRecebiento(e.target.value)}
                     />
                     <br/><br/>
@@ -90,6 +92,7 @@ const ReceitaUp = () => {
                         type="date"
                         name="dataRecebimentoEsperado"
                         id="dataRecebimentoEsperado"
+                        placeholder="data do recebimento esperada"
                         value={dataRecebimentoEsperado}
                         onChange={(e) => setDataRecebimentoEsperado(e.target.value)}
                     />
@@ -100,6 +103,7 @@ const ReceitaUp = () => {
                         type="text"
                         name="descricao"
                         id="descricao"
+                        placeholder="descrição"
                         value={descricao}
                         onChange={(e) => setDescricao(e.target.value)}
                     />
@@ -112,6 +116,7 @@ const ReceitaUp = () => {
                         type="text"
                         name="tipoReceita"
                         id="tipoReceita"
+                        placeholder="tipo da receita"
                         value={tipoReceita}
                         onChange={(e) => setTipoReceita(e.target.value)}
                     />

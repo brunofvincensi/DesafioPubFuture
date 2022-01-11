@@ -104,10 +104,16 @@ public class ContaController {
     }
 
     @PatchMapping ("/transferir_saldo")
-    public boolean transferirSaldo( Long id1, Long id2, Double valor){
+    public ResponseEntity<Boolean>  transferirSaldo( Long id1, Long id2, Double valor){
 
-           return contaService.transferirSaldo(id1, id2, valor);
+          Boolean foiTranferido = contaService.transferirSaldo(id1, id2, valor);
 
+          if(foiTranferido){
+              return ResponseEntity.ok().body(true);
+          }
+          else{
+              return ResponseEntity.badRequest().body(false);
+          }
     }
 
 }

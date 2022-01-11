@@ -2,11 +2,14 @@ package com.publica.desafio_pub.services;
 
 import com.publica.desafio_pub.dto.get.ContaDTO;
 import com.publica.desafio_pub.models.Conta;
+import com.publica.desafio_pub.models.Despesa;
+import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.DespesaRepository;
 import com.publica.desafio_pub.repositories.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -51,50 +54,39 @@ public class ContaService {
 
     }
 
-    public boolean transferirSaldo(Long id1, Long id2, Double valor) {
+    public Boolean transferirSaldo(Long id1, Long id2, Double valor) {
 
         try {
-
 
             Conta conta1 = contaRepository.findById(id1).get();
 
             Conta conta2 = contaRepository.findById(id2).get();
 
-            Double saldo1 = conta1.getSaldo();
+            Double saldo1 = conta1.getSaldoo();
 
-            Double saldo2 = conta2.getSaldo();
+           if(valor <= saldo1){
 
-            if (saldo1 > valor) {
+               Despesa despesa = new Despesa(valor, LocalDate.now(), "transferencia", conta1);
 
-                saldo1 -= valor;
-                conta1.setSaldo(saldo1);
+               Receita receita = new Receita(valor, LocalDate.now(), "valor transferido pela conta " + id1,
+                       "transferencia", conta2);
 
-                saldo2 += valor;
-                conta2.setSaldo(saldo2);
+               despesaRepository.save(despesa);
+               receitaRepository.save(receita);
 
-                contaRepository.findById(id1)
-                        .map(conta -> {
-                            conta.setSaldo(conta1.getSaldo());
-                            contaRepository.save(conta);
-                            return true;
-                        });
-
-                contaRepository.findById(id2)
-                        .map(conta -> {
-                            conta.setSaldo(conta2.getSaldo());
-                            contaRepository.save(conta);
-                            return true;
-                        });
-
-                return true;
-
-            }
+               return true;
+           }
+           else {
+               return false;
+           }
 
         }catch (Exception e){
             System.out.print(e);
         }
         return false;
     }
+
+
 
     public Double getSaldoTotal(List<ContaDTO> contaList) {
 

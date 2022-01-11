@@ -17,6 +17,8 @@ const DespesaInsert = () => {
 
         const despesa = { valor, dataPagamento, dataPagamentoEsperado, tipoDespesa }
 
+        if(valor != null && valor !== '' && dataPagamento != null && dataPagamento !== '' && tipoDespesa != null && tipoDespesa !== ''){
+
         DespesaService.createDespesa(despesa, id).then((response) => {
 
             console.log(response.data)
@@ -27,16 +29,16 @@ const DespesaInsert = () => {
             console.log(error)
         })
 
-        alert("despesa inserida")
+        alert("despesa inserida")}
+        else{
+            alert("preencha os campos requeridos")
+        }
 
     }
 
     return (
         <div className="despesaUp" onClick={e => e.stopPropagation()}>
             <div>
-
-
-
 
                 <form id="form">
 
@@ -58,7 +60,7 @@ const DespesaInsert = () => {
                         type="date"
                         name="dataPagamento"
                         id="dataPagamento"
-                        placeholder='data pagamento'
+                        placeholder='data do pagamento'
                         onChange={(e) => setDataPagamento(e.target.value)}
                     />
                     <br /><br />
@@ -67,7 +69,7 @@ const DespesaInsert = () => {
                         type="date"
                         name="dataPagamentoEsperado"
                         id="dataPagamentoEsperado"
-                        placeholder='data pagamento esperada'
+                        placeholder='data do pagamento esperada'
                         onChange={(e) => setDataPagamentoEsperado(e.target.value)}
                     />
 

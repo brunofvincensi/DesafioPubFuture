@@ -18,7 +18,6 @@ export function Despesas() {
             getFiltroPorTipo();
         } if (dataInicial) {
             getFiltroPorData();
-
         }
         else {
             getAllDespesas();
@@ -48,18 +47,12 @@ export function Despesas() {
 
     const getFiltroPorData = () => {
 
-        
-        console.log(dataInicial)
-        console.log(dataFinal)
         DespesaService.getFiltroPorData(dataInicial, dataFinal).then((response) => {
             setDespesas(response.data)
             console.log(response.data);
         }).catch(error => {
             console.log(error);
-        })
-        alert("despesa excluida")
-        
-        
+        })     
     }
 
     const deleteDespesa = (despesaId) => {
@@ -121,8 +114,8 @@ export function Despesas() {
                                     <td>{despesa.dataPagamentoEsperado}</td>
                                     <td>{despesa.tipoDespesa}</td>
                                     <td>
-                                        <Link className="btn btn-info" to={`/despesaUp/${despesa.id}`} id='despesaUpdate' ><MdModeEditOutline /></Link>
-                                        <button className="btn btn-danger" id='btn_despesa_delete' onClick={() => deleteDespesa(despesa.id)}
+                                        <Link className="btn btn-info" to={`/despesaUp/${despesa.id}`} id='btn-despesa-update' ><MdModeEditOutline /></Link>
+                                        <button className="btn btn-danger" id='btn-despesa-delete' onClick={() => deleteDespesa(despesa.id)}
                                             style={{ marginLeft: "10px" }}
                                         ><AiFillDelete /> </button>
                                     </td>

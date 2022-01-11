@@ -28,19 +28,17 @@ public class DespesaService {
     private ContaRepository contaRepository;
 
     public List<DespesaDTO> findAll() {
-        List<Despesa> despesaList = despesaRepository.findAll();
+        List<Despesa> despesaList = despesaRepository.findAllOrderByContaId();
         return despesaList.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
 
-    public boolean save(Despesa despesa, Conta conta, UriComponentsBuilder uriBuilder) {
+    public boolean save(Despesa despesa, Conta conta) {
 
-        Double saldo = conta.getSaldo();
+        Double saldo = conta.getSaldoo();
         if(saldo > despesa.getValor()){
 
+            despesa.setConta(conta);
             despesaRepository.save(despesa);
-            saldo -= despesa.getValor();
-            conta.setSaldo(saldo);
-            contaRepository.save(conta);
 
             return true;
 

@@ -16,4 +16,7 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
 
     @Query(value = "select * from tb_despesas where tipo_despesa = ?1", nativeQuery = true)
     List<Despesa> filtroPorTipo(String tipoDespesa);
+
+    @Query(value = "select * from tb_despesas order by conta_id", nativeQuery = true)
+    List<Despesa> findAllOrderByContaId();
 }

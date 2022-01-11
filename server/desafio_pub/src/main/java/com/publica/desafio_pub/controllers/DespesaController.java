@@ -62,7 +62,7 @@ public class DespesaController {
         try {
 
             despesa.setConta(conta);
-            boolean isValid = despesaService.save(despesa, conta, uriBuilder);
+            boolean isValid = despesaService.save(despesa, conta);
 
             if (isValid) {
 
@@ -110,7 +110,8 @@ public class DespesaController {
     }
 
     @GetMapping("/filtro/data")
-    public ResponseEntity<List<DespesaDTO>> filtroPorData(String dataInicial, String dataFinal) {
+    public ResponseEntity<List<DespesaDTO>> filtroPorData(@RequestParam(defaultValue = "1900-01-01") String dataInicial,
+                                                          @RequestParam(defaultValue = "2100-01-01") String dataFinal) {
 
         List<DespesaDTO> list = despesaService.filtroPorData(dataInicial, dataFinal);
         return ResponseEntity.ok().body(list);

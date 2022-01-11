@@ -5,15 +5,15 @@ import com.publica.desafio_pub.services.ContaService;
 
 public class ContaUpdateDTO {
 
-    private Double saldo;
+
     private String tipoConta;
     private String instituicao;
 
     public ContaUpdateDTO() {
     }
 
-    public ContaUpdateDTO(Double saldo, String tipoConta, String instituicao) {
-        this.saldo = saldo;
+    public ContaUpdateDTO(String tipoConta, String instituicao) {
+
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
     }
@@ -22,20 +22,12 @@ public class ContaUpdateDTO {
 
         Conta conta = contaService.findById(id).get();
 
-        conta.setSaldo(this.saldo);
         conta.setTipoConta(this.tipoConta);
         conta.setInstituicao(this.instituicao);
 
         return conta;
     }
 
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
 
     public String getTipoConta() {
         return tipoConta;

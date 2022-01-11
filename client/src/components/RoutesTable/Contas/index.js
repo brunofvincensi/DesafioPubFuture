@@ -47,6 +47,7 @@ export function Contas() {
             })
 
             alert("conta excluida")
+            window.location.reload()
         
         }     
 

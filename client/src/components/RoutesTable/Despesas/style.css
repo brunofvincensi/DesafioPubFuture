@@ -9,7 +9,7 @@
     margin-top: 50px;
 }
 
-#despesaUpdate{
+#btn-despesa-update{
    
     position:static;
     
@@ -19,9 +19,18 @@
 
 }
 
-#btn_despesa_delete{
+#btn-despesa-update:hover{
+
+    color: black;
+}
+
+#btn-despesa-delete{
     
     background-color: red;
+}
+
+#btn-despesa-delete:hover{
+    color: black;
 }
 
 

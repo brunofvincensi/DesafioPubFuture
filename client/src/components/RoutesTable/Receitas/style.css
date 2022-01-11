@@ -4,7 +4,7 @@
 
 }
 
-#receitaUpdate{
+#btn-receita-update{
    
     position:static;
     
@@ -14,7 +14,15 @@
 
 }
 
-#btn_receita_delete{
+#btn-receita-delete{
     
     background-color: red;
+}
+
+#btn-receita-delete:hover{
+    color: black;
+}
+
+#btn-receita-update:hover{
+    color: black;
 }

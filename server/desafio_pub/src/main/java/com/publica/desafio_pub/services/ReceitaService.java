@@ -28,7 +28,7 @@ public class ReceitaService {
 
     public List<ReceitaDTO> findAll() {
 
-        List<Receita> receitaList = receitaRepository.findAll();
+        List<Receita> receitaList = receitaRepository.findAllOrderByContaId();
         return receitaList.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
     }
 
@@ -42,14 +42,10 @@ public class ReceitaService {
 
     public void save(Receita receita, Conta conta, UriComponentsBuilder uriBuilder) {
 
-        Double saldo = conta.getSaldo();
-
-        receita.setValor(Math.abs(receita.getValor()));
+        receita.setConta(conta);
 
         receitaRepository.save(receita);
-        saldo += receita.getValor();
-        conta.setSaldo(saldo);
-        contaRepository.save(conta);
+
 
     }
 
