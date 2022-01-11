@@ -59,12 +59,17 @@ const ContUp = () => {
 
         const conta = { saldo, tipoConta, instituicao }
 
+        if(tipoConta != null && tipoConta != '' && instituicao != null && instituicao != ''){
+
         ContaService.updateConta(id, conta).then((response) => {
             history.push("/")
         }).catch(error => {
             console.log(error)
         })
-        alert("conta alterada")
+        alert("conta alterada")}
+        else{
+            alert("preencha os campos requeridos")
+        }
     }
 
 
@@ -127,7 +132,7 @@ const ContUp = () => {
                     />
 
                     <label id="label-instituicao">
-                        instituição
+                        * instituição
                     </label>
 
 
@@ -141,7 +146,7 @@ const ContUp = () => {
                     <br />
                     <br />
 
-                    <label id="label-tipoConta">tipo da conta</label>
+                    <label id="label-tipoConta">* tipo da conta</label>
 
                     <input
                         type="text"

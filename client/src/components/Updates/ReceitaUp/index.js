@@ -69,7 +69,7 @@ const ReceitaUp = () => {
                         type="number"
                         name="valorReceita"
                         id="valorReceita"
-                        placeholder="valor"
+                        placeholder="* valor"
                         value={parseFloat(valor)}
                         onChange={(e) => setValor(e.target.value)}
                                                
@@ -82,7 +82,7 @@ const ReceitaUp = () => {
                         type="date"
                         name="dataRecebimento"
                         id="dataRecebimento"
-                        placeholder="data do recebimento"
+                        placeholder="* data do recebimento"
                         value={dataRecebimento}                      
                         onChange={(e) => setDataRecebiento(e.target.value)}
                     />
@@ -116,7 +116,7 @@ const ReceitaUp = () => {
                         type="text"
                         name="tipoReceita"
                         id="tipoReceita"
-                        placeholder="tipo da receita"
+                        placeholder="* tipo da receita"
                         value={tipoReceita}
                         onChange={(e) => setTipoReceita(e.target.value)}
                     />

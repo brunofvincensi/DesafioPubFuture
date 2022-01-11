@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,19 +16,25 @@ public class Despesa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     @Column(name = "valor")
     private Double valor;
+
+    @NotNull
     @Column(name = "data_pagamento")
     private LocalDate dataPagamento;
- //   @DateTimeFormat(pattern = "dd-MM-yyyy")
+
     @Column(name = "data_pagamento_esperado")
     private LocalDate dataPagamentoEsperado;
 
+    @NotNull
     @Column(name = "tipo_despesa")
     private String tipoDespesa;
 
     @JsonIgnore
     @JoinColumn(name = "conta_id")
+    @NotNull
     @ManyToOne
     private Conta conta;
 

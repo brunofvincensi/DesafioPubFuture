@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,19 +15,28 @@ public class Receita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     @Column(name = "valor")
     private Double valor;
+
+    @NotNull
     @Column(name = "data_recebimento")
     private LocalDate dataRecebimento;
+
     @Column(name = "data_recebimento_esperado")
     private LocalDate dataRecebimentoEsperado;
+
     @Column(name = "descricao")
     private String descricao;
+
+    @NotNull
     @Column(name = "tipo_receita")
     private String tipoReceita;
 
     @JsonIgnore
     @JoinColumn(name = "conta_id")
+    @NotNull
     @ManyToOne
     private Conta conta;
 

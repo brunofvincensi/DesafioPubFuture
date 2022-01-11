@@ -45,16 +45,14 @@ const ContaInsert = () => {
 
                 <Link id="voltar" to={ "/"}><button>voltar</button></Link>
                    <p id="title" >Adicionar Conta</p>
-                   
-               
-                  
+                                    
                   <br/><br/>
                    
                     <input
                         type="text"
                         name="dataPagamento"
                         id="dataPagamento"
-                        placeholder='tipo da conta*'
+                        placeholder='* tipo da conta*'
                         
                         
                         onChange={(e) => setTipoConta(e.target.value)}
@@ -65,14 +63,13 @@ const ContaInsert = () => {
                         type="text"
                         name="dataPagamentoEsperado"
                         id="dataPagamentoEsperado"
-                        placeholder='instituição*'
+                        placeholder='* instituição*'
                 
                         onChange={(e) => setInstituicao(e.target.value)}
                     />                    
 
                      <br/><br/>
-
-                    
+                 
                             <input
                             type="button"
                             id="button-alterar-despesa"

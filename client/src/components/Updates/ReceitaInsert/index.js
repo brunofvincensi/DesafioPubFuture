@@ -48,7 +48,7 @@ const DespesaInsert = () =>{
                             type="number"
                             name="valorReceita"
                             id="valorReceita"
-                            placeholder='valor'
+                            placeholder='* valor'
                             onChange={(e) => setValor(e.target.value)}                            
                             
                         /> 
@@ -59,7 +59,7 @@ const DespesaInsert = () =>{
                             type="date"
                             name="dataRecebimento"
                             id="dataRecebimento"
-                            placeholder='data do recebimento'
+                            placeholder='* data do recebimento'
                             onChange={(e) => setDataRecebimento(e.target.value)}
                         />
                         <br/><br/>
@@ -88,7 +88,7 @@ const DespesaInsert = () =>{
                             type="text"
                             name="tipoReceita"
                             id="tipoReceita"
-                            placeholder='tipo da receita'
+                            placeholder='* tipo da receita'
                             onChange={(e) => setTipoReceita(e.target.value)}
                         />
     

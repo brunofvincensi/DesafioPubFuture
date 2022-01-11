@@ -1,5 +1,7 @@
 package com.publica.desafio_pub.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +14,12 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     @Column(name = "tipo_conta")
     private String tipoConta;
+
+    @NotNull
     @Column(name = "instituicao")
     private String instituicao;
 
