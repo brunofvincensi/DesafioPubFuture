@@ -23,6 +23,7 @@ const ContaInsert = () => {
             }).catch(error => {
                 console.log(error)
             })
+            alert("conta inserida")
         }
         
     

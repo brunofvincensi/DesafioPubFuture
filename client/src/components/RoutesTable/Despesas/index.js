@@ -48,6 +48,7 @@ export function Despesas() {
 
     const getFiltroPorData = () => {
 
+        
         console.log(dataInicial)
         console.log(dataFinal)
         DespesaService.getFiltroPorData(dataInicial, dataFinal).then((response) => {
@@ -56,15 +57,25 @@ export function Despesas() {
         }).catch(error => {
             console.log(error);
         })
+        alert("despesa excluida")
+        
+        
     }
 
     const deleteDespesa = (despesaId) => {
+
+        if (window.confirm("a despesa selecionada sera excluida"))
+
+        {
         DespesaService.deleteDespesa(despesaId).then((response) => {
             getAllDespesas();
 
         }).catch(error => {
             console.log(error);
         })
+        alert("despesa excluida")
+
+    }
 
     }
 

@@ -37,6 +37,12 @@ public class Conta {
         this.despesas = despesas;
     }
 
+    public Conta(Double saldo, String tipoConta, String instituicao) {
+        this.saldo = saldo;
+        this.tipoConta = tipoConta;
+        this.instituicao = instituicao;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,4 +103,5 @@ public class Conta {
     public void setDespesas(List<Despesa> despesas) {
         this.despesas = despesas;
     }
+    
 }

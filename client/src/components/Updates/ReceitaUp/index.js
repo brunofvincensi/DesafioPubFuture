@@ -34,6 +34,8 @@ const ReceitaUp = () => {
     const UpdateReceita = (e) => {
         e.preventDefault();
 
+        if(window.confirm("a receita será alterada")){
+
         const receita = { valor, dataRecebimento, dataRecebimentoEsperado, descricao, tipoReceita }
 
             ReceitaService.updateReceita(id, receita).then((response) => {
@@ -41,6 +43,9 @@ const ReceitaUp = () => {
         }).catch(error => {
             console.log(error)
         })
+        alert("receita alterada")
+    }
+
     
         }
 

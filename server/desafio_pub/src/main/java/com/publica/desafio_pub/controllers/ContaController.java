@@ -104,14 +104,9 @@ public class ContaController {
     }
 
     @PatchMapping ("/transferir_saldo")
-    public void transferirSaldo( Long id1, Long id2, Double valor){
+    public boolean transferirSaldo( Long id1, Long id2, Double valor){
 
-        try {
-            contaService.transferirSaldo(id1, id2, valor);
-        }
-       catch (ServiceException e){
-           System.out.println(e);
-       }
+           return contaService.transferirSaldo(id1, id2, valor);
 
     }
 

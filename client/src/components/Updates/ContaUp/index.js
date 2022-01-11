@@ -17,6 +17,8 @@ const ContUp = () => {
     const [despesaTotal, setDespesaTotal] = useState()
     const [receitaTotal, setReceitaTotal] = useState()
 
+    const [foiTranferido, setFoiTransferido] = useState(false)
+
     const history = useNavigate();
 
     useEffect(() => {
@@ -53,14 +55,18 @@ const ContUp = () => {
 
     const UpdateConta = (e) => {
         e.preventDefault();
+       if( window.confirm("a conta será alterada")){
 
         const conta = { saldo, tipoConta, instituicao }
 
         ContaService.updateConta(id, conta).then((response) => {
-            history.push("/contas")
+            history.push("/")
         }).catch(error => {
             console.log(error)
         })
+        alert("conta alterada")
+    }
+
 
     }
 
@@ -72,16 +78,27 @@ const ContUp = () => {
         console.log(parseFloat(valor))
 
         ContaService.transefirSaldo(id, parseInt(id2), parseFloat(valor)).then((response) => {
-            history.push("/contas")
+            setFoiTransferido(response.data)
+            history.push("/")
 
         }).catch(error => {
             console.log(error)
         })
 
+        if(foiTranferido){
+        
+        alert("saldo tranferido")
+        window.location.reload()
+    }else{
+        alert("valor ou número da conta inválido")
+    }
 
     }
 
     let saldoFinal = "R$ " + saldo;
+
+    let despesaTotalFormated = new Number(parseFloat(despesaTotal));
+    let receitaTotalFormated = new Number(parseFloat(receitaTotal));
 
     return (
         <div className="contaUp" id="screenContaUp" onClick={e => e.stopPropagation()}>
@@ -105,7 +122,6 @@ const ContUp = () => {
                         value={saldoFinal}
                         readOnly
                         onChange={(e) => setSaldo(e.target.value)}
-
 
                     />
 
@@ -177,8 +193,9 @@ const ContUp = () => {
                         </Link>
 
                         <br /><br />
-                        <div> <b>R${despesaTotal}</b></div>
-                        
+                        <div> <b>R${despesaTotalFormated.toFixed(2)}</b></div> 
+                        <p>despesa total</p>  
+                                         
 
                     </div>
 
@@ -193,7 +210,8 @@ const ContUp = () => {
                             />
                         </Link>
                         <br /><br />
-                        <div> <b>R${receitaTotal}</b></div>
+                        <div> <b>R${receitaTotalFormated.toFixed(2)}</b></div>
+                        <p>receita total</p>
 
                     </div>
 

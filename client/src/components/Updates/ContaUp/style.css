@@ -6,6 +6,7 @@
 .contaForm{
     margin-left: 50px;
     float: left;
+
 }
 
 label{padding-right: 10px;
@@ -43,8 +44,9 @@ font-size: 20px;}
 
   #despesa-box{
 position: absolute;
-left: 36%;
-bottom: 20%;
+left: 28%;
+bottom: 10%;
+text-align: center;
 
     
   }
@@ -53,6 +55,7 @@ bottom: 20%;
   #despesa-box div{
       font-size: 50px;
     color: red;
+    border-bottom: 2px solid red;
     
     
 } 
@@ -63,6 +66,9 @@ bottom: 20%;
     height: 40px;
 
     font-size: 20px;
+    
+   
+    
   
   
 } 
@@ -70,14 +76,18 @@ bottom: 20%;
 #receita-box{
 
     position: absolute;
-left: 55%;
-bottom: 20%;
+left: 58%;
+bottom: 10%;
+text-align: center;
 
 }
 
 #receita-box div{
     font-size: 50px;
   color: green;
+
+  border-bottom: 2px solid green;
+
 
   
 } 
@@ -94,7 +104,17 @@ bottom: 20%;
 
 #titulo-transferencia{
     color: aliceblue;
-    font-size: 40px;
+    font-size: 30px;
     position: absolute;
-    bottom: 150%;
+    bottom: 70%;
 }
+
+
+#receita-box p{
+    color: green;
+}
+
+#despesa-box p{
+    color: red;
+}
+

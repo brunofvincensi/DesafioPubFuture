@@ -52,12 +52,17 @@ import { AiFillDelete } from "react-icons/ai";
     }
 
     const deleteReceitas = (receitaId) => {
+
+        if (window.confirm("a despesa selecionada sera excluida"))
+        {
        ReceitaService.deleteReceita(receitaId).then((response) =>{
         getAllReceitas();
 
        }).catch(error =>{
            console.log(error);
        })
+       alert("receita excluida")
+    }
         
     }
 

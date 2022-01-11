@@ -35,14 +35,24 @@ export function Contas() {
     }
 
     const deleteConta = (contaId) => {
-        ContaService.deleteConta(contaId).then((response) => {
-            getAllContas();
+ 
+      
+        if (window.confirm("a conta selecionada sera excluida"))
+        {
+            ContaService.deleteConta(contaId).then((response) => {
+                getAllContas();
+    
+            }).catch(error => {
+                console.log(error);
+            })
 
-        }).catch(error => {
-            console.log(error);
-        })
+            alert("conta excluida")
+        
+        }     
 
     }
+
+    let saldoFinalFormated = new Number(parseFloat(saldoTotal))
 
     return (
         <div className="container">
@@ -51,14 +61,11 @@ export function Contas() {
             <Link to="/add-conta" className="btn btn-primary mb-2" id='addConta' > Adicionar Conta </Link>
             <br /><br />
 
-            <div id='saldoTotal'>R$ {saldoTotal}
+            <div id='saldoTotal'>R$ { saldoFinalFormated.toFixed(2)}
                 <hr />
                 <p>saldo total</p>
 
             </div>
-
-
-
 
             {
                 contas.map(

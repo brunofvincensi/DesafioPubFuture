@@ -16,7 +16,7 @@ const DespesaUp = () => {
 
     useEffect(() => {
 
-        DespesaService.getDespesa(id).then((response) =>{
+        DespesaService.getDespesa(id).then((response) => {
             setValor(response.data.valor)
             setDataPagamento(response.data.dataPagamento)
             setDataPagamentoEsperado(response.data.dataPagamentoEsperado)
@@ -32,56 +32,57 @@ const DespesaUp = () => {
     const UpdateDespesa = (e) => {
         e.preventDefault();
 
-        const despesa = { valor, dataPagamento, dataPagamentoEsperado, tipoDespesa }
+        if (window.confirm("a despesa será alterada")) {
+
+            const despesa = { valor, dataPagamento, dataPagamentoEsperado, tipoDespesa }
 
             DespesaService.updateDespesa(id, despesa).then((response) => {
-            history.push("/despesas")
-        }).catch(error => {
-            console.log(error)
-        })
-    
+                history.push("/despesas")
+            }).catch(error => {
+                console.log(error)
+            })
+            alert("despesa alterada")
         }
 
 
-        
+    }
 
 
 
-  return (
+
+
+    return (
         <div className="despesaUp" onClick={e => e.stopPropagation()}>
             <div>
-               
-           
-            
 
                 <form id="form">
 
-                <Link id="voltar" to={ "/despesas"}><button>voltar</button></Link>
-                   <p id="title" >Alterar Despesa</p>
-                   
-               
+                    <Link id="voltar" to={"/despesas"}><button>voltar</button></Link>
+                    <p id="title" >Alterar Despesa</p>
+
+
                     <input
                         type="number"
                         name="valorDespesa"
                         id="valorDespesa"
                         value={parseFloat(valor)}
                         onChange={(e) => setValor(e.target.value)}
-                        
-                        
-                    /> 
 
-                  <br/><br/>
 
-                   
+                    />
+
+                    <br /><br />
+
+
                     <input
                         type="date"
                         name="dataPagamento"
                         id="dataPagamento"
                         value={dataPagamento}
-                        
+
                         onChange={(e) => setDataPagamento(e.target.value)}
                     />
-                    <br/><br/>
+                    <br /><br />
 
                     <input
                         type="date"
@@ -91,9 +92,9 @@ const DespesaUp = () => {
                         onChange={(e) => setDataPagamentoEsperado(e.target.value)}
                     />
 
-                     <br/><br/>
+                    <br /><br />
 
-                     <input
+                    <input
                         type="text"
                         name="tipoDespesa"
                         id="tipoDespesa"
@@ -101,31 +102,28 @@ const DespesaUp = () => {
                         onChange={(e) => setTipoDespesa(e.target.value)}
                     />
 
-                     <br/><br/>
+                    <br /><br />
 
-                    
-                            <input
-                            type="button"
-                            id="button-alterar-despesa"
-                            title="Update Conta"
-                            value="Confirm"
-                            onClick={(e) => UpdateDespesa(e)}
-                        >
-                             
-                        </input>
-                                           
-                  
-                        <br/><br/>
 
-                       
-           
+                    <input
+                        type="button"
+                        id="button-alterar-despesa"
+                        title="Update Conta"
+                        value="Confirm"
+                        onClick={(e) => UpdateDespesa(e)}
+                    >
+
+                    </input>
+
+                    <br /><br />
+
                 </form>
-           
+
             </div>
-           
+
         </div>
     );
-  
-  }
+
+}
 
 export default DespesaUp;

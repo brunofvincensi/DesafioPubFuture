@@ -27,6 +27,7 @@ const DespesaInsert = () =>{
             }).catch(error => {
                 console.log(error)
             })
+            alert("receita inserida")
         }
 
         return (
