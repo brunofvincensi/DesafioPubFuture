@@ -13,17 +13,20 @@ public class ReceitaDTO {
     private LocalDate dataRecebimentoEsperado;
     private String descricao;
     private String tipoReceita;
+    private Long contaId;
 
     public ReceitaDTO() {
     }
 
-    public ReceitaDTO(Long id, Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao, String tipoReceita) {
+    public ReceitaDTO(Long id, Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado,
+                      String descricao, String tipoReceita, Long contaId) {
         this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
         this.descricao = descricao;
         this.tipoReceita = tipoReceita;
+        this.contaId = contaId;
     }
 
     public ReceitaDTO(Receita receita){
@@ -33,7 +36,7 @@ public class ReceitaDTO {
         this.dataRecebimentoEsperado = receita.getDataRecebimentoEsperado();
         this.descricao = receita.getDescricao();
         this.tipoReceita = receita.getTipoReceita();
-
+        this.contaId = receita.getConta().getId();
 
     }
 
@@ -83,5 +86,13 @@ public class ReceitaDTO {
 
     public void setTipoReceita(String tipoReceita) {
         this.tipoReceita = tipoReceita;
+    }
+
+    public Long getContaId() {
+        return contaId;
+    }
+
+    public void setContaId(Long contaId) {
+        this.contaId = contaId;
     }
 }

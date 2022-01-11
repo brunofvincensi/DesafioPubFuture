@@ -12,16 +12,19 @@ public class DespesaDTO {
     private LocalDate dataPagamento;
     private LocalDate dataPagamentoEsperado;
     private String tipoDespesa;
+    private Long contaId;
 
     public DespesaDTO() {
     }
 
-    public DespesaDTO(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa) {
+    public DespesaDTO(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa,
+                      Long contaId) {
         this.id = id;
         this.valor = valor;
         this.dataPagamento = dataPagamento;
         this.dataPagamentoEsperado = dataPagamentoEsperado;
         this.tipoDespesa = tipoDespesa;
+        this.contaId = contaId;
     }
 
     public DespesaDTO(Despesa despesa){
@@ -30,6 +33,8 @@ public class DespesaDTO {
         this.dataPagamento = despesa.getDataPagamento();
         this.dataPagamentoEsperado = despesa.getDataPagamentoEsperado();
         this.tipoDespesa = despesa.getTipoDespesa();
+        this.contaId = despesa.getConta().getId();
+
     }
 
     public Long getId() {
@@ -70,5 +75,13 @@ public class DespesaDTO {
 
     public void setTipoDespesa(String tipoDespesa) {
         this.tipoDespesa = tipoDespesa;
+    }
+
+    public Long getContaId() {
+        return contaId;
+    }
+
+    public void setContaId(Long contaId) {
+        this.contaId = contaId;
     }
 }

@@ -20,3 +20,9 @@ body {
     background-repeat: no-repeat;
     position: relative;
 }
+
+button {
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 10px;
+}

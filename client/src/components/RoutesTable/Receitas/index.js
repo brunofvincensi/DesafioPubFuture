@@ -72,7 +72,9 @@ import { AiFillDelete } from "react-icons/ai";
 
             <form id='filtroData'>
 
+            <label>data inicial</label>
             <input type="date" id='dataInicial' placeholder='data incicial' onChange={(e) => setDataInicial(e.target.value)} />
+            <label>data final</label>
             <input type="date" id='dataFinal' placeholder='data final' onChange={(e) => setDataFinal(e.target.value)} />
             <input type="button" value="filtrar" onClick={() => getFiltroPorData()} />
 
@@ -81,7 +83,7 @@ import { AiFillDelete } from "react-icons/ai";
                
             <table className="table table-bordered table-striped" id='tableReceita'>
                 <thead>
-                    
+                    <th> nº da conta </th>
                     <th> valor </th>
                     <th> data recebimento </th>
                     <th> data recebimento esperado </th>
@@ -93,8 +95,9 @@ import { AiFillDelete } from "react-icons/ai";
                     {
                         receitas.map(
                             receita =>
-                            <tr key = {receita.id}> 
-                                
+                            <tr key = {receita.id}>
+
+                                <td>{receita.contaId}</td>
                                 <td> {receita.valor} </td>
                                 <td>{receita.dataRecebimento}</td>
                                 <td>{receita.dataRecebimentoEsperado}</td>

@@ -5,6 +5,10 @@
 
 }
 
+.container table, form {
+    margin-top: 50px;
+}
+
 #despesaUpdate{
    
     position:static;
@@ -44,5 +48,13 @@
 
 #filtroData input[type="button"]{
     position: absolute;
+    margin-left: 100px;
+}
+
+#filtroData label{
+    position: absolute;
+    color: aliceblue;
+    top : 22%;
+    font-size: 20px;
     margin-left: 100px;
 }
