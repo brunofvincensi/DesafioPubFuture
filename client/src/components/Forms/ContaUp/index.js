@@ -59,7 +59,7 @@ const ContUp = () => {
 
         const conta = { saldo, tipoConta, instituicao }
 
-        if(tipoConta != null && tipoConta != '' && instituicao != null && instituicao != ''){
+        if(tipoConta != null && tipoConta !== '' && instituicao != null && instituicao !== ''){
 
         ContaService.updateConta(id, conta).then((response) => {
             history.push("/")
@@ -117,13 +117,13 @@ const ContUp = () => {
                     <p id="infConta" >Informações da conta</p>
                     <br />
 
-                    <label id='label-saldo'>
+                    <label id='label_saldo'>
                         saldo
                     </label>
 
                     <input
                         type="text"
-                        name="saldoConta"
+                        className="saldoConta"
                         id="saldoConta"
                         value={saldoFinal}
                         readOnly
@@ -131,14 +131,14 @@ const ContUp = () => {
 
                     />
 
-                    <label id="label-instituicao">
+                    <label id="label_instituicao">
                         * instituição
                     </label>
 
 
                     <input
                         type="text"
-                        name="instituicaoConta"
+                        className="instituicaoConta"
                         id="instituicaoConta"
                         value={instituicao}
                         onChange={(e) => setInstituicao(e.target.value)}
@@ -146,21 +146,19 @@ const ContUp = () => {
                     <br />
                     <br />
 
-                    <label id="label-tipoConta">* tipo da conta</label>
+                    <label id="label_tipoConta">* tipo da conta</label>                 
 
-                    <input
-                        type="text"
-                        name="tipoConta"
-                        id="tipoCont"
-                        value={tipoConta}
-                        onChange={(e) => setTipoConta(e.target.value)}
-                    />
+                        <select id="select_tipoConta" className="tipoConta" value={tipoConta} onChange={(e) => setTipoConta(e.target.value)}>
+                        <option value="CARTEIRA" key="">carteira</option>
+                        <option value="CONTA_CORRENTE" key="">conta corrente</option>
+                        <option value="POUPANCA" key="">poupança</option>
+                        </select>
 
                     <br /><br />
 
                     <input
                         type="button"
-                        id="buttonConfirmConta"
+                        id="buttonUpdateConta"
                         title="Alterar Conta"
                         value="Alterar Conta"
                         onClick={(e) => UpdateConta(e)}

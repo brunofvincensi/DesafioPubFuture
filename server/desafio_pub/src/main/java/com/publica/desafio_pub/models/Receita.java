@@ -37,7 +37,6 @@ public class Receita {
 
     @JsonIgnore
     @JoinColumn(name = "conta_id", nullable = false)
-    @NotNull
     @ManyToOne
     private Conta conta;
 

@@ -74,7 +74,7 @@ export function Contas() {
                         <div key={conta.id} id="conta-box">
 
                             <Link to={`/conta/${conta.id}`}>
-                                <p id="tipoConta">Conta {conta.tipoConta}</p>
+                                <p id="tipoConta">{conta.tipoConta}</p>
                                 <p id="instituicao">{conta.instituicao}</p>
                                 <p id="saldo"> R$ {conta.saldo}</p>
                                 <p id='idConta'>nº {conta.id}</p>

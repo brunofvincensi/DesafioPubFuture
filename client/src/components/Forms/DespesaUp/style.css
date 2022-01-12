@@ -55,6 +55,17 @@ input[type="date"]{
     
 }
 
+select{
+    width: 200px;
+    float: left;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 30px;
+    
+}
+
 
 
 input[type="button"]{

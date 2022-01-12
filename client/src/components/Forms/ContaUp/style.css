@@ -23,6 +23,27 @@ font-size: 20px;}
     
 }
 
+#select_tipoConta{
+    position: absolute;
+    margin-top: 5px;
+    left: 19%;
+    font-size: 20px;
+}
+
+#label_tipoConta{
+    
+   position: absolute;
+   left: 3%;
+   margin-top: 5px;
+}
+
+#buttonUpdateConta{
+  
+    position: absolute;
+    margin-top: 10px;
+    left: 3%;
+}
+
 .linha-vertical {
     height: 600px;/*Altura da linha*/
     border-left: 2px solid white;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
