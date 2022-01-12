@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/conta")
+@RequestMapping("/contas")
 public class ContaController {
 
     @Autowired
@@ -95,7 +95,7 @@ public class ContaController {
 
     @GetMapping ("/{id}")
     public ResponseEntity <ContaDTO> redirecionamento (@PathVariable Long id) {
-        Optional <Conta> contaOptional = contaService.findById(id) ;
+        Optional<Conta> contaOptional = contaService.findById(id) ;
         if (contaOptional.isPresent ()) {
 
             return ResponseEntity.ok( new ContaDTO(contaOptional.get())) ;

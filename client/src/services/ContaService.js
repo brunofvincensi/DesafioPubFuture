@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const CONTAS_REST_API_URL = 'http://localhost:8080/conta';
+const CONTAS_REST_API_URL = 'http://localhost:8080/contas';
 
 class ContaService{
 
