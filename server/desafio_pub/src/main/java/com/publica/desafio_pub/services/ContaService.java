@@ -1,6 +1,8 @@
 package com.publica.desafio_pub.services;
 
 import com.publica.desafio_pub.dto.get.ContaDTO;
+import com.publica.desafio_pub.enums.TipoDespesa;
+import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.models.Receita;
@@ -26,22 +28,26 @@ public class ContaService {
     @Autowired
     private ReceitaRepository receitaRepository;
 
+    // busca todas as contas
     public List<ContaDTO> findAll() {
         List<Conta> contaList = contaRepository.findAll();
         return contaList.stream().map(x -> new ContaDTO(x)).collect(Collectors.toList());
     }
 
+    // salva uma conta
     public Conta save(Conta conta) {
         contaRepository.save(conta);
         return conta;
     }
 
+    // busca uma conta por id
     public Optional<Conta> findById(Long id) {
 
         return contaRepository.findById(id);
     }
 
-    public void delete(Conta conta) {
+    // deleta uma conta e todas as despesas e receitas relacionadas a ela
+    public void delete(Conta conta) throws ServiceException{
 
         for (int i = 0; i < conta.getDespesas().size(); i++) {
             despesaRepository.delete(conta.getDespesas().get(i));
@@ -54,22 +60,23 @@ public class ContaService {
 
     }
 
-    public Boolean transferirSaldo(Long id1, Long id2, Double valor) {
+    // transfere o saldo entre contas gerando uma despesa na primeira conta e receita na segunda
+    public Boolean transferirSaldo(Long id1, Long id2, Double valor) throws ServiceException{
 
-        try {
+
 
             Conta conta1 = contaRepository.findById(id1).get();
 
             Conta conta2 = contaRepository.findById(id2).get();
 
-            Double saldo1 = conta1.getSaldoo();
+            Double saldo1 = conta1.getSaldo();
 
            if(valor <= saldo1){
 
-               Despesa despesa = new Despesa(valor, LocalDate.now(), "transferencia", conta1);
+               Despesa despesa = new Despesa(valor, LocalDate.now(), TipoDespesa.TRANSFERENCIA, conta1);
 
                Receita receita = new Receita(valor, LocalDate.now(), "valor transferido pela conta " + id1,
-                       "transferencia", conta2);
+                       TipoReceita.TRANSFERENCIA, conta2);
 
                despesaRepository.save(despesa);
                receitaRepository.save(receita);
@@ -78,16 +85,12 @@ public class ContaService {
            }
            else {
                return false;
-           }
 
-        }catch (Exception e){
-            System.out.print(e);
         }
-        return false;
+
     }
 
-
-
+    // busca o saldo total
     public Double getSaldoTotal(List<ContaDTO> contaList) {
 
         Double saldoTotal = 0.0;

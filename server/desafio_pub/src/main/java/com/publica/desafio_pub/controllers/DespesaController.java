@@ -2,6 +2,7 @@ package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.update.DespesaUpdateDTO;
+import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
@@ -119,7 +120,7 @@ public class DespesaController {
     }
 
     @GetMapping("/filtro/tipo")
-    public ResponseEntity<List<DespesaDTO>> filtroPorTipo(String tipoDespesa) {
+    public ResponseEntity<List<DespesaDTO>> filtroPorTipo(TipoDespesa tipoDespesa) {
 
         List<DespesaDTO> list = despesaService.filtroPorTipo(tipoDespesa);
         return ResponseEntity.ok().body(list);

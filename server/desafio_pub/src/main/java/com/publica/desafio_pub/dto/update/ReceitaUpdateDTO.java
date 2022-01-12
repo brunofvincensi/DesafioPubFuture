@@ -1,5 +1,6 @@
 package com.publica.desafio_pub.dto.update;
 
+import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ReceitaService;
 
@@ -11,12 +12,12 @@ public class ReceitaUpdateDTO {
     private LocalDate dataRecebimento;
     private LocalDate dataRecebimentoEsperado;
     private String descricao;
-    private String tipoReceita;
+    private TipoReceita tipoReceita;
 
     public ReceitaUpdateDTO() {
     }
 
-    public ReceitaUpdateDTO(Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao, String tipoReceita) {
+    public ReceitaUpdateDTO(Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao, TipoReceita tipoReceita) {
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
@@ -70,11 +71,11 @@ public class ReceitaUpdateDTO {
         this.descricao = descricao;
     }
 
-    public String getTipoReceita() {
+    public TipoReceita getTipoReceita() {
         return tipoReceita;
     }
 
-    public void setTipoReceita(String tipoReceita) {
+    public void setTipoReceita(TipoReceita tipoReceita) {
         this.tipoReceita = tipoReceita;
     }
 }

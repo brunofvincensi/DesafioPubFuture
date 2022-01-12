@@ -1,18 +1,19 @@
 package com.publica.desafio_pub.dto.update;
 
+import com.publica.desafio_pub.enums.TipoConta;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.services.ContaService;
 
 public class ContaUpdateDTO {
 
 
-    private String tipoConta;
+    private TipoConta tipoConta;
     private String instituicao;
 
     public ContaUpdateDTO() {
     }
 
-    public ContaUpdateDTO(String tipoConta, String instituicao) {
+    public ContaUpdateDTO(TipoConta tipoConta, String instituicao) {
 
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
@@ -29,11 +30,11 @@ public class ContaUpdateDTO {
     }
 
 
-    public String getTipoConta() {
+    public TipoConta getTipoConta() {
         return tipoConta;
     }
 
-    public void setTipoConta(String tipoConta) {
+    public void setTipoConta(TipoConta tipoConta) {
         this.tipoConta = tipoConta;
     }
 

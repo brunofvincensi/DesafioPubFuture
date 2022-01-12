@@ -1,5 +1,6 @@
 package com.publica.desafio_pub.dto.get;
 
+import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.models.Despesa;
 
 import java.time.LocalDate;
@@ -11,13 +12,13 @@ public class DespesaDTO {
     private Double valor;
     private LocalDate dataPagamento;
     private LocalDate dataPagamentoEsperado;
-    private String tipoDespesa;
+    private TipoDespesa tipoDespesa;
     private Long contaId;
 
     public DespesaDTO() {
     }
 
-    public DespesaDTO(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa,
+    public DespesaDTO(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, TipoDespesa tipoDespesa,
                       Long contaId) {
         this.id = id;
         this.valor = valor;
@@ -69,11 +70,11 @@ public class DespesaDTO {
         this.dataPagamentoEsperado = dataPagamentoEsperado;
     }
 
-    public String getTipoDespesa() {
+    public TipoDespesa getTipoDespesa() {
         return tipoDespesa;
     }
 
-    public void setTipoDespesa(String tipoDespesa) {
+    public void setTipoDespesa(TipoDespesa tipoDespesa) {
         this.tipoDespesa = tipoDespesa;
     }
 

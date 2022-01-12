@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.publica.desafio_pub.enums.TipoReceita;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -32,10 +33,10 @@ public class Receita {
 
     @NotNull
     @Column(name = "tipo_receita")
-    private String tipoReceita;
+    private TipoReceita tipoReceita;
 
     @JsonIgnore
-    @JoinColumn(name = "conta_id")
+    @JoinColumn(name = "conta_id", nullable = false)
     @NotNull
     @ManyToOne
     private Conta conta;
@@ -44,7 +45,7 @@ public class Receita {
     }
 
     public Receita(Long id, Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao,
-                   String tipoReceita, Conta conta) {
+                   TipoReceita tipoReceita, Conta conta) {
         this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
@@ -55,7 +56,7 @@ public class Receita {
     }
 
     public Receita(Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado, String descricao,
-                   String tipoReceita, Conta conta) {
+                   TipoReceita tipoReceita, Conta conta) {
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.dataRecebimentoEsperado = dataRecebimentoEsperado;
@@ -64,7 +65,7 @@ public class Receita {
         this.conta = conta;
     }
 
-    public Receita(Double valor, LocalDate dataRecebimento, String descricao, String tipoReceita, Conta conta) {
+    public Receita(Double valor, LocalDate dataRecebimento, String descricao, TipoReceita tipoReceita, Conta conta) {
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
         this.descricao = descricao;
@@ -125,11 +126,11 @@ public class Receita {
         this.descricao = descricao;
     }
 
-    public String getTipoReceita() {
+    public TipoReceita getTipoReceita() {
         return tipoReceita;
     }
 
-    public void setTipoReceita(String tipoReceita) {
+    public void setTipoReceita(TipoReceita tipoReceita) {
         this.tipoReceita = tipoReceita;
     }
 

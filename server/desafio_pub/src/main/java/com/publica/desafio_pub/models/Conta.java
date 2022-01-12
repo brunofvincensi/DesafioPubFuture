@@ -1,6 +1,8 @@
 package com.publica.desafio_pub.models;
 
+import com.publica.desafio_pub.enums.TipoConta;
 import com.sun.istack.NotNull;
+import org.hibernate.LazyInitializationException;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,22 +19,22 @@ public class Conta {
 
     @NotNull
     @Column(name = "tipo_conta")
-    private String tipoConta;
+    private TipoConta tipoConta;
 
     @NotNull
     @Column(name = "instituicao")
     private String instituicao;
 
-    @OneToMany(cascade =  CascadeType.ALL, mappedBy = "conta")
+    @OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "conta")
     private List<Receita> receitas = new ArrayList<>();
 
-    @OneToMany(cascade =  CascadeType.ALL,  mappedBy = "conta")
+    @OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL,  mappedBy = "conta")
     private List<Despesa> despesas = new ArrayList<>();
 
     public Conta() {
     }
 
-    public Conta(Long id, String tipoConta, String instituicao, List<Receita> receitas, List<Despesa> despesas) {
+    public Conta(Long id, TipoConta tipoConta, String instituicao, List<Receita> receitas, List<Despesa> despesas) {
         this.id = id;
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
@@ -40,7 +42,7 @@ public class Conta {
         this.despesas = despesas;
     }
 
-    public Conta(String tipoConta, String instituicao) {
+    public Conta(TipoConta tipoConta, String instituicao) {
         this.tipoConta = tipoConta;
         this.instituicao = instituicao;
     }
@@ -66,11 +68,11 @@ public class Conta {
         this.id = id;
     }
 
-    public String getTipoConta() {
+    public TipoConta getTipoConta() {
         return tipoConta;
     }
 
-    public void setTipoConta(String tipoConta) {
+    public void setTipoConta(TipoConta tipoConta) {
         this.tipoConta = tipoConta;
     }
 
@@ -98,23 +100,22 @@ public class Conta {
         this.despesas = despesas;
     }
 
-    public Double getSaldoo(){
+    public Double getSaldo(){
         Double valorReceitas = 0.0;
-        Double valorDespesass = 0.0;
-        Double saldo;
-        for (Receita receita : this.receitas) {
+        Double valorDespesass= 0.0;
+
+        for (Receita receita : this.getReceitas()) {
 
             valorReceitas += receita.getValor();
 
         }
-        for (Despesa despesa : this.despesas) {
+        for (Despesa despesa : this.getDespesas()) {
 
             valorDespesass += despesa.getValor();
 
         }
-        saldo = valorReceitas - valorDespesass;
 
-        return saldo;
+        return valorReceitas - valorDespesass;
     }
 
 }

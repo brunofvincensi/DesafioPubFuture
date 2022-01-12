@@ -1,5 +1,6 @@
 package com.publica.desafio_pub.dto.update;
 
+import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.services.DespesaService;
 
@@ -10,7 +11,7 @@ public class DespesaUpdateDTO {
     private Double valor;
     private LocalDate dataPagamento;
     private LocalDate dataPagamentoEsperado;
-    private String tipoDespesa;
+    private TipoDespesa tipoDespesa;
 
     public DespesaUpdateDTO() {
     }
@@ -29,7 +30,7 @@ public class DespesaUpdateDTO {
 
     }
 
-    public DespesaUpdateDTO(Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa) {
+    public DespesaUpdateDTO(Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, TipoDespesa tipoDespesa) {
         this.valor = valor;
         this.dataPagamento = dataPagamento;
         this.dataPagamentoEsperado = dataPagamentoEsperado;
@@ -60,11 +61,11 @@ public class DespesaUpdateDTO {
         this.dataPagamentoEsperado = dataPagamentoEsperado;
     }
 
-    public String getTipoDespesa() {
+    public TipoDespesa getTipoDespesa() {
         return tipoDespesa;
     }
 
-    public void setTipoDespesa(String tipoDespesa) {
+    public void setTipoDespesa(TipoDespesa tipoDespesa) {
         this.tipoDespesa = tipoDespesa;
     }
 

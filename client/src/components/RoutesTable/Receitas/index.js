@@ -101,7 +101,7 @@ import { AiFillDelete } from "react-icons/ai";
                             <tr key = {receita.id}>
 
                                 <td>{receita.contaId}</td>
-                                <td> {receita.valor} </td>
+                                <td>R${receita.valor} </td>
                                 <td>{receita.dataRecebimento}</td>
                                 <td>{receita.dataRecebimentoEsperado}</td>
                                 <td>{receita.descricao}</td>

@@ -1,5 +1,6 @@
 package com.publica.desafio_pub.dto.get;
 
+import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Receita;
 
 import java.time.LocalDate;
@@ -12,14 +13,14 @@ public class ReceitaDTO {
     private LocalDate dataRecebimento;
     private LocalDate dataRecebimentoEsperado;
     private String descricao;
-    private String tipoReceita;
+    private TipoReceita tipoReceita;
     private Long contaId;
 
     public ReceitaDTO() {
     }
 
     public ReceitaDTO(Long id, Double valor, LocalDate dataRecebimento, LocalDate dataRecebimentoEsperado,
-                      String descricao, String tipoReceita, Long contaId) {
+                      String descricao, TipoReceita tipoReceita, Long contaId) {
         this.id = id;
         this.valor = valor;
         this.dataRecebimento = dataRecebimento;
@@ -80,11 +81,11 @@ public class ReceitaDTO {
         this.descricao = descricao;
     }
 
-    public String getTipoReceita() {
+    public TipoReceita getTipoReceita() {
         return tipoReceita;
     }
 
-    public void setTipoReceita(String tipoReceita) {
+    public void setTipoReceita(TipoReceita tipoReceita) {
         this.tipoReceita = tipoReceita;
     }
 

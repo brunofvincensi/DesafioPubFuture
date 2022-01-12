@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.publica.desafio_pub.enums.TipoDespesa;
 import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,10 +31,10 @@ public class Despesa {
 
     @NotNull
     @Column(name = "tipo_despesa")
-    private String tipoDespesa;
+    private TipoDespesa tipoDespesa;
 
     @JsonIgnore
-    @JoinColumn(name = "conta_id")
+    @JoinColumn(name = "conta_id", nullable = false)
     @NotNull
     @ManyToOne
     private Conta conta;
@@ -41,7 +42,7 @@ public class Despesa {
     public Despesa() {
     }
 
-    public Despesa(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa,
+    public Despesa(Long id, Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, TipoDespesa tipoDespesa,
                    Conta conta) {
         this.id = id;
         this.valor = valor;
@@ -51,7 +52,7 @@ public class Despesa {
         this.conta = conta;
     }
 
-    public Despesa( Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, String tipoDespesa,
+    public Despesa( Double valor, LocalDate dataPagamento, LocalDate dataPagamentoEsperado, TipoDespesa tipoDespesa,
                    Conta conta) {
         this.valor = valor;
         this.dataPagamento = dataPagamento;
@@ -60,7 +61,7 @@ public class Despesa {
         this.conta = conta;
     }
 
-    public Despesa(Double valor, LocalDate dataPagamento, String tipoDespesa, Conta conta) {
+    public Despesa(Double valor, LocalDate dataPagamento, TipoDespesa tipoDespesa, Conta conta) {
         this.valor = valor;
         this.dataPagamento = dataPagamento;
         this.tipoDespesa = tipoDespesa;
@@ -112,11 +113,11 @@ public class Despesa {
         this.dataPagamentoEsperado = dataPagamentoEsperado;
     }
 
-    public String getTipoDespesa() {
+    public TipoDespesa getTipoDespesa() {
         return tipoDespesa;
     }
 
-    public void setTipoDespesa(String tipoDespesa) {
+    public void setTipoDespesa(TipoDespesa tipoDespesa) {
         this.tipoDespesa = tipoDespesa;
     }
 

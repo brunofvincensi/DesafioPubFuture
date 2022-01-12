@@ -3,6 +3,7 @@ package com.publica.desafio_pub.controllers;
 import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.update.ReceitaUpdateDTO;
+import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
@@ -58,7 +59,7 @@ public class ReceitaController {
         try {
 
             receita.setConta(conta);
-            receitaService.save(receita, conta, uriBuilder);
+            receitaService.save(receita, conta);
 
             URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(receita.getId()).toUri();
             return ResponseEntity.created(uri).body(new ReceitaDTO(receita));
@@ -109,7 +110,7 @@ public class ReceitaController {
     }
 
     @GetMapping("/filtro/tipo")
-    public ResponseEntity<List<ReceitaDTO>> filtroPorTipo(String tipoReceita) {
+    public ResponseEntity<List<ReceitaDTO>> filtroPorTipo(TipoReceita tipoReceita) {
 
         List<ReceitaDTO> list = receitaService.filtroPorTipo(tipoReceita);
         return ResponseEntity.ok().body(list);

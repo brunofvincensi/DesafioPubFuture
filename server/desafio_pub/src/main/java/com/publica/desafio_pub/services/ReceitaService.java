@@ -1,16 +1,13 @@
 package com.publica.desafio_pub.services;
 
-import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
+import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Conta;
-import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriComponentsBuilder;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -26,29 +23,32 @@ public class ReceitaService {
     @Autowired
     private ContaRepository contaRepository;
 
+    // busca todas as receitas
     public List<ReceitaDTO> findAll() {
 
         List<Receita> receitaList = receitaRepository.findAllOrderByContaId();
         return receitaList.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
     }
 
+    //busca uma receita por id
     public Optional<Receita> findById(Long id) {
         return receitaRepository.findById(id);
     }
 
+    // deleta uma receita
     public void delete(Receita receita) {
         receitaRepository.delete(receita);
     }
 
-    public void save(Receita receita, Conta conta, UriComponentsBuilder uriBuilder) {
+    // salva uma receita em uma conta selecionada
+    public void save(Receita receita, Conta conta) {
 
         receita.setConta(conta);
 
         receitaRepository.save(receita);
-
-
     }
 
+    // busca as receitas entre as datas requeridas
     public List<ReceitaDTO> filtroPorData(String dataInicial, String dataFinal) {
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -59,12 +59,30 @@ public class ReceitaService {
         return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
     }
 
-    public List<ReceitaDTO> filtroPorTipo(String tipoReceita) {
-        List<Receita> list = receitaRepository.filtroPorTipo(tipoReceita);
+    // busca as receitas do tipo requerido
+    public List<ReceitaDTO> filtroPorTipo(TipoReceita tipoReceita) { 
+        
+        Integer tipoReceitaId = null;
+
+        switch (tipoReceita){
+            case SALARIO: tipoReceitaId = 0;
+            break;
+            case PRESENTE: tipoReceitaId = 1;
+                break;
+            case PREMIO: tipoReceitaId = 2;
+                break;
+            case TRANSFERENCIA: tipoReceitaId = 3;
+                break;
+            case OUTROS: tipoReceitaId = 4;
+                break;
+        }
+
+        List<Receita> list = receitaRepository.filtroPorTipo(tipoReceitaId);
         return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
 
     }
 
+    // busca a receita total por conta
     public Double getReceitaTotal(Conta conta) {
 
         Double cont = 0.0;
