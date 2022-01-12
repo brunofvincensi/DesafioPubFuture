@@ -30,7 +30,6 @@ const ContaInsert = () => {
         }
         else{
             alert("preencha os campos requeridos")
-
         }
         }
         
