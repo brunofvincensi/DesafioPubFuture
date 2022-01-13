@@ -4,7 +4,7 @@
 - Projeto para gerir finanças pessoais
 - Api Rest criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
 
-
+![GIF_TELAS](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/Finan%C3%A7as_Pessoais_Anima%C3%A7%C3%A3o.gif)
 
 ## Diagrama UML (Linguagem Unificada de Modelagem)
 
@@ -18,14 +18,14 @@
 - Bootstrap
 - GIT | GitHub
 - Intellij - IDE
-- Postman | banco H2 - para testes
+- Postman | banco H2 | JUnit - para testes
 
 ## Padrão de desenvolvimento
 - padrão camadas
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
-![JAVA](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o_camadas_java.PNG)
+![JAVA](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/tela_intellij.PNG)
 
 ## Funcionalidades
 
@@ -45,9 +45,3 @@ Contas
 - métodos CRUD
 - transferir saldo entre contas
 - listar saldo total
-
-## Testes unitários
-
-
-
-
