@@ -6,12 +6,9 @@
 
 ## Diagrama UML (Linguagem Unificada de Modelagem)
 
-![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/)
+![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/UML.PNG)
 
-## MER (Modelo Entidade Relacionamento)
-
-
-## Tecnologias usadas para o desenvolvimento
+## Tecnologias utilizadas
 
 - Spring Boot (Java)
 - MySQL
@@ -21,9 +18,9 @@
 - Postman (testes)
 
 ## Padrão de desenvolvimento
+- modelo camadas, em que todo dado só pode ser passado bidimensionalmente
 
-- modelo camadas
-
+![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
 ## Funcionalidades
 
