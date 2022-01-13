@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.ContaDTO;
+import com.publica.desafio_pub.dto.insert.ContaInsertDTO;
 import com.publica.desafio_pub.dto.update.ContaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
@@ -43,10 +44,10 @@ public class ContaController {
     }
 
     @PostMapping
-    public ResponseEntity<ContaDTO> inserir(@RequestBody Conta conta, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<ContaDTO> inserir(@RequestBody ContaInsertDTO contaInsertDTO, UriComponentsBuilder uriBuilder){
 
         try {
-            Conta obj = contaService.save(conta);
+            Conta obj = contaService.save(contaInsertDTO);
 
             URI uri = uriBuilder.path("/contas/{id}").buildAndExpand(obj.getId()).toUri();
             return ResponseEntity.created(uri).body(new ContaDTO(obj));

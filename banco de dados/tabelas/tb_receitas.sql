@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS tb_receitas (
     data_recebimento DATE NOT NULL,
     data_recebimento_esperado DATE,
     descricao VARCHAR(255),
-    tipo_receita VARCHAR(50) NOT NULL,
+    tipo_receita INTEGER NOT NULL,
     conta_id INTEGER NOT NULL,
     
     CONSTRAINT tb_receitas_id_pk PRIMARY KEY (id),

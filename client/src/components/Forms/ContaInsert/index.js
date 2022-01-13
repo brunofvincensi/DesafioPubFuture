@@ -15,7 +15,7 @@ const ContaInsert = () => {
         const conta = {tipoConta, instituicao}
 
     
-        if(tipoConta != null && tipoConta != '' && instituicao != null && instituicao != ''){
+        if(tipoConta != null && tipoConta !== '' && instituicao != null && instituicao !== ''){
 
             ContaService.createConta(conta).then((response) =>{
 
@@ -47,22 +47,18 @@ const ContaInsert = () => {
                                     
                   <br/><br/>
                    
-                    <input
-                        type="text"
-                        name="dataPagamento"
-                        id="dataPagamento"
-                        placeholder='* tipo da conta*'
-                        
-                        
-                        onChange={(e) => setTipoConta(e.target.value)}
-                    />
+                    <select id="dataPagamento" name="dataPagamento" onChange={(e) => setTipoConta(e.target.value)}>
+                        <option value="CARTEIRA" key="">carteira</option>
+                        <option value="CONTA_CORRENTE" key="">conta corrente</option>
+                        <option value="POUPANCA" key="">poupança</option>
+                    </select>
                     <br/><br/>
 
                     <input
                         type="text"
                         name="dataPagamentoEsperado"
                         id="dataPagamentoEsperado"
-                        placeholder='* instituição*'
+                        placeholder='* instituição'
                 
                         onChange={(e) => setInstituicao(e.target.value)}
                     />                    

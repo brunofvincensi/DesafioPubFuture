@@ -1,9 +1,11 @@
 package com.publica.desafio_pub.services;
 
 import com.publica.desafio_pub.dto.get.DespesaDTO;
+import com.publica.desafio_pub.dto.insert.DespesaInserDTO;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
+import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.DespesaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,29 +25,21 @@ public class DespesaService {
     @Autowired
     private ContaRepository contaRepository;
 
-    // busca todas as despesas
+    // busca todas as despesas ordenadas por id da conta
     public List<DespesaDTO> findAll() {
         List<Despesa> despesaList = despesaRepository.findAllOrderByContaId();
         return despesaList.stream().map(x -> new DespesaDTO(x)).collect(Collectors.toList());
     }
 
-    // salva uma despesa em uma conta selecionada se o valor for menor que o saldo desta conta
-    public boolean save(Despesa despesa, Conta conta) {
+    // salva uma despesa em uma conta selecionada
+    public Despesa save(DespesaInserDTO despesaInserDTO, Long id) {
 
-        Double saldo = conta.getSaldo();
-        if(saldo > despesa.getValor()){
+        despesaInserDTO.setContaId(id);
 
-            despesa.setConta(conta);
-            despesaRepository.save(despesa);
+        Despesa despesa =  despesaInserDTO.converter(contaRepository);
 
-            return true;
-        }
-
-        else{
-
-            System.out.println("valor da despesa maior que o saldo na conta");
-            return false;
-        }
+        despesaRepository.save(despesa);
+        return despesa;
 
     }
 

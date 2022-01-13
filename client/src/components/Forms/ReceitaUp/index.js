@@ -112,14 +112,13 @@ const ReceitaUp = () => {
 
 
 
-                     <input
-                        type="text"
-                        name="tipoReceita"
-                        id="tipoReceita"
-                        placeholder="* tipo da receita"
-                        value={tipoReceita}
-                        onChange={(e) => setTipoReceita(e.target.value)}
-                    />
+                     <select value={tipoReceita} onChange={(e) => setTipoReceita(e.target.value)}>
+                             <option value="SALARIO">salário</option>
+                             <option value="PRESENTE" >presente</option>
+                             <option value="PREMIO">prêmio</option>
+                             <option value="OUTROS" >outros</option>
+                       
+                         </select>
 
                      <br/><br/>
 

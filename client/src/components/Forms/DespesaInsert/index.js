@@ -75,16 +75,19 @@ const DespesaInsert = () => {
 
                     <br /><br />
 
-                    <input
-                        type="text"
-                        name="tipoDespesa"
-                        id="tipoDespesa"
-                        placeholder='* tipo da despesa'
-                        onChange={(e) => setTipoDespesa(e.target.value)}
-                    />
+                    <select value={tipoDespesa} onChange={(e) => setTipoDespesa(e.target.value)}>
+                       <option value="ALIMENTACAO">alimentação</option>
+                       <option value="EDUCACAO">educação</option>
+                       <option value="LAZER">lazer</option>
+                       <option value="MORADIA">moradia</option>
+                       <option value="ROUPA">roupa</option>
+                       <option value="SAUDE">saúde</option>
+                       <option value="TRANSPORTE">transporte</option>
+                       <option value="OUTROS">outros</option>
+                       
+                   </select>
 
                     <br /><br />
-
 
                     <input
                         type="button"
@@ -96,10 +99,7 @@ const DespesaInsert = () => {
 
                     </input>
 
-
                     <br /><br />
-
-
 
                 </form>
 

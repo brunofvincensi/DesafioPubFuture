@@ -6,12 +6,12 @@ import "./index.css";
 import { Contas } from "./components/RoutesTable/Contas";
 import { Receitas } from "./components/RoutesTable/Receitas";
 import { Despesas } from "./components/RoutesTable/Despesas";
-import ContUp from "./components/Updates/ContaUp";
-import DespesaUp from "./components/Updates/DespesaUp";
-import ReceitaUp from "./components/Updates/ReceitaUp";
-import ContaInsert from "./components/Updates/ContaInsert";
-import DespesaInsert from "./components/Updates/DespesaInsert";
-import ReceitaInsert from "./components/Updates/ReceitaInsert";
+import ContUp from "./components/Forms/ContaUp";
+import DespesaUp from "./components/Forms/DespesaUp";
+import ReceitaUp from "./components/Forms/ReceitaUp";
+import ContaInsert from "./components/Forms/ContaInsert";
+import DespesaInsert from "./components/Forms/DespesaInsert";
+import ReceitaInsert from "./components/Forms/ReceitaInsert";
 
 ReactDOM.render(
 	<BrowserRouter>
