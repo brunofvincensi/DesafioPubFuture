@@ -18,14 +18,31 @@
 - Postman (testes)
 
 ## Padrão de desenvolvimento
-- modelo camadas, em que todo dado só pode ser passado bidimensionalmente
+- padrão camadas
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
 ## Funcionalidades
 
+Despesas
+- métodos CRUD
+- filtro por período (dataIncial - dataFinal)
+- filtro por tipo de despesa
+- lista despesa total por conta
+
+Receitas
+- métodos CRUD
+- filtro por período (dataIncial - dataFinal)
+- filtro por tipo de receita
+- lista receita total por conta
+
+Contas
+- métodos CRUD
+- transferir saldo entre contas
+- listar saldo total
 
 ## Layout das telas
+
 
 
 
