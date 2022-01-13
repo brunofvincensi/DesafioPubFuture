@@ -5,7 +5,6 @@ import com.publica.desafio_pub.dto.insert.DespesaInserDTO;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
-import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.DespesaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
