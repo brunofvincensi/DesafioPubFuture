@@ -4,6 +4,8 @@
 - Projeto para gerir finanças pessoais
 - Api Rest criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
 
+
+
 ## Diagrama UML (Linguagem Unificada de Modelagem)
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/UML.PNG)
@@ -15,17 +17,37 @@
 - ReactJS (Java Script, HTML, CSS)
 - Bootstrap
 - GIT | GitHub
-- Postman (testes)
+- Intellij - IDE
+- Postman | banco H2 - para testes
 
 ## Padrão de desenvolvimento
-- modelo camadas, em que todo dado só pode ser passado bidimensionalmente
+- padrão camadas
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
+![JAVA](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o_camadas_java.PNG)
+
 ## Funcionalidades
 
+Despesas
+- métodos CRUD
+- filtro por período (dataIncial - dataFinal)
+- filtro por tipo de despesa
+- listar despesa total por conta
 
-## Layout das telas
+Receitas
+- métodos CRUD
+- filtro por período (dataIncial - dataFinal)
+- filtro por tipo de receita
+- listar receita total por conta
+
+Contas
+- métodos CRUD
+- transferir saldo entre contas
+- listar saldo total
+
+## Testes unitários
+
 
 
 
