@@ -2,6 +2,7 @@ package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
+import com.publica.desafio_pub.dto.insert.ReceitaInsertDTO;
 import com.publica.desafio_pub.dto.update.ReceitaUpdateDTO;
 import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
@@ -51,15 +52,11 @@ public class ReceitaController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<ReceitaDTO> inserir(@RequestBody Receita receita, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
-
-
-        Conta conta = contaService.findById(id).get();
+    public ResponseEntity<ReceitaDTO> inserir(@RequestBody ReceitaInsertDTO receitaInsertDTO, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
 
         try {
 
-            receita.setConta(conta);
-            receitaService.save(receita, conta);
+           Receita receita = receitaService.save(receitaInsertDTO, id);
 
             URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(receita.getId()).toUri();
             return ResponseEntity.created(uri).body(new ReceitaDTO(receita));

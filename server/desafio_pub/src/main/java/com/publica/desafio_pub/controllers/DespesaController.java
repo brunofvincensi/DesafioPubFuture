@@ -1,11 +1,14 @@
 package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.DespesaDTO;
+import com.publica.desafio_pub.dto.get.ReceitaDTO;
+import com.publica.desafio_pub.dto.insert.DespesaInserDTO;
 import com.publica.desafio_pub.dto.update.DespesaUpdateDTO;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
+import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.DespesaService;
 import com.publica.desafio_pub.services.ServiceException;
@@ -55,30 +58,20 @@ public class DespesaController {
 
 
     @PostMapping("/{id}")
-    public ResponseEntity<DespesaDTO> inserir(@RequestBody Despesa despesa, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
-
-
-        Conta conta = contaService.findById(id).get();
+    public ResponseEntity<DespesaDTO> inserir(@RequestBody DespesaInserDTO despesaInserDTO, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
 
         try {
 
-            despesa.setConta(conta);
-            boolean isValid = despesaService.save(despesa, conta);
+            Despesa despesa = despesaService.save(despesaInserDTO, id);
 
-            if (isValid) {
-
-                URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(despesa.getId()).toUri();
-                return ResponseEntity.created(uri).body(new DespesaDTO(despesa));
-            }
-
-            else {
-                return ResponseEntity.badRequest().body(new DespesaDTO(despesa));
-            }
+            URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(despesa.getId()).toUri();
+            return ResponseEntity.created(uri).body(new DespesaDTO(despesa));
 
         } catch (ServiceException e) {
 
             return ResponseEntity.unprocessableEntity().build();
         }
+
 
     }
 

@@ -87,9 +87,7 @@ const DespesaInsert = () => {
                        
                    </select>
 
-
                     <br /><br />
-
 
                     <input
                         type="button"
@@ -101,10 +99,7 @@ const DespesaInsert = () => {
 
                     </input>
 
-
                     <br /><br />
-
-
 
                 </form>
 

@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.services;
 
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
+import com.publica.desafio_pub.dto.insert.ReceitaInsertDTO;
 import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Receita;
@@ -23,7 +24,7 @@ public class ReceitaService {
     @Autowired
     private ContaRepository contaRepository;
 
-    // busca todas as receitas
+    // busca todas as receitas ordenadas por id da conta
     public List<ReceitaDTO> findAll() {
 
         List<Receita> receitaList = receitaRepository.findAllOrderByContaId();
@@ -41,11 +42,14 @@ public class ReceitaService {
     }
 
     // salva uma receita em uma conta selecionada
-    public void save(Receita receita, Conta conta) {
+    public Receita save(ReceitaInsertDTO receitaInsertDTO, Long id) {
 
-        receita.setConta(conta);
+        receitaInsertDTO.setContaId(id);
+
+      Receita receita =  receitaInsertDTO.converter(contaRepository);
 
         receitaRepository.save(receita);
+        return receita;
     }
 
     // busca as receitas entre as datas requeridas

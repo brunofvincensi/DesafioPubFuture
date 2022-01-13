@@ -1,6 +1,7 @@
 package com.publica.desafio_pub.services;
 
 import com.publica.desafio_pub.dto.get.ContaDTO;
+import com.publica.desafio_pub.dto.insert.ContaInsertDTO;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Conta;
@@ -35,7 +36,9 @@ public class ContaService {
     }
 
     // salva uma conta
-    public Conta save(Conta conta) {
+    public Conta save(ContaInsertDTO contaInsertDTO) {
+
+        Conta conta = contaInsertDTO.converter(contaRepository);
         contaRepository.save(conta);
         return conta;
     }
