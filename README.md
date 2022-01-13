@@ -39,7 +39,7 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-## Front end web
+## Front end
 Pré-requisitos: 
 - NodeJS
 - npm
