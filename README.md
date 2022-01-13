@@ -15,9 +15,9 @@
 - Spring Boot (Java)
 - MySQL
 - ReactJS (Java Script, HTML, CSS)
-- Intellij - IDE
 - Bootstrap
 - GIT | GitHub
+- Intellij - IDE
 - Postman | banco H2 - para testes
 
 ## Padrão de desenvolvimento
@@ -33,13 +33,13 @@ Despesas
 - métodos CRUD
 - filtro por período (dataIncial - dataFinal)
 - filtro por tipo de despesa
-- lista despesa total por conta
+- listar despesa total por conta
 
 Receitas
 - métodos CRUD
 - filtro por período (dataIncial - dataFinal)
 - filtro por tipo de receita
-- lista receita total por conta
+- listar receita total por conta
 
 Contas
 - métodos CRUD
