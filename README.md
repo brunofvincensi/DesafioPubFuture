@@ -17,6 +17,7 @@
 - MySQL
 - ReactJS (Java Script, HTML, CSS)
 - Bootstrap
+- GIT | GitHub
 - Postman (testes)
 
 ## Padrão de desenvolvimento
