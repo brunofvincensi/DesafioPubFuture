@@ -2,9 +2,7 @@ package com.publica.desafio_pub.dto.get;
 
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.models.Despesa;
-
 import java.time.LocalDate;
-
 
 public class DespesaDTO {
 

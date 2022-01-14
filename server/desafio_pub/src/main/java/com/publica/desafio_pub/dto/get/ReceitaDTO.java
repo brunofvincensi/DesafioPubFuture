@@ -2,9 +2,7 @@ package com.publica.desafio_pub.dto.get;
 
 import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Receita;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 public class ReceitaDTO {
 

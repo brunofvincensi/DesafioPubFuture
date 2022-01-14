@@ -2,8 +2,6 @@ package com.publica.desafio_pub.models;
 
 import com.publica.desafio_pub.enums.TipoConta;
 import com.sun.istack.NotNull;
-import org.hibernate.LazyInitializationException;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

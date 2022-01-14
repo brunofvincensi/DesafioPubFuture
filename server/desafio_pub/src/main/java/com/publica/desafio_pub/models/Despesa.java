@@ -3,11 +3,8 @@ package com.publica.desafio_pub.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.sun.istack.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity

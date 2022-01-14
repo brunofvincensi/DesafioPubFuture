@@ -1,13 +1,11 @@
 package com.publica.desafio_pub.controllers;
 
-import com.publica.desafio_pub.dto.get.DespesaDTO;
 import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.insert.ReceitaInsertDTO;
 import com.publica.desafio_pub.dto.update.ReceitaUpdateDTO;
 import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
-import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.ReceitaService;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.HashMap;
@@ -67,7 +64,6 @@ public class ReceitaController {
         }
 
     }
-
 
     @PutMapping("/{id}")
     @Transactional

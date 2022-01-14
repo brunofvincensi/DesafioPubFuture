@@ -34,7 +34,6 @@ class ContaService{
 
     }
 
-    
 }
 
 export default new ContaService();

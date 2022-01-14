@@ -1,14 +1,12 @@
 package com.publica.desafio_pub.controllers;
 
 import com.publica.desafio_pub.dto.get.DespesaDTO;
-import com.publica.desafio_pub.dto.get.ReceitaDTO;
 import com.publica.desafio_pub.dto.insert.DespesaInserDTO;
 import com.publica.desafio_pub.dto.update.DespesaUpdateDTO;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Despesa;
-import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.DespesaService;
 import com.publica.desafio_pub.services.ServiceException;
@@ -71,7 +69,6 @@ public class DespesaController {
 
             return ResponseEntity.unprocessableEntity().build();
         }
-
 
     }
 

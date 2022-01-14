@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -37,7 +34,6 @@ public class DesafioPubApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
 
 
 		Conta conta1 = new Conta(TipoConta.CONTA_CORRENTE, "Itau");
@@ -70,10 +66,6 @@ public class DesafioPubApplication implements CommandLineRunner {
 
 
         despesaRepository.saveAll(Arrays.asList(despesa1, despesa2, despesa3));
-
-
-
-
 
 	}
 }

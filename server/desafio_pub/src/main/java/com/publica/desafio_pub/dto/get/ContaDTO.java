@@ -3,8 +3,6 @@ package com.publica.desafio_pub.dto.get;
 import com.publica.desafio_pub.enums.TipoConta;
 import com.publica.desafio_pub.models.Conta;
 
-import javax.persistence.Column;
-
 public class ContaDTO {
 
     private Long id;

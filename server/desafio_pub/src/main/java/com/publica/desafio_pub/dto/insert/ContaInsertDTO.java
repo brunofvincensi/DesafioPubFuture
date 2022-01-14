@@ -17,7 +17,6 @@ public class ContaInsertDTO {
             this.instituicao = instituicao;
         }
 
-
         public TipoConta getTipoConta() {
             return tipoConta;
         }

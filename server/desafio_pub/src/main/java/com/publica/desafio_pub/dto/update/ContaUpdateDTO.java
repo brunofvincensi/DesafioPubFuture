@@ -29,7 +29,6 @@ public class ContaUpdateDTO {
         return conta;
     }
 
-
     public TipoConta getTipoConta() {
         return tipoConta;
     }

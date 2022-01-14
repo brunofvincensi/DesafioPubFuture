@@ -3,9 +3,7 @@ package com.publica.desafio_pub.dto.update;
 import com.publica.desafio_pub.enums.TipoDespesa;
 import com.publica.desafio_pub.models.Despesa;
 import com.publica.desafio_pub.services.DespesaService;
-
 import java.time.LocalDate;
-
 
 public class DespesaUpdateDTO {
     private Double valor;
@@ -26,7 +24,6 @@ public class DespesaUpdateDTO {
         despesa.setTipoDespesa(this.tipoDespesa);
 
         return despesa;
-
 
     }
 
@@ -68,6 +65,5 @@ public class DespesaUpdateDTO {
     public void setTipoDespesa(TipoDespesa tipoDespesa) {
         this.tipoDespesa = tipoDespesa;
     }
-
 
 }

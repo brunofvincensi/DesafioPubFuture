@@ -1,11 +1,9 @@
 package com.publica.desafio_pub.repositories;
 
-import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Receita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import java.time.LocalDate;
 import java.util.List;
 

@@ -59,15 +59,6 @@ public class ContaController {
 
     }
 
-    /**
-     *
-     * @param id
-     * id da conta na qual será alterada
-     * @param updateDTO
-     * @return
-     * cdcdcdcdcd
-     *
-     */
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<ContaDTO> alterar(@PathVariable Long id, @RequestBody ContaUpdateDTO updateDTO){
