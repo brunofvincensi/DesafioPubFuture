@@ -4,7 +4,9 @@
 - Projeto para gerir finanças pessoais
 - Api Rest criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
 
-![GIF_TELAS](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/Finan%C3%A7as_Pessoais_Anima%C3%A7%C3%A3o.gif)
+## [Documentação](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/DesafioPubFuture_doc.docx)
+
+![GIF_TELAS](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/financas_pessoais_gif.gif)
 
 ## Tecnologias utilizadas
 
@@ -65,8 +67,6 @@ npm start
 - padrão camadas
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
-
-![JAVA](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/tela_intellij.PNG)
 
 ## Funcionalidades
 
