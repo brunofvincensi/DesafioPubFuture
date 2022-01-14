@@ -30,10 +30,11 @@ Pré-requisitos:
 ```bash
 
 # clonar repositório
-git clone https://github.com/Bruno-ferrariv/DesafioPubFuture
+git clone https://github.com/Bruno-ferrariv/DesafioPubFuture.git
 
-# entrar na pasta do projeto back end
-cd backend
+
+# entrar na pasta do projeto back end pelo terminal
+cd DesafioPubFuture/server/desafio_pub
 
 # executar o projeto
 ./mvnw spring-boot:run
@@ -46,8 +47,7 @@ Pré-requisitos:
 
 ```bash
 # entrar na pasta do projeto front end pelo terminal
-cd ..
-cd client
+cd DesafioPubFuture/client
 
 # instalar dependências
 npm i
@@ -60,8 +60,6 @@ npm start
 ## Diagrama UML (Linguagem Unificada de Modelagem)
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/UML.PNG)
-
-
 
 ## Padrão de desenvolvimento
 - padrão camadas
