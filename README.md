@@ -4,9 +4,9 @@
 - Projeto para gerir finanças pessoais
 - Api Rest criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
 
-## [Documentação](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/DesafioPubFuture_doc.docx)
+## [Documentação](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/DesafioPubFuture_doc.docx)
 
-![GIF_TELAS](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/financas_pessoais_gif.gif)
+![GIF_TELAS](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/financas_pessoais_gif.gif)
 
 ## Tecnologias utilizadas
 
@@ -32,11 +32,11 @@ Pré-requisitos:
 ```bash
 
 # clonar repositório
-git clone https://github.com/Bruno-ferrariv/DesafioPubFuture.git
+git clone https://github.com/Bruno-ferrariv/desafiopubfuture.git
 
 
 # entrar na pasta do projeto back end pelo terminal
-cd DesafioPubFuture/server/desafio_pub
+cd desafiopubfuture/server/desafio_pub
 
 # executar o projeto
 ./mvnw spring-boot:run
@@ -49,7 +49,7 @@ Pré-requisitos:
 
 ```bash
 # entrar na pasta do projeto front end pelo terminal
-cd DesafioPubFuture/client
+cd desafiopubfuture/client
 
 # instalar dependências
 npm i
@@ -61,12 +61,12 @@ npm start
 
 ## Diagrama UML (Linguagem Unificada de Modelagem)
 
-![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/UML.PNG)
+![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/UML.PNG)
 
 ## Padrão de desenvolvimento
 - padrão camadas
 
-![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
+![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
 ## Funcionalidades
 
