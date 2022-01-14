@@ -66,8 +66,6 @@ npm start
 
 ![UML](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
-![JAVA](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/tela_intellij.PNG)
-
 ## Funcionalidades
 
 Despesas
