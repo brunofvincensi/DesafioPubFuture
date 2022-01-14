@@ -4,7 +4,7 @@
 - Projeto para gerir finanças pessoais
 - Api Rest criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
 
-![GIF_TELAS](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/Finan%C3%A7as_Pessoais_Anima%C3%A7%C3%A3o.gif)
+![GIF_TELAS](https://github.com/Bruno-ferrariv/DesafioPubFuture/blob/main/imagens/financas_pessoais_gif.gif)
 
 ## Tecnologias utilizadas
 
