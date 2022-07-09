@@ -2,6 +2,7 @@ package com.publica.desafio_pub.repositories;
 
 import com.publica.desafio_pub.models.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
@@ -18,4 +19,5 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
 
     @Query(value = "select * from tb_despesas order by conta_id", nativeQuery = true)
     List<Despesa> findAllOrderByContaId();
+
 }

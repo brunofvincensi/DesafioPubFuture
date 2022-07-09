@@ -10,8 +10,11 @@ import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
 import com.publica.desafio_pub.repositories.DespesaRepository;
 import com.publica.desafio_pub.repositories.ReceitaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -20,90 +23,73 @@ import java.util.stream.Collectors;
 @Service
 public class ContaService {
 
-    @Autowired
-    private ContaRepository contaRepository;
+    private final ContaRepository contaRepository;
 
-    @Autowired
-    private DespesaRepository despesaRepository;
+    private final DespesaRepository despesaRepository;
 
-    @Autowired
-    private ReceitaRepository receitaRepository;
+    private final ReceitaRepository receitaRepository;
+
+    public ContaService(ContaRepository contaRepository, DespesaRepository despesaRepository, ReceitaRepository receitaRepository) {
+        this.contaRepository = contaRepository;
+        this.despesaRepository = despesaRepository;
+        this.receitaRepository = receitaRepository;
+    }
 
     // busca todas as contas
     public List<ContaDTO> findAll() {
-        List<Conta> contaList = contaRepository.findAll();
-        return contaList.stream().map(x -> new ContaDTO(x)).collect(Collectors.toList());
+        return contaRepository.findAll()
+                .stream()
+                .map(ContaDTO::new)
+                .collect(Collectors.toList());
     }
 
     // salva uma conta
     public Conta save(ContaInsertDTO contaInsertDTO) {
-
         Conta conta = contaInsertDTO.converter(contaRepository);
-        contaRepository.save(conta);
-        return conta;
+        return contaRepository.save(conta);
     }
 
     // busca uma conta por id
     public Optional<Conta> findById(Long id) {
-
         return contaRepository.findById(id);
     }
 
     // deleta uma conta e todas as despesas e receitas relacionadas a ela
+    @Transactional
     public void delete(Conta conta) throws ServiceException{
-
-        for (int i = 0; i < conta.getDespesas().size(); i++) {
-            despesaRepository.delete(conta.getDespesas().get(i));
-        }
-        for (int i = 0; i < conta.getReceitas().size(); i++) {
-            receitaRepository.delete(conta.getReceitas().get(i));
-        }
-
+        despesaRepository.deleteAll(conta.getDespesas());
+        receitaRepository.deleteAll(conta.getReceitas());
         contaRepository.delete(conta);
-
     }
 
     // transfere o saldo entre contas gerando uma despesa na primeira conta e receita na segunda
     public Boolean transferirSaldo(Long id1, Long id2, Double valor) throws ServiceException{
 
-            Conta conta1 = contaRepository.findById(id1).get();
+            Conta contaTransferencia = contaRepository
+                    .findById(id1)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
 
-            Conta conta2 = contaRepository.findById(id2).get();
+            Conta contaDeposito = contaRepository
+                    .findById(id2)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
 
-            Double saldo1 = conta1.getSaldo();
+           if(valor <= contaTransferencia.getSaldo()) {
 
-           if(valor <= saldo1){
-
-               Despesa despesa = new Despesa(valor, LocalDate.now(), TipoDespesa.TRANSFERENCIA, conta1);
+               Despesa despesa = new Despesa(valor, LocalDate.now(), TipoDespesa.TRANSFERENCIA, contaTransferencia);
 
                Receita receita = new Receita(valor, LocalDate.now(), "valor transferido pela conta " + id1,
-                       TipoReceita.TRANSFERENCIA, conta2);
+                       TipoReceita.TRANSFERENCIA, contaDeposito);
 
                despesaRepository.save(despesa);
                receitaRepository.save(receita);
 
                return true;
            }
-           else {
                return false;
-
-        }
-
     }
 
     // busca o saldo total
     public Double getSaldoTotal(List<ContaDTO> contaList) {
-
-        Double saldoTotal = 0.0;
-
-        for (ContaDTO conta: contaList) {
-
-            saldoTotal += conta.getSaldo();
-
-        }
-
-        return saldoTotal;
+        return contaList.stream().mapToDouble(ContaDTO::getSaldo).sum();
     }
-
-
 }

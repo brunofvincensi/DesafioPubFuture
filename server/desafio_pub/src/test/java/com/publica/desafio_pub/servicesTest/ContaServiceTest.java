@@ -21,9 +21,7 @@ public class ContaServiceTest {
 
     @Test
     public void findByIdTest(){
-
         Conta conta = contaService.findById(1L).get();
-
         Assertions.assertEquals(TipoConta.CONTA_CORRENTE, conta.getTipoConta());
         Assertions.assertEquals("Itau", conta.getInstituicao());
     }

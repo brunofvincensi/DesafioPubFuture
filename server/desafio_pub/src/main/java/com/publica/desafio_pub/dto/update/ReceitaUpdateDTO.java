@@ -3,9 +3,10 @@ package com.publica.desafio_pub.dto.update;
 import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ReceitaService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-
 
 public class ReceitaUpdateDTO {
     private Double valor;
@@ -27,7 +28,9 @@ public class ReceitaUpdateDTO {
 
     public Receita update(Long id, ReceitaService receitaService) {
 
-        Receita receita = receitaService.findById(id).get();
+        Receita receita = receitaService
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
 
         receita.setValor(this.valor);
         receita.setDataRecebimento(this.dataRecebimento);

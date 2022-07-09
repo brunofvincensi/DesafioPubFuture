@@ -24,7 +24,6 @@ public class ReceitaServiceTest {
 
     @Test
     public void findByIdTest(){
-
         Receita receita = receitaService.findById(2L).get();
 
         Assertions.assertEquals(750.0, receita.getValor());
@@ -44,7 +43,6 @@ public class ReceitaServiceTest {
 
     @Test
     public void filtroPorTipoTest(){
-
         List<ReceitaDTO> list = receitaService.filtroPorTipo(TipoReceita.SALARIO);
 
         Assertions.assertEquals(list.get(0).getValor(), 500.0);

@@ -6,7 +6,6 @@ import com.publica.desafio_pub.services.ContaService;
 
 public class ContaUpdateDTO {
 
-
     private TipoConta tipoConta;
     private String instituicao;
 

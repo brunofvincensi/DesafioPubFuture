@@ -99,21 +99,9 @@ public class Conta {
     }
 
     public Double getSaldo(){
-        Double valorReceitas = 0.0;
-        Double valorDespesass= 0.0;
-
-        for (Receita receita : this.getReceitas()) {
-
-            valorReceitas += receita.getValor();
-
-        }
-        for (Despesa despesa : this.getDespesas()) {
-
-            valorDespesass += despesa.getValor();
-
-        }
-
-        return valorReceitas - valorDespesass;
+        Double valorReceitas = getReceitas().stream().mapToDouble(Receita::getValor).sum();
+        Double valorDespesas= getDespesas().stream().mapToDouble(Despesa::getValor).sum();
+        return valorReceitas - valorDespesas;
     }
 
 }

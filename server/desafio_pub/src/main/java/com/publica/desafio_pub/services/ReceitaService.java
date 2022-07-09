@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,9 +27,8 @@ public class ReceitaService {
 
     // busca todas as receitas ordenadas por id da conta
     public List<ReceitaDTO> findAll() {
-
         List<Receita> receitaList = receitaRepository.findAllOrderByContaId();
-        return receitaList.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
+        return receitaList.stream().map(ReceitaDTO::new).collect(Collectors.toList());
     }
 
     //busca uma receita por id
@@ -46,7 +46,7 @@ public class ReceitaService {
 
         receitaInsertDTO.setContaId(id);
 
-      Receita receita =  receitaInsertDTO.converter(contaRepository);
+        Receita receita = receitaInsertDTO.converter(contaRepository);
 
         receitaRepository.save(receita);
         return receita;
@@ -60,43 +60,23 @@ public class ReceitaService {
         LocalDate localDate2 = LocalDate.parse(dataFinal, format);
 
         List<Receita> list = receitaRepository.filtroPorData(localDate1, localDate2);
-        return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
+        return list.stream().map(ReceitaDTO::new).collect(Collectors.toList());
     }
 
     // busca as receitas do tipo requerido
     public List<ReceitaDTO> filtroPorTipo(TipoReceita tipoReceita) { 
-        
-        Integer tipoReceitaId = null;
 
-        switch (tipoReceita){
-            case SALARIO: tipoReceitaId = 0;
-            break;
-            case PRESENTE: tipoReceitaId = 1;
-                break;
-            case PREMIO: tipoReceitaId = 2;
-                break;
-            case TRANSFERENCIA: tipoReceitaId = 3;
-                break;
-            case OUTROS: tipoReceitaId = 4;
-                break;
-        }
+        List<Receita> list = receitaRepository.filtroPorTipo(
+                Arrays.asList(TipoReceita.values()).indexOf(tipoReceita)
+        );
 
-        List<Receita> list = receitaRepository.filtroPorTipo(tipoReceitaId);
-        return list.stream().map(x -> new ReceitaDTO(x)).collect(Collectors.toList());
-
+        return list.stream()
+                .map(ReceitaDTO::new)
+                .collect(Collectors.toList());
     }
 
     // busca a receita total por conta
     public Double getReceitaTotal(Conta conta) {
-
-        Double cont = 0.0;
-        List<Receita> receitas = conta.getReceitas();
-
-        for (Receita receita: receitas) {
-
-            cont += receita.getValor();
-        }
-        return cont;
+        return conta.getReceitas().stream().mapToDouble(Receita::getValor).sum();
     }
-
 }

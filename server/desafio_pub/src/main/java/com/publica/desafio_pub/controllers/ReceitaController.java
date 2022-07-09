@@ -9,114 +9,88 @@ import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.services.ContaService;
 import com.publica.desafio_pub.services.ReceitaService;
-import com.publica.desafio_pub.services.ServiceException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import javax.transaction.Transactional;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/receitas")
 public class ReceitaController {
 
-    @Autowired
-    private ReceitaService receitaService;
+    private final ReceitaService receitaService;
 
-    @Autowired
-    private ContaService contaService;
+    private final ContaService contaService;
+
+    public ReceitaController(ReceitaService receitaService, ContaService contaService) {
+        this.receitaService = receitaService;
+        this.contaService = contaService;
+    }
 
     @GetMapping
-    public ResponseEntity<List<ReceitaDTO>> listarTodos(){
-
-        List<ReceitaDTO> receitaList = receitaService.findAll();
-        return ResponseEntity.ok().body(receitaList);
-
+    public List<ReceitaDTO> listarTodos(){
+        return receitaService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReceitaDTO> listarPorId(@PathVariable Long id){
-
-        Receita receita = receitaService.findById(id).get();
-        return ResponseEntity.ok().body(new ReceitaDTO(receita));
-
+    public ReceitaDTO listarPorId(@PathVariable Long id){
+        Receita receita = receitaService
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+        return new ReceitaDTO(receita);
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<ReceitaDTO> inserir(@RequestBody ReceitaInsertDTO receitaInsertDTO, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
-
-        try {
-
-           Receita receita = receitaService.save(receitaInsertDTO, id);
-
-            URI uri = uriBuilder.path("/despesas/{id}").buildAndExpand(receita.getId()).toUri();
-            return ResponseEntity.created(uri).body(new ReceitaDTO(receita));
-
-        } catch (ServiceException e) {
-
-            return ResponseEntity.unprocessableEntity().build();
-        }
-
+    @ResponseStatus(HttpStatus.CREATED)
+    public ReceitaDTO inserir(@RequestBody ReceitaInsertDTO receitaInsertDTO, @PathVariable  Long id, UriComponentsBuilder uriBuilder) {
+        Receita receita = receitaService.save(receitaInsertDTO, id);
+        return new ReceitaDTO(receita);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<ReceitaDTO> alterar(@PathVariable Long id, @RequestBody ReceitaUpdateDTO updateDTO){
-
-        Optional<Receita> receitaOpt = receitaService.findById(id);
-
-        if(receitaOpt.isPresent()){
-
+    public ReceitaDTO alterar(@PathVariable Long id, @RequestBody ReceitaUpdateDTO updateDTO){
+        if(receitaService.findById(id).isPresent()){
             Receita receita = updateDTO.update(id, receitaService);
-
-            return ResponseEntity.ok(new ReceitaDTO(receita));
-
+            return new ReceitaDTO(receita);
         }
-        return ResponseEntity.notFound().build();
-
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Map<String, Boolean>> deletar(@PathVariable Long id){
+    public Map<String, Boolean> deletar(@PathVariable Long id) {
         Receita receita = receitaService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Receita não existe com o id :" + id));
         receitaService.delete(receita);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deletado", Boolean.TRUE);
-        return ResponseEntity.ok(response);
+        return response;
     }
 
     @GetMapping("/filtro/data")
-    public ResponseEntity<List<ReceitaDTO>> filtroPorData(@RequestParam(defaultValue = "1900-01-01") String dataInicial,
-                                                          @RequestParam(defaultValue = "2100-01-01") String dataFinal) {
-
-        List<ReceitaDTO> list = receitaService.filtroPorData(dataInicial, dataFinal);
-        return ResponseEntity.ok().body(list);
-
+    public List<ReceitaDTO> filtroPorData(@RequestParam(defaultValue = "1900-01-01") String dataInicial,
+                                          @RequestParam(defaultValue = "2100-01-01") String dataFinal) {
+        return receitaService.filtroPorData(dataInicial, dataFinal);
     }
 
     @GetMapping("/filtro/tipo")
-    public ResponseEntity<List<ReceitaDTO>> filtroPorTipo(TipoReceita tipoReceita) {
-
-        List<ReceitaDTO> list = receitaService.filtroPorTipo(tipoReceita);
-        return ResponseEntity.ok().body(list);
-
+    public List<ReceitaDTO> filtroPorTipo(TipoReceita tipoReceita) {
+        return receitaService.filtroPorTipo(tipoReceita);
     }
 
     @GetMapping("/receita_total/{id}")
     public Double receitaTotalPorConta(@PathVariable Long id){
-
-        Conta conta = contaService.findById(id).get();
-        Double receitaTotal = receitaService.getReceitaTotal(conta);
-
-        return receitaTotal;
+        Conta conta = contaService
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+        return receitaService.getReceitaTotal(conta);
     }
 
 }

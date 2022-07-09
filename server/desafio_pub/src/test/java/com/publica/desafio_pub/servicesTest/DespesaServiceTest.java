@@ -39,16 +39,12 @@ public class DespesaServiceTest {
 
     @Test
     public void filtroPorDataTest(){
-
       List<DespesaDTO> list = despesaService.filtroPorData("2002-01-01", "2016-01-01");
-
       Assertions.assertEquals(list.get(0).getDataPagamento(), LocalDate.parse("2015-08-03", format) );
-
     }
 
     @Test
     public void filtroPorTipoTest(){
-
         List<DespesaDTO> list = despesaService.filtroPorTipo(TipoDespesa.ALIMENTACAO);
 
         Assertions.assertEquals(list.get(0).getValor(), 350.0);

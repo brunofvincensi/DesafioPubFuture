@@ -6,76 +6,56 @@ import com.publica.desafio_pub.dto.update.ContaUpdateDTO;
 import com.publica.desafio_pub.exception.ResourceNotFoundException;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.services.ContaService;
-import com.publica.desafio_pub.services.ServiceException;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.server.ResponseStatusException;
+
 import javax.transaction.Transactional;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/contas")
 public class ContaController {
 
-    @Autowired
-    private ContaService contaService;
+    private final ContaService contaService;
+
+    public ContaController(ContaService contaService) {
+        this.contaService = contaService;
+    }
 
     @GetMapping
-    public ResponseEntity<List<ContaDTO>> listarTodos(){
-
-        List<ContaDTO> contaList = contaService.findAll();
-        return ResponseEntity.ok().body(contaList);
+    public List<ContaDTO> listarTodos(){
+        return contaService.findAll();
     }
 
     @GetMapping("/saldo_total")
     public Double getSaldoTotal(){
-
         List<ContaDTO> contaList = contaService.findAll();
-
-        Double saldoTotal = contaService.getSaldoTotal(contaList);
-
-       return saldoTotal;
+        return contaService.getSaldoTotal(contaList);
     }
 
     @PostMapping
-    public ResponseEntity<ContaDTO> inserir(@RequestBody ContaInsertDTO contaInsertDTO, UriComponentsBuilder uriBuilder){
-
-        try {
-            Conta obj = contaService.save(contaInsertDTO);
-
-            URI uri = uriBuilder.path("/contas/{id}").buildAndExpand(obj.getId()).toUri();
-            return ResponseEntity.created(uri).body(new ContaDTO(obj));
-
-        }catch (ServiceException e){
-
-            return ResponseEntity.unprocessableEntity().build();
-        }
-
+    @ResponseStatus(HttpStatus.CREATED)
+    public ContaDTO inserir(@RequestBody ContaInsertDTO contaInsertDTO){
+        Conta obj = contaService.save(contaInsertDTO);
+        return new ContaDTO(obj);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<ContaDTO> alterar(@PathVariable Long id, @RequestBody ContaUpdateDTO updateDTO){
-
-        Optional<Conta> contaOpt = contaService.findById(id);
-
-        if(contaOpt.isPresent()){
-
+    public ContaDTO alterar(@PathVariable Long id, @RequestBody ContaUpdateDTO updateDTO){
+        if(contaService.findById(id).isPresent()){
             Conta conta = updateDTO.update(id, contaService);
-            return ResponseEntity.ok(new ContaDTO(conta));
-
+            return new ContaDTO(conta);
         }
-        return ResponseEntity.notFound().build();
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
-    @Transactional
     public ResponseEntity<Map<String, Boolean>> deletar(@PathVariable Long id){
         Conta conta = contaService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Conta não existe com o id :" + id));
@@ -86,26 +66,16 @@ public class ContaController {
     }
 
     @GetMapping ("/{id}")
-    public ResponseEntity <ContaDTO> redirecionamento (@PathVariable Long id) {
-        Optional<Conta> contaOptional = contaService.findById(id) ;
-        if (contaOptional.isPresent ()) {
-
-            return ResponseEntity.ok( new ContaDTO(contaOptional.get())) ;
-        }
-        return ResponseEntity. notFound () .build () ;
+    public ContaDTO redirecionamento (@PathVariable Long id) {
+        Conta conta = contaService
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+        return new ContaDTO(conta);
     }
 
     @PatchMapping ("/transferir_saldo")
-    public ResponseEntity<Boolean>  transferirSaldo( Long id1, Long id2, Double valor){
-
-          Boolean foiTranferido = contaService.transferirSaldo(id1, id2, valor);
-
-          if(foiTranferido){
-              return ResponseEntity.ok().body(true);
-          }
-          else{
-              return ResponseEntity.badRequest().body(false);
-          }
+    public Boolean transferirSaldo( Long id1, Long id2, Double valor){
+        return contaService.transferirSaldo(id1, id2, valor);
     }
 
 }

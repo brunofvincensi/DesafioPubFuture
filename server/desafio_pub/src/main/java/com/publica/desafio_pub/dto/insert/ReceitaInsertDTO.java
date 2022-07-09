@@ -4,10 +4,10 @@ import com.publica.desafio_pub.enums.TipoReceita;
 import com.publica.desafio_pub.models.Conta;
 import com.publica.desafio_pub.models.Receita;
 import com.publica.desafio_pub.repositories.ContaRepository;
+
 import java.time.LocalDate;
 
 public class ReceitaInsertDTO {
-
 
     private Double valor;
     private LocalDate dataRecebimento;
