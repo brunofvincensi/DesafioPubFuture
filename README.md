@@ -4,7 +4,8 @@
 - A project to manage personal finances
 - REST API built with Java/Spring Boot on the server side, consumed by a ReactJS front-end client
 
-## [Documentação](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/DesafioPubFuture_doc.docx)
+## [Documentation PT](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/FinancialManagementSystem_doc.docx)
+## [Documentation EN](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/FinancialManagementSystem_doc_EN.docx)
 
 ![GIF_TELAS](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/financas_pessoais_gif.gif)
 
