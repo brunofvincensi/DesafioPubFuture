@@ -1,88 +1,89 @@
 # Sistema de Gestão Finançeira
 
 ## Sobre
-- Projeto para gerir finanças pessoais
-- API REST criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
+- A project to manage personal finances
+- REST API built with Java/Spring Boot on the server side, consumed by a ReactJS front-end client
 
 ## [Documentação](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/DesafioPubFuture_doc.docx)
 
 ![GIF_TELAS](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/financas_pessoais_gif.gif)
 
-## Tecnologias utilizadas
-
-- Spring Boot (Java)
+## Technologies Used
+- Java
+- Spring Boot
+- JUnit
+- Hibernate
+- JUnit
 - MySQL
-- ReactJS (Java Script, HTML, CSS)
+- ReactJS (JavaScript, HTML, CSS)
 - Bootstrap
 - GIT | GitHub
-- Intellij - IDE
-- Postman | banco H2 | JUnit - para testes
 
-# Instruções para rodar o projeto
+# How to Run the Project
 
-OBS.: O projeto foi feito com o banco de dados MySQL, mas para facilitar a instalação do projeto foi mantido a ligação do java com o banco H2
-rota do arquivo com o banco de dados e tabelas no MySQL: DesafioPubFuture/data_base/DDL_Financas_Pessoais.sql
+OBS.: Note: The project was originally built with MySQL, but for easier setup, the Java backend is connected to the H2 in-memory database.
+SQL file with database and tables for MySQL: DesafioPubFuture/data_base/DDL_Financas_Pessoais.sql
 
 ## Back end
-Pré-requisitos: 
+Prerequisites: 
  - Java 11
  - Intellij IDE
  - MySQL
 
 ```bash
 
-# clonar repositório
+# clone the repository
 git clone https://github.com/Bruno-ferrariv/desafiopubfuture.git
 
 
-# entrar na pasta do projeto back end pelo terminal
+# navigate to the backend project directory
 cd desafiopubfuture/server/desafio_pub
 
-# executar o projeto
+# run the project
 ./mvnw spring-boot:run
 ```
 
 ## Front end
-Pré-requisitos: 
+Prerequisites: 
 - NodeJS
 - npm
 
 ```bash
-# entrar na pasta do projeto front end pelo terminal
+# navigate to the frontend project directory
 cd desafiopubfuture/client
 
-# instalar dependências
+# install dependencies
 npm i
 
-# executar o projeto
+# run the project
 npm start
 ```
 ## 
 
-## Diagrama UML (Linguagem Unificada de Modelagem)
+## UML Diagram (Unified Modeling Language)
 
 ![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/UML.PNG)
 
-## Padrão de desenvolvimento
-- padrão camadas
+## Development Pattern
+- Layered architecture
 
 ![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
 
 ## Funcionalidades
 
-Despesas
-- métodos CRUD
-- filtro por período (dataIncial - dataFinal)
-- filtro por tipo de despesa
-- listar despesa total por conta
+Features
+- CRUD operations
+- Filter by period (startDate - endDate)
+- Filter by expense type
+- List total expenses by account
 
-Receitas
-- métodos CRUD
-- filtro por período (dataIncial - dataFinal)
-- filtro por tipo de receita
-- listar receita total por conta
+Revenues
+- CRUD operations
+- Filter by period (startDate - endDate)
+- Filter by revenue type
+- List total revenues by account
 
-Contas
-- métodos CRUD
-- transferir saldo entre contas
-- listar saldo total
+Accounts
+- CRUD operations
+- Transfer balance between accounts
+- List total balance
