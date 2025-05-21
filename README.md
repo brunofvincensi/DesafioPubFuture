@@ -7,7 +7,7 @@
 ## [Documentation PT](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/FinancialManagementSystem_doc.docx)
 ## [Documentation EN](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/FinancialManagementSystem_doc_EN.docx)
 
-![GIF_TELAS](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/financas_pessoais_gif.gif)
+![GIF_TELAS](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/images/financas_pessoais_gif.gif)
 
 ## Technologies Used
 - Java
@@ -63,12 +63,12 @@ npm start
 
 ## UML Diagram (Unified Modeling Language)
 
-![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/UML.PNG)
+![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/images/UML.PNG)
 
 ## Development Pattern
 - Layered architecture
 
-![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/imagens/padr%C3%A3o%20camadas.png)
+![UML](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/images/padr%C3%A3o%20camadas.png)
 
 ## Funcionalidades
 
