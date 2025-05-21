@@ -1,8 +1,8 @@
-# DesafioPubFuture
+# Sistema de Gestão Finançeira
 
 ## Sobre
 - Projeto para gerir finanças pessoais
-- Api Rest criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
+- API REST criada pelo Spring Boot(Java) na parte servidor e consumida pela tecnologia front-end ReactJS na parte do cliente
 
 ## [Documentação](https://github.com/Bruno-ferrariv/desafiopubfuture/blob/main/DesafioPubFuture_doc.docx)
 
