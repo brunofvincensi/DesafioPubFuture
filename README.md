@@ -1,6 +1,6 @@
-# Sistema de Gestão Finançeira
+# Financial Management System
 
-## Sobre
+## About
 - A project to manage personal finances
 - REST API built with Java/Spring Boot on the server side, consumed by a ReactJS front-end client
 
